@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xyntriq - Premium AI Data Annotation Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(45, 212, 191, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 212, 191, 0.5);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -40px auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #14b8a6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #14b8a6;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .features {
+            background: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #2d3748;
+        }
+
+        .industries {
+            background: white;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .industry-tag {
+            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+        }
+
+        .industry-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            min-height: 700px;
+        }
+
+        .contact-form-container iframe {
+            width: 100%;
+            min-height: 2100px;
+            height: 2100px;
+            border: none;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <img src="data:image/png;base64,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" alt="Xyntriq Logo" class="logo-img">
+                <div class="logo-text">Xyntriq</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Premium AI Data Annotation Services</h1>
+        <p>Delivering precise, scalable, and domain-specific datasets that power next-generation artificial intelligence systems</p>
+        <a href="#contact" class="cta-button">Get Started Today</a>
+    </section>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">98%+</div>
+            <div class="stat-label">Accuracy Guarantee</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Global</div>
+            <div class="stat-label">Client Reach</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Support Available</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">All Formats</div>
+            <div class="stat-label">Text, Image, Audio, Video</div>
+        </div>
+    </div>
+
+    <section id="services" class="section">
+        <h2 class="section-title">Comprehensive Annotation Services</h2>
+        <p class="section-subtitle">End-to-end annotation solutions across all data formats</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🖼️</div>
+                <h3>Image Annotation</h3>
+                <p>Bounding boxes, polygon annotation, semantic segmentation, keypoint annotation, and image labeling for computer vision applications</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎥</div>
+                <h3>Video Annotation</h3>
+                <p>Frame-by-frame tracking, object detection, action recognition, and temporal labeling for video analytics and autonomous systems</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <h3>Text Annotation</h3>
+                <p>Sentiment analysis labeling, named entity recognition, text classification, and intent detection for NLP models</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎤</div>
+                <h3>Audio Annotation</h3>
+                <p>Speech recognition labeling, audio classification, speaker identification, and sound event detection</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>Healthcare Imaging</h3>
+                <p>Medical image annotation, OCR for healthcare documents, DICOM file labeling, and clinical data preparation</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3>Autonomous Vehicles</h3>
+                <p>ANPR, traffic sign recognition, lane detection, pedestrian tracking, and sensor fusion data annotation</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏙️</div>
+                <h3>Smart City Solutions</h3>
+                <p>Infrastructure monitoring, crowd analysis, traffic management datasets, and urban planning annotation</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>RLHF & Machine Learning</h3>
+                <p>Reinforcement learning from human feedback, model training data preparation, and quality assurance for AI systems</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section features">
+        <h2 class="section-title">Why Choose Xyntriq?</h2>
+        <p class="section-subtitle">Built on proven expertise and commitment to excellence</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <h4>98%+ Accuracy</h4>
+                <p>Ensuring consistency and precision in every dataset</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <h4>Scalable Solutions</h4>
+                <p>From pilot projects to enterprise-level deployments</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌍</div>
+                <h4>Global Reach</h4>
+                <p>Supporting clients across US, Europe, and Middle East</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <h4>Domain Expertise</h4>
+                <p>Specialized knowledge in healthcare, transportation, and AI</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="industries" class="section industries">
+        <h2 class="section-title">Industries We Serve</h2>
+        <p class="section-subtitle">Empowering mission-critical AI innovations across sectors</p>
+        
+        <div class="industries-grid">
+            <div class="industry-tag">Healthcare & Medical Imaging</div>
+            <div class="industry-tag">Autonomous Vehicles</div>
+            <div class="industry-tag">Smart Cities</div>
+            <div class="industry-tag">Computer Vision</div>
+            <div class="industry-tag">Transportation</div>
+            <div class="industry-tag">Retail & E-commerce</div>
+            <div class="industry-tag">Agriculture</div>
+            <div class="industry-tag">Security & Surveillance</div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2>Let's Connect</h2>
+        <p>Ready to transform your AI projects with high-quality annotated data? Reach out to us today</p>
+        
+        <div class="contact-form-container">
+            <h3 style="color: #1e293b; margin-bottom: 1rem; font-size: 1.5rem;">Get in Touch</h3>
+            <p style="color: #666; margin-bottom: 2rem; line-height: 1.8;">Fill out our quick inquiry form and our team will get back to you within 24 hours with a customized solution for your annotation needs.</p>
+            <a href="https://forms.gle/QzQgKrEwjHLMZswd6" target="_blank" class="cta-button" style="display: inline-block; margin-bottom: 1rem;">Open Contact Form</a>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">Or email us directly at <a href="mailto:info@xyntriq.in" style="color: #14b8a6; font-weight: 600;">info@xyntriq.in</a></p>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span><a href="mailto:info@xyntriq.in" style="color: white; text-decoration: none;">info@xyntriq.in</a></span>
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <span>Delhi, India</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Xyntriq. All rights reserved. | IT Services and IT Consulting | Delivering High-Quality Data Annotation for AI</p>
+    </footer>
+</body>
+</html>
