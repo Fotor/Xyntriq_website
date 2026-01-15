@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Contact Xyntriq</title>
+
+  <!-- Immediate redirect -->
+  <meta http-equiv="refresh" content="0; url=mailto:info@xyntriq.in" />
+
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont;
@@ -14,16 +18,16 @@
       height: 100vh;
       margin: 0;
     }
-    .msg {
+    a {
+      color: #2d3748;
+      text-decoration: none;
       font-size: 14px;
-      opacity: 0.6;
     }
   </style>
-  <script>
-    window.location.href = "mailto:info@xyntriq.in";
-  </script>
 </head>
 <body>
-  <div class="msg">Opening your email app…</div>
+  <a href="mailto:info@xyntriq.in">
+    Opening your email app… Click here if it doesn’t open automatically.
+  </a>
 </body>
 </html>
