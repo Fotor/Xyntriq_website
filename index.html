@@ -406,6 +406,36 @@
     </style>
     <script type="application/ld+json">
 {
+        @media (max-width: 768px) {
+    .hero h1, .page-hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* ===== Calendly booking widget styling ===== */
+
+.booking-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.booking-card {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+    .booking-card {
+        padding: 5px;
+    }
+}
+</style>
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Xyntriq",
@@ -673,13 +703,14 @@
         Schedule a 30-minute discussion to evaluate your AI model, dataset requirements,
         annotation scope, and pilot feasibility. If there’s a strong fit, we’ll share
         our detailed project intake form and next steps.
-    </p>
-
-    <!-- Calendly inline widget -->
-    <div class="calendly-inline-widget"
-         data-url="https://calendly.com/prashant-xyntriq/30min"
-         style="min-width:320px;height:1000px;"
+   <div class="booking-wrapper">
+    <div class="booking-card">
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/prashant-xyntriq/30min"
+             style="width:100%; height:650px;">
+        </div>
     </div>
+</div>
 
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
