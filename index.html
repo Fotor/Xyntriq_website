@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
 
+<meta property="og:image" content="https://fotor.github.io/Xyntriq_website/xyntriq-og-v2.png" />
+<meta property="og:description" content="Xyntriq provides high-quality AI training data across healthcare, computer vision, OCR, and geospatial AI use cases." />
+<meta property="og:url" content="https://fotor.github.io/Xyntriq_website/" />
+<meta property="og:type" content="website" />
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Xyntriq - AI Data Annotation Services</title>
-<meta name="description" content="Xyntriq provides AI data annotation and model training data services including validation, quality assurance, and human-in-the-loop workflows for scalable machine learning systems.">
 
-<!-- Open Graph -->
-<meta property="og:image" content="https://fotor.github.io/Xyntriq_website/xyntriq-og-v2.png" />
-<meta property="og:description" content="Xyntriq provides high-quality AI training data across healthcare, computer vision, OCR, and geospatial AI use cases." />
-<meta property="og:url" content="https://xyntriq.in" />
-<meta property="og:type" content="website" />
+<meta name="description" content="Xyntriq provides AI data annotation and data labeling services including validation, quality assurance, and human-in-the-loop workflows for scalable, production-grade machine learning systems.">
 
-<!-- Favicons -->
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -22,141 +21,66 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#333}
-.page{display:none}
-.page.active{display:block}
-.header{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:white;padding:1rem 0;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
-.logo-container{display:flex;align-items:center;gap:.75rem;cursor:pointer}
-.logo-img{width:40px;height:40px}
-.logo-text{font-size:1.8rem;font-weight:bold}
-.nav-menu{display:flex;gap:2rem;list-style:none}
-.nav-menu a{color:white;text-decoration:none;font-weight:500;cursor:pointer}
-.nav-menu a:hover,.nav-menu a.active{border-bottom:2px solid #2dd4bf}
-.hero{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:white;padding:140px 2rem 80px;text-align:center}
-.hero h1{font-size:3rem;margin-bottom:1rem}
-.hero p{font-size:1.3rem;max-width:800px;margin:0 auto 2rem}
-.cta-button{display:inline-block;background:linear-gradient(135deg,#2dd4bf 0%,#14b8a6 100%);color:white;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-weight:600;cursor:pointer}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;max-width:1200px;margin:-40px auto 0;padding:0 2rem}
-.stat-card{background:white;padding:2rem;border-radius:10px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.1)}
-.stat-number{font-size:2.5rem;font-weight:bold;color:#14b8a6}
-.section{padding:80px 2rem;max-width:1200px;margin:0 auto}
-.page-hero{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:white;padding:140px 2rem 60px;text-align:center}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-.service-card{background:white;padding:2rem;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,.08);border-top:4px solid #14b8a6}
-.contact-section{padding:80px 2rem}
-.contact-form-container{max-width:800px;margin:0 auto;background:white;padding:2rem;border-radius:15px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
-.contact-info{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3rem;padding:2rem;background:#f8fafc;border-radius:10px}
-.contact-item{display:flex;align-items:center;gap:.5rem;font-size:1.1rem}
-.contact-item a{color:#14b8a6;text-decoration:none;font-weight:600}
-.booking-wrapper{display:flex;justify-content:center;margin-top:2rem}
-.booking-card{width:100%;max-width:900px;background:white;border-radius:16px;padding:10px;box-shadow:0 20px 60px rgba(0,0,0,.08);border:1px solid #e5e7eb}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#333;}
+.page{display:none;}
+.page.active{display:block;}
+
+.header{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:white;padding:1rem 0;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;}
+.logo-container{display:flex;align-items:center;gap:.75rem;cursor:pointer;}
+.logo-img{width:40px;height:40px;}
+.logo-text{font-size:1.8rem;font-weight:bold;}
+
+.nav-menu{display:flex;gap:2rem;list-style:none;}
+.nav-menu a{color:white;text-decoration:none;font-weight:500;cursor:pointer;}
+.nav-menu a:hover,.nav-menu a.active{border-bottom:2px solid #2dd4bf;}
+
+.hero{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:white;padding:140px 2rem 80px;text-align:center;}
+.hero h1{font-size:3rem;margin-bottom:1rem;}
+.hero p{font-size:1.3rem;max-width:800px;margin:0 auto 2rem;}
+
+.cta-button{display:inline-block;background:linear-gradient(135deg,#2dd4bf,#14b8a6);color:white;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-weight:600;}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;max-width:1200px;margin:-40px auto 0;padding:0 2rem;}
+.stat-card{background:white;padding:2rem;border-radius:10px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+.stat-number{font-size:2.5rem;font-weight:bold;color:#14b8a6;}
+
+.section{padding:80px 2rem;max-width:1200px;margin:0 auto;}
+.page-hero{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:white;padding:140px 2rem 60px;text-align:center;}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;}
+.service-card{background:white;padding:2rem;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.08);border-top:4px solid #14b8a6;}
+
+.features{background:#f8fafc;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;}
+
+.industries-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;}
+.industry-tag{background:linear-gradient(135deg,#2dd4bf,#14b8a6);color:white;padding:1.5rem;border-radius:10px;text-align:center;}
+
+.contact-section{background:white;padding:80px 2rem;}
+.contact-content{max-width:1200px;margin:0 auto;}
+.contact-form-container{max-width:800px;margin:0 auto 3rem;background:white;padding:2rem;border-radius:15px;box-shadow:0 10px 40px rgba(0,0,0,0.1);}
+
+.contact-item{display:flex;align-items:center;gap:.5rem;font-size:1.1rem;}
+.contact-item a{color:#14b8a6;text-decoration:none;font-weight:600;}
+
+.booking-wrapper{display:flex;justify-content:center;margin-top:2rem;}
+.booking-card{width:100%;max-width:900px;background:white;border-radius:16px;padding:10px;box-shadow:0 20px 60px rgba(0,0,0,0.08);border:1px solid #e5e7eb;}
+
+@media(max-width:768px){.hero h1{font-size:2rem;}}
 </style>
 
-<!-- Organization Schema -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Xyntriq",
-  "url": "https://xyntriq.in",
-  "logo": "https://xyntriq.in/logo-v2.png",
-  "description": "Xyntriq is an AI data services company delivering high-quality model training data and annotation solutions.",
-  "sameAs": [
-    "https://www.linkedin.com/company/xyntriq"
-  ]
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"Xyntriq",
+ "url":"https://xyntriq.in",
+ "logo":"https://xyntriq.in/logo-v2.png",
+ "description":"Xyntriq is an AI data services company delivering high-quality data annotation and labeling solutions.",
+ "sameAs":["https://www.linkedin.com/company/xyntriq"]
 }
 </script>
 
 </head>
-<body>
-
-<script>
-function showPage(pageName){
-const pages=document.querySelectorAll('.page');
-pages.forEach(page=>page.classList.remove('active'));
-document.getElementById(pageName).classList.add('active');
-window.scrollTo(0,0);
-}
-</script>
-
-<header class="header">
-<nav class="nav-container">
-<div class="logo-container" onclick="showPage('home')">
-<img src="logo-v2.png" class="logo-img">
-<div class="logo-text">Xyntriq</div>
-</div>
-<ul class="nav-menu">
-<li><a onclick="showPage('home')">Home</a></li>
-<li><a onclick="showPage('services')">Solutions</a></li>
-<li><a onclick="showPage('contact')">Contact</a></li>
-</ul>
-</nav>
-</header>
-
-<div id="home" class="page active">
-<section class="hero">
-<h1>Your AI Data Annotation Partner</h1>
-<p>Your dedicated team for high-quality model training data and scalable AI dataset creation.</p>
-<a onclick="showPage('contact')" class="cta-button">Get Started</a>
-</section>
-
-<div class="stats">
-<div class="stat-card"><div class="stat-number">98%+</div><div>Accuracy</div></div>
-<div class="stat-card"><div class="stat-number">Global</div><div>Client Reach</div></div>
-<div class="stat-card"><div class="stat-number">24/7</div><div>Support</div></div>
-<div class="stat-card"><div class="stat-number">All</div><div>Data Types</div></div>
-</div>
-</div>
-
-<div id="services" class="page">
-<section class="page-hero">
-<h1>Your Team for Model Training Data</h1>
-<p>End-to-end data annotation and labeling for real-world machine learning systems</p>
-</section>
-
-<section class="section">
-<div class="services-grid">
-<div class="service-card"><h3>Image Annotation</h3><p>Bounding boxes, segmentation and labeling.</p></div>
-<div class="service-card"><h3>Video Annotation</h3><p>Tracking, detection and activity labeling.</p></div>
-<div class="service-card"><h3>Text Annotation</h3><p>NER, classification and sentiment labeling.</p></div>
-<div class="service-card"><h3>Audio Annotation</h3><p>Speech and sound event labeling.</p></div>
-</div>
-</section>
-</div>
-
-<div id="contact" class="page">
-<section class="page-hero">
-<h1>Get in Touch</h1>
-<p>Let’s discuss your AI data requirements</p>
-</section>
-
-<section class="contact-section">
-<div class="contact-form-container">
-<h3>Book Your AI Data Partnership Call</h3>
-
-<div class="booking-wrapper">
-<div class="booking-card">
-<div class="calendly-inline-widget" data-url="https://calendly.com/prashant-xyntriq/30min" style="width:100%;height:650px;"></div>
-</div>
-</div>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-<p style="margin-top:2rem;text-align:center">
-Sales: <a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><br>
-HR: <a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a><br>
-Finance: <a href="mailto:finance@xyntriq.in">finance@xyntriq.in</a><br>
-General: <a href="mailto:info@xyntriq.in">info@xyntriq.in</a>
-</p>
-</div>
-
-<div class="contact-info">
-<div class="contact-item">📍 Delhi, India</div>
-<div class="contact-item">🌐 Global Service Delivery</div>
-</div>
-</section>
-</div>
-
-</body>
-</html>
