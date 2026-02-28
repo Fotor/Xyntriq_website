@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta property="og:image" content="https://fotor.github.io/Xyntriq_website/xyntriq-og-v2.png" />
-<meta property="og:description" content="Xyntriq provides high-quality AI training data across healthcare, computer vision, OCR, and geospatial AI use cases." />
-<meta property="og:image" content="https://fotor.github.io/Xyntriq_website/xyntriq-og.png" />
-<meta property="og:url" content="https://fotor.github.io/Xyntriq_website/" />
-<meta property="og:type" content="website" />
+    <meta property="og:description" content="Xyntriq provides high-quality AI training data across healthcare, computer vision, OCR, and geospatial AI use cases." />
+    <meta property="og:url" content="https://fotor.github.io/Xyntriq_website/" />
+    <meta property="og:type" content="website" />
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,16 +13,17 @@
 
     <meta name="description" content="Xyntriq provides AI data annotation and data labeling services including validation, quality assurance, and human-in-the-loop workflows for scalable, production-grade machine learning systems.">
 
-<!-- Favicons -->
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="shortcut icon" href="/favicon.ico">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
 
-<!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-<!-- Web App Manifest -->
-<link rel="manifest" href="/site.webmanifest">
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+    
     <style>
         * {
             margin: 0;
@@ -380,6 +380,22 @@
             padding: 2rem;
         }
 
+        .booking-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .booking-card {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+        }
+
         @media (max-width: 768px) {
             .hero h1, .page-hero h1 {
                 font-size: 2rem;
@@ -402,78 +418,43 @@
             .logo-text {
                 font-size: 1.5rem;
             }
+
+            .booking-card {
+                padding: 5px;
+            }
         }
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Xyntriq",
-  "url": "https://xyntriq.in",
-  "logo": "https://xyntriq.in/logo-v2.png",
-  "description": "Xyntriq is an AI data services company delivering high-quality data annotation and labeling solutions.",
-  "sameAs": [
-    "https://www.linkedin.com/company/xyntriq"
-  ]
-}
-</script>
-/* ===== Calendly booking widget styling ===== */
-
-.booking-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.booking-card {
-    width: 100%;
-    max-width: 900px;
-    background: white;
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
-}
-
-@media (max-width: 768px) {
-    .booking-card {
-        padding: 5px;
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Xyntriq",
+      "url": "https://xyntriq.in",
+      "logo": "https://xyntriq.in/logo-v2.png",
+      "description": "Xyntriq is an AI data services company delivering high-quality data annotation and labeling solutions across image, video, text, audio, and multimodal datasets for real-world machine learning systems.",
+      "sameAs": [
+        "https://www.linkedin.com/company/xyntriq"
+      ]
     }
-}
-</style>
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Xyntriq",
-  "url": "https://xyntriq.in",
-  "logo": "https://xyntriq.in/logo-v2.png",
-  "description": "Xyntriq is an AI data services company delivering high-quality data annotation and labeling solutions across image, video, text, audio, and multimodal datasets for real-world machine learning systems."
-"sameAs": [
-    "https://www.linkedin.com/company/xyntriq"
-  ]
-}
-</script>
+    </script>
 </head>
 <body>
     <script>
         function showPage(pageName) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
             
-            // Remove active class from all nav links
             const navLinks = document.querySelectorAll('.nav-menu a');
             navLinks.forEach(link => link.classList.remove('active'));
             
-            // Show the selected page
             document.getElementById(pageName).classList.add('active');
             
-            // Add active class to current nav link
             const activeNav = document.getElementById('nav-' + pageName);
             if (activeNav) {
                 activeNav.classList.add('active');
             }
             
-            // Scroll to top
             window.scrollTo(0, 0);
         }
     </script>
@@ -497,7 +478,7 @@
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <section class="hero">
-            <h1>AI Data Annotation Services</h1>
+            <h1>Your AI Training Data Partner</h1>
             <p>Delivering precise, scalable, and domain-specific datasets that power next-generation artificial intelligence systems</p>
             <a onclick="showPage('contact')" class="cta-button">Get Started Today</a>
         </section>
@@ -521,22 +502,22 @@
             </div>
         </div>
 
-  <section class="section">
-    <p class="section-subtitle" style="max-width: 900px; margin: 0 auto; line-height: 1.8;">
-        Our services span data labeling, data annotation, validation, quality assurance, and human-in-the-loop workflows for production-grade AI systems across text, image, audio, video, and multimodal data.
-    </p>
+        <section class="section">
+            <p class="section-subtitle" style="max-width: 900px; margin: 0 auto; line-height: 1.8;">
+                Your partner for your model's training data requirements. Our services span data labeling, data annotation, validation, quality assurance, and human-in-the-loop workflows for production-grade AI systems across text, image, audio, video, and multimodal data.
+            </p>
 
-    <div style="text-align: center; margin-top: 2rem;">
-        <a onclick="showPage('services')" class="cta-button">Explore Our Services</a>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a onclick="showPage('services')" class="cta-button">Explore Our Services</a>
+            </div>
+        </section>
     </div>
-</section>
-</div>
 
     <!-- SERVICES PAGE -->
     <div id="services" class="page">
         <section class="page-hero">
             <h1>Our Services</h1>
-            <p>Comprehensive annotation solutions across all data formats</p>
+            <p>Your partner for your model's training data requirements</p>
         </section>
 
         <section class="section">
@@ -558,13 +539,13 @@
                     <h3>Text Annotation</h3>
                     <p>Sentiment analysis labeling, named entity recognition, text classification, and intent detection for NLP models</p>
                 </div>
-               <div class="service-card">
-    <div class="service-icon">🏷️</div>
-    <h3>Data Labeling</h3>
-    <p>
-        Structured data labeling for machine learning workflows, including classification, tagging, attribute labeling, and metadata enrichment across text, image, audio, and video datasets.
-    </p>
-</div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏷️</div>
+                    <h3>Data Labeling</h3>
+                    <p>Structured data labeling for machine learning workflows, including classification, tagging, attribute labeling, and metadata enrichment across text, image, audio, and video datasets.</p>
+                </div>
+                
                 <div class="service-card">
                     <div class="service-icon">🎤</div>
                     <h3>Audio Annotation</h3>
@@ -597,7 +578,6 @@
             </div>
         </section>
     </div>
-   
 
     <!-- FEATURES PAGE -->
     <div id="features" class="page">
@@ -619,12 +599,10 @@
                     <p>From pilot projects to enterprise-level deployments, our infrastructure scales seamlessly to meet your growing needs</p>
                 </div>
                 <div class="feature-item">
-    <div class="feature-icon">🏷️</div>
-    <h4>Structured Data Labeling</h4>
-    <p>
-        Consistent, guideline-driven labeling frameworks designed to improve model training, evaluation, and real-world performance.
-    </p>
-</div>
+                    <div class="feature-icon">🏷️</div>
+                    <h4>Structured Data Labeling</h4>
+                    <p>Consistent, guideline-driven labeling frameworks designed to improve model training, evaluation, and real-world performance.</p>
+                </div>
                 <div class="feature-item">
                     <div class="feature-icon">🌍</div>
                     <h4>Global Reach</h4>
@@ -702,74 +680,63 @@
         <section class="contact-section">
             <div class="contact-content">
                 <div class="contact-form-container">
-    <h3>Book Your AI Data Partnership Fit Check</h3>
+                    <h3>Book Your AI Data Partnership Fit Check</h3>
 
-    <p>
-        Schedule a 30-minute discussion to evaluate your AI model, dataset requirements,
-        annotation scope, and pilot feasibility. If there’s a strong fit, we’ll share
-        our detailed project intake form and next steps.
-   <div class="booking-wrapper">
-    <div class="booking-card">
-        <div class="calendly-inline-widget"
-             data-url="https://calendly.com/prashant-xyntriq/30min"
-             style="width:100%; height:650px;">
-        </div>
-    </div>
-</div>
-
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-    <p style="margin-top: 2rem; text-align: center;">
-       Prefer email? Reach us directly:
-
-<br><br>
-
-Sales & Partnerships:
-<a href="mailto:sales@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">
-sales@xyntriq.in
-</a>
-
-<br>
-
-Careers & Hiring:
-<a href="mailto:hr@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">
-hr@xyntriq.in
-</a>
-
-<br>
-
-Finance & Billing:
-<a href="mailto:finance@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">
-finance@xyntriq.in
-</a>
-
-<br>
-
-General inquiries:
-<a href="mailto:info@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">
-info@xyntriq.in
-</a>
-    </p>
-</div>
-            <span><div class="contact-item">
-    <span>🚀</span>
-    <span><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a></span>
-</div>
-
-<div class="contact-item">
-    <span>👩‍💼</span>
-    <span><a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a></span>
-</div>
-
-<div class="contact-item">
-    <span>💼</span>
-    <span><a href="mailto:finance@xyntriq.in">finance@xyntriq.in</a></span>
-</div></span>
+                    <p>
+                        Schedule a 30-minute discussion to evaluate your AI model, dataset requirements,
+                        annotation scope, and pilot feasibility. If there's a strong fit, we'll share
+                        our detailed project intake form and next steps.
+                    </p>
+                    
+                    <div class="booking-wrapper">
+                        <div class="booking-card">
+                            <div class="calendly-inline-widget"
+                                 data-url="https://calendly.com/prashant-xyntriq/30min"
+                                 style="width:100%; height:650px;">
+                            </div>
+                        </div>
                     </div>
+
+                    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+                    <p style="margin-top: 2rem; text-align: center;">
+                       Prefer email? Reach us directly:<br><br>
+                       
+                       Sales & Partnerships:
+                       <a href="mailto:sales@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">sales@xyntriq.in</a><br>
+                       
+                       Careers & Hiring:
+                       <a href="mailto:hr@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">hr@xyntriq.in</a><br>
+                       
+                       Finance & Billing:
+                       <a href="mailto:finance@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">finance@xyntriq.in</a><br>
+                       
+                       General inquiries:
+                       <a href="mailto:info@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">info@xyntriq.in</a>
+                    </p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>🚀</span>
+                        <span><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a></span>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>👩‍💼</span>
+                        <span><a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a></span>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <span><a href="mailto:finance@xyntriq.in">finance@xyntriq.in</a></span>
+                    </div>
+                    
                     <div class="contact-item">
                         <span>📍</span>
                         <span>Delhi, India</span>
                     </div>
+                    
                     <div class="contact-item">
                         <span>🌐</span>
                         <span>Global Service Delivery</span>
@@ -785,5 +752,12 @@ info@xyntriq.in
                         <p style="margin-bottom: 1rem;">✓ Transparent communication throughout the project lifecycle</p>
                     </div>
                 </div>
-    <!-- End of Contact Page -->
+            </div>
+        </section>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Xyntriq. All rights reserved. | IT Services and IT Consulting | Your partner for your model's training data requirements</p>
+    </footer>
+</body>
+</html>
