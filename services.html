@@ -1,67 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Xyntriq</title>
 
-    <!-- SERVICES PAGE -->
-    <div id="services">
-        <section class="page-hero">
-            <h1>Our Services</h1>
-            <p>Your partner for model training data requirements</p>
-        </section>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <section class="section">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🖼️</div>
-                    <h3>Image Annotation</h3>
-                    <p>Bounding boxes, polygon annotation, semantic segmentation, keypoint annotation, and image labeling for computer vision applications</p>
-                </div>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #333;
+        }
 
-                <div class="service-card">
-                    <div class="service-icon">🎥</div>
-                    <h3>Video Annotation</h3>
-                    <p>Frame-by-frame tracking, object detection, action recognition, and temporal labeling for video analytics and autonomous systems</p>
-                </div>
+        /* HEADER */
+        .header {
+            background: #1e293b;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
 
-                <div class="service-card">
-                    <div class="service-icon">📝</div>
-                    <h3>Text Annotation</h3>
-                    <p>Sentiment analysis labeling, named entity recognition, text classification, and intent detection for NLP models</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🏷️</div>
-                    <h3>Data Labeling</h3>
-                    <p>Structured data labeling for machine learning workflows, including classification, tagging, attribute labeling, and metadata enrichment across text, image, audio, and video datasets.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🎤</div>
-                    <h3>Audio Annotation</h3>
-                    <p>Speech recognition labeling, audio classification, speaker identification, and sound event detection</p>
-                </div>
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
 
-                <div class="service-card">
-                    <div class="service-icon">🏥</div>
-                    <h3>Healthcare Imaging</h3>
-                    <p>Medical image annotation, OCR for healthcare documents, DICOM file labeling, and clinical data preparation</p>
-                </div>
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-                <div class="service-card">
-                    <div class="service-icon">🚗</div>
-                    <h3>Autonomous Vehicles</h3>
-                    <p>ANPR, traffic sign recognition, lane detection, pedestrian tracking, and sensor fusion data annotation</p>
-                </div>
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+        }
 
-                <div class="service-card">
-                    <div class="service-icon">🏙️</div>
-                    <h3>Smart City Solutions</h3>
-                    <p>Infrastructure monitoring, crowd analysis, traffic management datasets, and urban planning annotation</p>
-                </div>
+        /* HERO */
+        .page-hero {
+            background: #1e293b;
+            color: white;
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
 
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>RLHF & Machine Learning</h3>
-                    <p>Reinforcement learning from human feedback, model training data preparation, and quality assurance for AI systems</p>
-                </div>
-            </div>
-        </section>
+        .page-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .page-hero p {
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #14b8a6;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 30px;
+        }
+
+        .service-card h3 {
+            margin: 10px 0;
+        }
+
+        .service-card p {
+            color: #666;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <nav class="nav-container">
+        <h2>Xyntriq</h2>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+    <h1>Our Services</h1>
+    <p>Your partner for model training data requirements</p>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+    <div class="services-grid">
+
+        <div class="service-card">
+            <div class="service-icon">🖼️</div>
+            <h3>Image Annotation</h3>
+            <p>Bounding boxes, polygons, segmentation, keypoints, and labeling for computer vision.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🎥</div>
+            <h3>Video Annotation</h3>
+            <p>Frame-by-frame tracking, object detection, and action recognition.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📝</div>
+            <h3>Text Annotation</h3>
+            <p>NER, sentiment analysis, classification, and intent detection.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏷️</div>
+            <h3>Data Labeling</h3>
+            <p>Structured labeling across text, image, audio, and video datasets.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🎤</div>
+            <h3>Audio Annotation</h3>
+            <p>Speech labeling, speaker identification, and sound detection.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏥</div>
+            <h3>Healthcare Imaging</h3>
+            <p>Medical image annotation, OCR, DICOM labeling, and clinical datasets.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🚗</div>
+            <h3>Autonomous Vehicles</h3>
+            <p>ANPR, lane detection, traffic signs, and sensor data labeling.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏙️</div>
+            <h3>Smart City Solutions</h3>
+            <p>Traffic monitoring, crowd analysis, and urban datasets.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3>RLHF & ML</h3>
+            <p>Human feedback, model training data, and AI quality assurance.</p>
+        </div>
+
     </div>
+</section>
 
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2025 Xyntriq. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
