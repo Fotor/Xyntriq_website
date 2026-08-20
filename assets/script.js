@@ -114,16 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   var ready = false;
+  var EAGER = 24, BATCH = 16;
   for (var i = 1; i <= N; i++) {
     (function (idx) {
       var img = new Image();
-      img.src = DIR + String(idx).padStart(5, '0') + '.webp';
       img.onload = function () {
         if (idx === 1 && !ready) { ready = true; draw(0, true); if (poster) poster.style.display = 'none'; }
       };
       frames.push(img);
+      if (idx <= EAGER) img.src = DIR + String(idx).padStart(5, '0') + '.webp';
     })(i);
   }
+  // progressive: load remaining frames after initial paint (keeps LCP fast)
+  var startAt = EAGER + 1;
+  function loadNext() {
+    var end = Math.min(N, startAt + BATCH - 1);
+    for (var j = startAt; j <= end; j++) {
+      frames[j - 1].src = DIR + String(j).padStart(5, '0') + '.webp';
+    }
+    startAt = end + 1;
+    if (startAt <= N) setTimeout(loadNext, 120);
+  }
+  if (document.readyState === 'complete') { setTimeout(loadNext, 300); }
+  else { window.addEventListener('load', function () { setTimeout(loadNext, 300); }); }
 
   var update = function () {
     var scrollMax = Math.max(1, track.offsetHeight + track.offsetTop - window.innerHeight);
