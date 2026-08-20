@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   var ready = false;
-  var EAGER = 24, BATCH = 16;
+  var EAGER = 8, BATCH = 16;
   for (var i = 1; i <= N; i++) {
     (function (idx) {
       var img = new Image();
