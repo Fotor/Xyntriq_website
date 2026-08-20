@@ -11,7 +11,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-0XEGY7LEF4');
 </script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Cookie Policy · Xyntriq</title>
 <meta name="description" content="Cookie policy for Xyntriq website.">
@@ -470,6 +470,17 @@ nav { display: flex; gap: 24px; }
 nav a { color: var(--text); font-weight: 500; font-size: 14.5px; transition: color .2s; }
 nav a:hover, nav a.active { color: var(--text); }
 .nav-cta { background: var(--teal); color: #04141a !important; padding: 8px 18px; border-radius: 9px; font-weight: 700; }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.menu-btn { display: none; align-items: center; justify-content: center; flex-direction: column; gap: 5px; width: 42px; height: 42px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 11px; cursor: pointer; padding: 0; }
+.menu-btn span { display: block; width: 19px; height: 2px; background: #E2E8F0; border-radius: 2px; transition: transform .25s ease, opacity .25s ease; }
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 88px; left: 16px; right: 16px; z-index: 49; flex-direction: column; gap: 4px; padding: 14px; background: rgba(10,14,19,.94); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; box-shadow: 0 20px 55px rgba(0,0,0,.5); pointer-events: auto; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 13px 16px; border-radius: 10px; color: var(--text); font-size: 15.5px; font-weight: 500; }
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(45,212,191,.12); color: var(--teal-2); }
+.mobile-menu .mm-cta { background: var(--teal); color: #04141a !important; font-weight: 700; text-align: center; margin-top: 8px; }
 
 /* hero */
 .hero-track { position: relative; height: 300vh; }
@@ -624,7 +635,7 @@ footer a:hover { color: var(--teal-2); }
 
 @media (max-width: 900px) {
   .hero h1 { font-size: 38px; } .g2, .g3, .g4, .portfolio { grid-template-columns: 1fr 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; }
-  nav { display: none; } .foot-grid { grid-template-columns: 1fr 1fr; }
+  nav { display: none; } .menu-btn { display: flex; } .foot-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) { .g2, .g3, .g4, .portfolio { grid-template-columns: 1fr; } .hero h1 { font-size: 31px; } }
 
@@ -659,7 +670,7 @@ footer a:hover { color: var(--teal-2); }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,23,42,.5) 0%, rgba(15,23,42,.18) 30%, rgba(15,23,42,.35) 60%, var(--bg) 100%); z-index: 3; }
 .hero-edge-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 180px; background: linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.55) 55%, #0F172A 100%); z-index: 3; pointer-events: none; }
 .hero-content { position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding: 14vh 28px 0; }
-.hero-content h1 { font-size: clamp(36px, 7vw, 72px); line-height: 1.05; letter-spacing: -.035em; font-weight: 900; margin: 0 0 18px; text-shadow: 0 2px 20px rgba(4,20,26,.9), 0 1px 3px rgba(4,20,26,.95); }
+.hero-content h1 { font-size: clamp(36px, 7vw, 72px); line-height: 1.05; letter-spacing: -.035em; font-weight: 900; margin: 0 0 18px; filter: drop-shadow(0 2px 14px rgba(4,20,26,.85)); }
 .hero-content .eyebrow { margin-bottom: 16px; }
 .hero-content p { max-width: 1200px; margin: 0 auto 30px; font-size: clamp(15px, 1.4vw, 19px); color: #E2E8F0; text-shadow: 0 1px 12px rgba(4,20,26,.95), 0 2px 24px rgba(4,20,26,.7); }
 @media (max-width: 900px) { .hero-content p { max-width: 640px; } }
@@ -826,8 +837,8 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 /* Responsive: keep hero content and stats inside the viewport */
 @media (max-width: 560px) {
   .hero-content { padding-top: 12vh; }
-  .hero-stats { bottom: 56px; max-width: calc(100vw - 28px); }
-  .hs-chip { min-width: 78px; padding: 10px 14px; }
+  .hero-stats { bottom: 62px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 330px; padding: 0 12px; }
+  .hs-chip { min-width: 0; padding: 10px 12px; }
   .hs-n { font-size: 16px; }
   .hs-l { font-size: 10px; }
 }
@@ -856,7 +867,19 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <a href="careers">Careers</a>
       <a href="contact">Contact</a>
     </nav>
-    <a class="nav-cta" href="mailto:sales@xyntriq.in">Email Us</a>
+    <div class="nav-actions"><a class="nav-cta" href="mailto:sales@xyntriq.in">Email Us</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="services">Services</a>
+    <a href="industries">Industries</a>
+    <a href="video-data">Video Data</a>
+    <a href="about">About</a>
+    <a href="contributors">Contributors</a>
+    <a href="security">Security</a>
+    <a href="careers">Careers</a>
+    <a href="contact">Contact</a>
+    <a class="mm-cta" href="mailto:sales@xyntriq.in">Email Us</a>
   </div>
 </header>
 
@@ -908,6 +931,6 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     <div class="foot-bottom"><span>© <span id="yr"></span> Xyntriq. All rights reserved.</span></div>
   </div>
 </footer>
-<script src="assets/script.js?v=22"></script>
+<script src="assets/script.js?v=23"></script>
 </body>
 </html>

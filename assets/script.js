@@ -200,3 +200,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.readyState === 'complete') { setTimeout(bootLenis, 400); }
   else { window.addEventListener('load', function () { setTimeout(bootLenis, 400); }); }
 })();
+
+// mobile menu toggle (burger)
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function close() {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') close();
+  });
+  document.addEventListener('click', function (e) {
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) close();
+  });
+})();
