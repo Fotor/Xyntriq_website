@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (var i = 1; i <= N; i++) {
     (function (idx) {
       var img = new Image();
-      img.src = DIR + String(idx).padStart(5, '0') + '.jpg';
+      img.src = DIR + String(idx).padStart(5, '0') + '.webp';
       img.onload = function () {
         if (idx === 1 && !ready) { ready = true; draw(0, true); if (poster) poster.style.display = 'none'; }
       };
