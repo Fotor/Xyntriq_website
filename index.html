@@ -1,767 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:image" content="https://fotor.github.io/Xyntriq_website/xyntriq-og-v2.png" />
-    <meta property="og:description" content="Xyntriq provides high-quality AI training data across healthcare, computer vision, OCR, and geospatial AI use cases." />
-    <meta property="og:url" content="https://fotor.github.io/Xyntriq_website/" />
-    <meta property="og:type" content="website" />
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Xyntriq - AI Data Annotation Services</title>
-
-    <meta name="description" content="Xyntriq provides AI data annotation and data labeling services including validation, quality assurance, and human-in-the-loop workflows for scalable, production-grade machine learning systems.">
-
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="shortcut icon" href="/favicon.ico">
-
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
-        }
-
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            flex-shrink: 0;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            opacity: 0.8;
-            border-bottom: 2px solid #2dd4bf;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 140px 2rem 80px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(45, 212, 191, 0.3);
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(45, 212, 191, 0.5);
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: -40px auto 0;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #14b8a6;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .section {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .page-hero {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 140px 2rem 60px;
-            text-align: center;
-        }
-
-        .page-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .page-hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2d3748;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid #14b8a6;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.2);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #2d3748;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .features {
-            background: #f8fafc;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.8rem;
-        }
-
-        .feature-item h4 {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            color: #2d3748;
-        }
-
-        .industries {
-            background: white;
-        }
-
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .industry-tag {
-            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
-        }
-
-        .industry-tag:hover {
-            transform: scale(1.05);
-        }
-
-        .contact-section {
-            background: white;
-            padding: 80px 2rem;
-        }
-
-        .contact-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-form-container {
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .contact-form-container h3 {
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-form-container p {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: #f8fafc;
-            border-radius: 10px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-item a {
-            color: #14b8a6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .booking-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .booking-card {
-            width: 100%;
-            max-width: 900px;
-            background: white;
-            border-radius: 16px;
-            padding: 10px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border: 1px solid #e5e7eb;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1, .page-hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p, .page-hero p {
-                font-size: 1.1rem;
-            }
-
-            .nav-menu {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .logo-text {
-                font-size: 1.5rem;
-            }
-
-            .booking-card {
-                padding: 5px;
-            }
-        }
-    </style>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Xyntriq",
-      "url": "https://xyntriq.in",
-      "logo": "https://xyntriq.in/logo-v2.png",
-      "description": "Xyntriq is an AI data services company delivering high-quality data annotation and labeling solutions across image, video, text, audio, and multimodal datasets for real-world machine learning systems.",
-      "sameAs": [
-        "https://www.linkedin.com/company/xyntriq"
-      ]
-    }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Xyntriq · AI Data Annotation &amp; Collection</title>
+<meta name="description" content="Xyntriq is a Udyam-registered AI data annotation and collection company trusted by enterprises and government programs for image, video, text, audio, and LiDAR annotation, plus consented first-person (POV) video datasets, across LATAM and India.">
+<link rel="canonical" href="https://xyntriq.in/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="keywords" content="data annotation, annotation services, ai data annotation, data collection, pov video data, image annotation, video annotation, egocentric video dataset">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Xyntriq",
+  "url": "https://xyntriq.in",
+  "logo": "https://xyntriq.in/assets/logo-v2.png",
+  "description": "AI data annotation and collection company delivering image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets.",
+  "email": "sales@xyntriq.in",
+  "sameAs": ["https://www.linkedin.com/company/xyntriq"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Annotation", "description": "Image, video, text, audio, LiDAR, point cloud, and multimodal annotation for production-grade AI models." } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Collection", "description": "Custom image, video, egocentric (POV), audio, speech, and sensor data collection across LATAM and India." } }
+  ]
+}
+</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xyntriq">
+<meta property="og:title" content="Xyntriq · AI Data Annotation & Collection">
+<meta property="og:description" content="Xyntriq is a Udyam-registered AI data annotation and collection company trusted by enterprises and government programs for image, video, text, audio, and LiDAR annotation, plus consented first-person (POV) video datasets, across LATAM and India.">
+<meta property="og:url" content="https://xyntriq.in/">
+<meta property="og:image" content="https://xyntriq.in/assets/logo-v2.png">
+<meta name="twitter:card" content="summary">
 </head>
 <body>
-    <script>
-        function showPage(pageName) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            document.getElementById(pageName).classList.add('active');
-            
-            const activeNav = document.getElementById('nav-' + pageName);
-            if (activeNav) {
-                activeNav.classList.add('active');
-            }
-            
-            window.scrollTo(0, 0);
-        }
-    </script>
 
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo-container" onclick="showPage('home')">
-                <img src="logo-v2.png" alt="Xyntriq Logo" class="logo-img">
-                <div class="logo-text">Xyntriq</div>
-            </div>
-            <ul class="nav-menu">
-                <li><a onclick="showPage('home')" id="nav-home">Home</a></li>
-                <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
-                <li><a onclick="showPage('features')" id="nav-features">Features</a></li>
-                <li><a onclick="showPage('industries')" id="nav-industries">Industries</a></li>
-                <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo-v2.png" alt="Xyntriq logo">Xyntriq</a>
+        <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="video-data.html">Video Data</a>
+      <a href="about.html">About</a>
+      <a href="contributors.html">Contributors</a>
+      <a href="security.html">Security</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="nav-cta" href="contact.html">Get Started</a>
+  </div>
+</header>
 
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <section class="hero">
-            <h1>Your AI Training Data Partner</h1>
-            <p>Delivering precise, scalable, and domain-specific datasets that power next-generation artificial intelligence systems</p>
-            <a onclick="showPage('contact')" class="cta-button">Get Started Today</a>
-        </section>
-
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">98%+</div>
-                <div class="stat-label">Accuracy</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">Global</div>
-                <div class="stat-label">Client Reach</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support Available</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">All Formats</div>
-                <div class="stat-label">Text, Image, Audio, Video</div>
-            </div>
-        </div>
-
-        <section class="section">
-            <p class="section-subtitle" style="max-width: 900px; margin: 0 auto; line-height: 1.8;">
-                Your partner for model training data requirements. Our services span data labeling, data annotation, validation, quality assurance, and human-in-the-loop workflows for production-grade AI systems across text, image, audio, video, and multimodal data.
-            </p>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <a onclick="showPage('services')" class="cta-button">Explore Our Services</a>
-            </div>
-        </section>
-    </div>
-<!-- SERVICES PAGE -->
-<div id="services" class="page">
-    <section class="page-hero">
-        <h1>Our AI Data Services</h1>
-        <p>Comprehensive AI data solutions from collection to deployment-ready datasets.</p>
-    </section>
-
-    <section class="section">
-        <div class="services-grid">
-
-            <div class="service-card">
-                <div class="service-icon">🏷️</div>
-                <h3>Data Annotation</h3>
-                <p>
-                    High-quality annotation for image, video, text, audio,
-                    LiDAR, point cloud, and multimodal datasets to train
-                    production-grade AI models.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">📷</div>
-                <h3>Data Collection</h3>
-                <p>
-                    Custom image, video, egocentric, audio, speech,
-                    sensor, IMU, and text data collection tailored to
-                    your AI project requirements.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">✅</div>
-                <h3>Data Validation</h3>
-                <p>
-                    Independent validation, auditing, quality assurance,
-                    and dataset verification to ensure consistent,
-                    reliable training data.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🤖</div>
-                <h3>Human-in-the-Loop</h3>
-                <p>
-                    Expert human feedback for AI evaluation,
-                    prompt assessment, RLHF workflows,
-                    and model improvement.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🗂️</div>
-                <h3>Dataset Curation</h3>
-                <p>
-                    Dataset cleaning, balancing, deduplication,
-                    metadata enrichment, and preparation of
-                    AI-ready datasets.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>Managed AI Data Operations</h3>
-                <p>
-                    Dedicated annotation teams, custom workflows,
-                    secure project execution, and scalable delivery
-                    for enterprise AI programs.
-                </p>
-            </div>
-
-        </div>
-    </section>
+<div class="launch-bar" id="launch-bar" role="region" aria-label="Xyntriq app launch announcement">
+  <div class="launch-bar-inner">
+    <p class="launch-bar-text">Xyntriq app launching across India &amp; LATAM. Join our Discord for early access and launch details</p>
+    <a class="launch-bar-btn" href="https://discord.gg/4yP2GXvaPe" target="_blank" rel="noopener">Join Discord</a>
+  </div>
 </div>
-    <!-- FEATURES PAGE -->
-    <div id="features" class="page">
-        <section class="page-hero">
-            <h1>Why Choose Xyntriq?</h1>
-            <p>Built on proven expertise and commitment to excellence</p>
-        </section>
 
-        <section class="section features">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h4>98%+ Accuracy</h4>
-                    <p>We ensure consistency and precision in every dataset through rigorous quality control processes and expert annotation teams</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h4>Scalable Solutions</h4>
-                    <p>From pilot projects to enterprise-level deployments, our infrastructure scales seamlessly to meet your growing needs</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🏷️</div>
-                    <h4>Structured Data Labeling</h4>
-                    <p>Consistent, guideline-driven labeling frameworks designed to improve model training, evaluation, and real-world performance.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🌍</div>
-                    <h4>Global Reach</h4>
-                    <p>Supporting clients across US, Europe, and Middle East with 24/7 availability and multilingual support capabilities</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🎯</div>
-                    <h4>Domain Expertise</h4>
-                    <p>Specialized knowledge in healthcare, transportation, and AI with certified annotators for critical applications</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💼</div>
-                    <h4>Custom Workflows</h4>
-                    <p>Tailored annotation pipelines designed specifically for your unique use cases and business requirements</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📊</div>
-                    <h4>Quality Assurance</h4>
-                    <p>Multi-tier quality checks with detailed reporting and continuous improvement based on your feedback</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⏱️</div>
-                    <h4>Fast Turnaround</h4>
-                    <p>Efficient processes and dedicated teams ensure quick delivery without compromising on quality standards</p>
-                </div>
-            </div>
-        </section>
+<div class="hero-track" id="heroTrack">
+<div class="hero hero-stage" id="heroStage">
+  <div class="hero-media-video">
+    <img id="heroPoster" class="hero-poster" src="assets/video/autonomous-sedan-poster-v2.jpg" alt="" aria-hidden="true">
+    <canvas id="heroScrub" class="hero-video" width="960" height="540"></canvas>
+  </div>
+  <div class="hero-shade"></div>
+  <div class="hero-edge-fade" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="eyebrow">AI Data Collection · Annotation</div>
+    <h1>Training data for the <span class="grad">physical world</span></h1>
+    <p>Xyntriq collects and annotates multimodal data: video, text, images, and audio, including egocentric (POV) video, produced in Latin America and India and delivered to enterprise standards.</p>
+    <div class="cta-row">
+      <a class="cta" href="contact.html">Get a Quote</a>
+      <a class="cta ghost" href="services.html">Explore Services</a>
     </div>
+  </div>
+  <div class="hero-stats" aria-hidden="true">
+    <div class="hs-chip"><span class="hs-n">98%+</span><span class="hs-l">Accuracy</span></div>
+    <div class="hs-chip"><span class="hs-n">LATAM+IN</span><span class="hs-l">Contributors</span></div>
+    <div class="hs-chip"><span class="hs-n">24/7</span><span class="hs-l">Delivery</span></div>
+    <div class="hs-chip"><span class="hs-n">Multi</span><span class="hs-l">Modal</span></div>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+</div>
+</div>
 
-    <!-- INDUSTRIES PAGE -->
-    <div id="industries" class="page">
-        <section class="page-hero">
-            <h1>Industries We Serve</h1>
-            <p>Empowering mission-critical AI innovations across sectors</p>
-        </section>
-
-        <section class="section industries">
-            <div class="industries-grid">
-                <div class="industry-tag">Healthcare & Medical Imaging</div>
-                <div class="industry-tag">Autonomous Vehicles</div>
-                <div class="industry-tag">Smart Cities</div>
-                <div class="industry-tag">Computer Vision</div>
-                <div class="industry-tag">Transportation & Logistics</div>
-                <div class="industry-tag">Retail & E-commerce</div>
-                <div class="industry-tag">Agriculture & Farming</div>
-                <div class="industry-tag">Security & Surveillance</div>
-                <div class="industry-tag">Manufacturing</div>
-                <div class="industry-tag">Finance & Banking</div>
-                <div class="industry-tag">Education & EdTech</div>
-                <div class="industry-tag">Real Estate</div>
-            </div>
-
-            <div style="margin-top: 4rem; text-align: center;">
-                <h3 style="color: #2d3748; margin-bottom: 2rem;">Industry-Specific Solutions</h3>
-                <div style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8; color: #666;">
-                    <p style="margin-bottom: 1rem;">Our expertise spans across multiple industries, enabling us to deliver tailored solutions that meet specific regulatory requirements, quality standards, and technical specifications.</p>
-                    <p style="margin-bottom: 1rem;">Whether you're developing autonomous driving systems, medical diagnostic tools, or retail analytics platforms, our specialized annotation teams understand the nuances and critical requirements of your industry.</p>
-                </div>
-            </div>
-        </section>
+<section id="pilot-path">
+  <div class="wrap">
+    <div class="grid g3">
+      <div class="card reveal"><div class="svc"><span class="num">01</span><div><h3>Pilot</h3><p>Send a small sample of your data. We label it against your guidelines so you can measure our quality against your own acceptance criteria.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">02</span><div><h3>Project Quote</h3><p>Fixed scope and a clear cost estimate, typically within 48 hours of the pilot review.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">03</span><div><h3>Scale</h3><p>Dedicated domain-matched team with multi-tier QA, batch-level reporting, and a single project owner.</p></div></div></div>
     </div>
+    <div style="text-align:center; margin-top:28px;" class="reveal"><a class="cta ghost" href="contact.html">Request a Pilot →</a></div>
+  </div>
+</section>
 
-    <!-- CONTACT PAGE -->
-    <div id="contact" class="page">
-        <section class="page-hero">
-            <h1>Get in Touch</h1>
-            <p>Ready to transform your AI projects with high-quality annotated data?</p>
-        </section>
-
-        <section class="contact-section">
-            <div class="contact-content">
-                <div class="contact-form-container">
-                    <h3>Book Your AI Data Partnership Fit Check (explore our services)</h3>
-
-                    <p>
-                        Schedule a 30-minute discussion to evaluate your AI model, dataset requirements,
-                        annotation scope, and pilot feasibility. If there's a strong fit, we'll share
-                        our detailed project intake form and next steps.
-                   <!-- Cal inline embed code begins -->
-<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://cal.id/embed-link/embed.js", "init");
-Cal("init", "default", {origin:"https://cal.id"});
-
-  Cal.ns["default"]("inline", {
-    elementOrSelector:"#my-cal-inline",
-    config: {"layout":"month_view"},
-    calLink: "prashant-chaudhary-model-training-data/30min",
-  });
-
-  Cal.ns["default"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#1F2A3A"},"dark":{"cal-brand":"#2EC4B6"}},"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
-<!-- Cal inline embed code ends -->
-
-                    <p style="margin-top: 1rem; text-align: center;">
-                       Prefer email? Reach us directly:<br><br>
-                       
-                       Sales & Partnerships:
-                       <a href="mailto:sales@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">sales@xyntriq.in</a><br>
-                       
-                       Careers & Hiring:
-                       <a href="mailto:hr@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">hr@xyntriq.in</a><br>
-                       
-                       Finance & Billing:
-                       <a href="mailto:finance@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">finance@xyntriq.in</a><br>
-                       
-                       General inquiries:
-                       <a href="mailto:info@xyntriq.in" style="color:#14b8a6;font-weight:600;text-decoration:none;">info@xyntriq.in</a>
-                    </p>
-                </div>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>🚀</span>
-                        <span><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a></span>
-                    </div>
-
-                    <div class="contact-item">
-                        <span>👩‍💼</span>
-                        <span><a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a></span>
-                    </div>
-
-                    <div class="contact-item">
-                        <span>💼</span>
-                        <span><a href="mailto:finance@xyntriq.in">finance@xyntriq.in</a></span>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Delhi, India</span>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span>🌐</span>
-                        <span>Global Service Delivery</span>
-                    </div>
-                </div>
-
-                <div style="margin-top: 3rem; padding: 2rem; background: #f8fafc; border-radius: 10px;">
-                    <h3 style="color: #2d3748; text-align: center; margin-bottom: 1.5rem;">What to Expect</h3>
-                    <div style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: #666;">
-                        <p style="margin-bottom: 1rem;">✓ Initial consultation to understand your specific needs and project scope</p>
-                        <p style="margin-bottom: 1rem;">✓ Detailed project assessment within 48 hours</p>
-                        <p style="margin-bottom: 1rem;">✓ Dedicated project manager as your single point of contact</p>
-                        <p style="margin-bottom: 1rem;">✓ Transparent communication throughout the project lifecycle</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Our AI Data Services</div>
+      <h2>Collection first. Annotation second.</h2>
+      <p>We lead with high-accuracy data annotation, then custom collection, including consented POV video.</p>
     </div>
+    <div class="grid g3">
+      <div class="card reveal"><div class="svc"><span class="num">01</span><div><h3>Data Annotation</h3><p>Image, video, text, audio, LiDAR, point cloud, and multimodal annotation for production-grade models.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">02</span><div><h3>Data Collection</h3><p>Custom image, video, egocentric (POV), audio, speech, and sensor collection across LATAM and India.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">03</span><div><h3>First-Person (POV) Video</h3><p>Consented egocentric video datasets capturing real-world tasks from a person's own point of view.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">04</span><div><h3>Data Validation &amp; QA</h3><p>Independent validation, auditing, and quality assurance for reliable training data.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">05</span><div><h3>Expert Review &amp; Feedback</h3><p>Specialist human feedback for model evaluation, prompt assessment, and model training data preparation.</p></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">06</span><div><h3>Dataset Curation</h3><p>Cleaning, balancing, deduplication, and metadata enrichment of model-ready datasets.</p></div></div></div>
+    </div>
+    <div style="text-align:center; margin-top:34px;" class="reveal"><a class="cta ghost" href="services.html">View all services →</a></div>
+  </div>
+</section>
 
-    <footer class="footer">
-        <p>&copy; 2025 Xyntriq. All rights reserved. | IT Services and IT Consulting | Your partner for model training data requirements</p>
-    </footer>
+<section id="portfolio" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Proof of Work</div>
+      <h2>Real projects. Confidential clients.</h2>
+      <p>Every dataset starts raw and ends precisely labeled. We're bound by NDA with every client, so we can't show names or logos. Here's the work itself, anonymized for confidentiality.</p>
+    </div>
+    <div class="portfolio">
+      <div class="p-card reveal"><span class="tag">Geospatial</span><img src="assets/portfolio/Geospatial/remotesensing_Geospatial.png" alt="Remote sensing annotation"><div class="p-body"><h3>Geospatial</h3><p>Remote sensing &amp; satellite imagery</p></div></div>
+      <div class="p-card reveal"><span class="tag">LiDAR</span><img src="assets/portfolio/lidar/Lidaar_1.jpg" alt="LiDAR point cloud annotation"><div class="p-body"><h3>LiDAR &amp; Point Cloud</h3><p>3D point cloud labeling</p></div></div>
+      <div class="p-card reveal"><span class="tag">Agriculture</span><img src="assets/portfolio/agriculture/Annotated.jpeg" alt="Agricultural crop annotation"><div class="p-body"><h3>Agriculture</h3><p>Crop segmentation &amp; keypoint</p></div></div>
+      <div class="p-card reveal"><span class="tag">Transcription</span><img src="assets/portfolio/Transcription/Google_17.png" alt="Audio transcription"><div class="p-body"><h3>Audio &amp; Transcription</h3><p>Speech-to-text &amp; audio labeling</p></div></div>
+
+    </div>
+    <div class="sec-head" style="margin-top:56px; margin-bottom:24px;">
+      <div class="eyebrow">Data Collection · POV Sample</div>
+      <h2>First-person video, in action</h2>
+      <p>Real consented first-person footage from production projects, anonymized under NDA.</p>
+    </div>
+    <div class="video-grid">
+      <div class="reveal">
+        <div class="video-wrap">
+          <video autoplay muted playsinline loop disablepictureinpicture data-autoplay preload="metadata" poster="assets/video/pov-sample-2-poster.jpg">
+            <source src="assets/video/pov-sample-2-silent.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="video-caption">First-person video: washing dishes</p>
+      </div>
+      <div class="reveal">
+        <div class="video-wrap">
+          <video autoplay muted playsinline loop disablepictureinpicture data-autoplay preload="metadata" poster="assets/video/pov-raking-poster.jpg">
+            <source src="assets/video/pov-raking.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="video-caption">First-person video: raking leaves</p>
+      </div>
+      <div class="reveal">
+        <div class="video-wrap">
+          <video autoplay muted playsinline loop disablepictureinpicture data-autoplay preload="metadata" poster="assets/video/pov-sample-poster.jpg">
+            <source src="assets/video/pov-sample-silent.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="video-caption">First-person video: washing dishes</p>
+      </div>
+    </div>
+    <div class="compliance-strip reveal">
+      <span>NDA &amp; MSA Friendly</span><span>Udyam-Registered MSME</span><span>GST-Compliant Invoicing</span><span>India Data Residency</span><span>Consent-First Data</span><span>Auditable QA</span>
+    </div>
+    <div style="text-align:center; margin-top:34px;" class="reveal"><a class="cta" href="contact.html">Request a Pilot</a></div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Client Work · Anonymized</div>
+      <h2>Proven quality, protected by NDA</h2>
+      <p>Every client engagement is confidential, so names and logos stay private. What we can show is the work itself, and the quality system that backs every batch.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><div class="svc"><span class="num">01</span><div><h3>Consented POV Video</h3><p><strong>Challenge:</strong> authentic first-person video for perception models. <strong>Solution:</strong> vetted LATAM contributors film real tasks on their own devices, with explicit consent captured per record. <strong>Result:</strong> egocentric footage in native Spanish &amp; Portuguese, sample-batch reviewed before scale.</p><div class="compliance-strip" style="justify-content:flex-start; margin-top:14px;"><span class="chip">Documented consent</span><span class="chip">Native ES / PT</span><span class="chip">Sample-batch review</span></div></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">02</span><div><h3>Medical Imaging Segmentation</h3><p><strong>Challenge:</strong> organ-level MRI / DICOM segmentation for a healthcare AI pipeline. <strong>Solution:</strong> domain-matched annotators, guideline-driven labeling, and multi-tier QC. <strong>Result:</strong> every batch passed internal QC before delivery, with a 98%+ accuracy target and auditable labels.</p><div class="compliance-strip" style="justify-content:flex-start; margin-top:14px;"><span class="chip">98%+ accuracy</span><span class="chip">Multi-tier QC</span><span class="chip">Auditable labels</span></div></div></div></div>
+      <div class="card reveal"><div class="svc"><span class="num">03</span><div><h3>Geospatial &amp; LiDAR</h3><p><strong>Challenge:</strong> remote-sensing segmentation and 3D point-cloud labeling for perception teams. <strong>Solution:</strong> 2D/3D annotation with batch-level traceability. <strong>Result:</strong> clean, schema-ready outputs delivered with a full quality report, with pilots quoted within 48 hours.</p><div class="compliance-strip" style="justify-content:flex-start; margin-top:14px;"><span class="chip">2D + 3D labeling</span><span class="chip">Batch traceability</span><span class="chip">48-hr pilot quote</span></div></div></div></div>
+    </div>
+    <div style="text-align:center; margin-top:34px;" class="reveal"><a class="cta ghost" href="contact.html">Request a Pilot</a></div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Why Choose Xyntriq</div><h2>Built on proven expertise</h2></div>
+    <div class="grid g4">
+      <div class="card reveal"><h3>98%+ Accuracy</h3><p>Rigorous QC and expert teams.</p></div>
+      <div class="card reveal"><h3>Scalable</h3><p>From pilots to enterprise.</p></div>
+      <div class="card reveal"><h3>Structured Labeling</h3><p>Guideline-driven frameworks.</p></div>
+      <div class="card reveal"><h3>LATAM + India</h3><p>Native Spanish &amp; Portuguese contributors, 24/7.</p></div>
+      <div class="card reveal"><h3>Domain Expertise</h3><p>Healthcare, dental, transportation.</p></div>
+      <div class="card reveal"><h3>Data Security</h3><p>Confidentiality &amp; consent management.</p></div>
+      <div class="card reveal"><h3>Quality Assurance</h3><p>Multi-tier checks + reporting.</p></div>
+      <div class="card reveal"><h3>Fast Turnaround</h3><p>Speed without compromise.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why-us">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">The Xyntriq Difference</div>
+      <h2>Why Xyntriq, when anyone can annotate?</h2>
+      <p>Hundreds of companies sell annotation, and most make the same generic promise. Here's the gap, and how Xyntriq closes it.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-col reveal">
+        <div class="why-tag muted">The usual problem</div>
+        <ul class="why-list">
+          <li><strong>"High accuracy" is claimed, not proven</strong><span>Every vendor promises it. Few give you auditable, batch-level proof.</span></li>
+          <li><strong>Generic, do-everything shops</strong><span>Image, video, text, audio under one roof, but little depth in any one area.</span></li>
+          <li><strong>Consent &amp; privacy are afterthoughts</strong><span>You can't prove your training data was ethically sourced.</span></li>
+          <li><strong>Projects stall between handoffs</strong><span>No single owner from pilot to delivery.</span></li>
+          <li><strong>Scope creep &amp; hidden rework</strong><span>Budgets drain before the dataset even arrives.</span></li>
+        </ul>
+      </div>
+      <div class="why-col reveal">
+        <div class="why-tag">The Xyntriq fix</div>
+        <ul class="why-list">
+          <li><strong>Auditable quality, batch by batch</strong><span>Multi-tier QC with full traceability. Every label is reviewable.</span></li>
+          <li><strong>A rare specialty: consented POV video</strong><span>First-person (egocentric) video at scale, plus full annotation and collection.</span></li>
+          <li><strong>Consent-first, privacy-first data</strong><span>Documented consent on every record, so your models stay defensible.</span></li>
+          <li><strong>One dedicated owner, end to end</strong><span>A project lead from pilot to delivery. No stalls, no finger-pointing.</span></li>
+          <li><strong>Pilot-first, fixed scope</strong><span>Prove accuracy on a small batch before you commit.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="latam">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Why Latin America</div>
+      <h2>A rare specialty: authentic LATAM data</h2>
+      <p>Xyntriq runs a vetted contributor network across Latin America, with native Spanish and Portuguese speakers producing consented first-person (POV) video and localized data.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><h3>Native Spanish &amp; Portuguese</h3><p>Authentic accents and dialects from local contributors, not synthetic or machine-generated.</p></div>
+      <div class="card reveal"><h3>Consented Egocentric Video</h3><p>Real first-person footage of genuine daily tasks, filmed by vetted contributors.</p></div>
+      <div class="card reveal"><h3>Scalable &amp; Cost-Effective</h3><p>A growing contributor base that scales from pilot to production without traditional-vendor overhead.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="enterprise" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Enterprise &amp; Government</div>
+      <h2>Built for buyers who can't afford mistakes</h2>
+      <p>Large enterprises, brands, and government programs need a data partner who is accountable, compliant, and easy to procure from. That's exactly how Xyntriq is built.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><h3>Government-Registered MSME</h3><p>A Udyam-registered Indian MSME with GST-compliant invoicing, verified identity, and formal procurement readiness.</p></div>
+      <div class="card reveal"><h3>India Data Residency</h3><p>Datasets processed and stored in India, sovereign-data friendly for government and regulated programs.</p></div>
+      <div class="card reveal"><h3>Confidentiality &amp; NDA</h3><p>NDAs, MSAs, and SOWs handled end-to-end. Your data, guidelines, and models stay confidential.</p></div>
+      <div class="card reveal"><h3>Auditable Quality</h3><p>Multi-tier QC with full traceability. Every label is reviewable, every batch reportable.</p></div>
+      <div class="card reveal"><h3>Consent Management</h3><p>Privacy-first data handling with explicit, documented consent for ethical model training.</p></div>
+      <div class="card reveal"><h3>Scale on Demand</h3><p>A dedicated project manager and a scalable workforce, from pilot to production, fast.</p></div>
+    </div>
+    <div class="compliance-strip reveal">
+      <span>Udyam-Registered MSME</span><span>GST-Compliant Invoicing</span><span>India Data Residency</span><span>Privacy-First</span><span>NDA &amp; MSA Friendly</span><span>Auditable QA</span>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">How We Work</div>
+      <h2>A controlled pipeline, from brief to delivery</h2>
+      <p>Every project follows a transparent, auditable path, built for enterprise and government programs.</p>
+    </div>
+    <div class="pipeline">
+      <div class="step reveal"><div class="step-num">01</div><div class="step-body"><h3>Kickoff &amp; Scoping</h3><div class="duo"><div class="you"><span>You</span><p>Share raw data, guidelines, and quality targets.</p></div><div class="us"><span>Xyntriq</span><p>Assign a dedicated project lead and confirm the annotation methodology before anything starts.</p></div></div></div></div>
+      <div class="step reveal"><div class="step-num">02</div><div class="step-body"><h3>Pilot &amp; Estimate</h3><div class="duo"><div class="you"><span>You</span><p>Review annotated samples and approve scope.</p></div><div class="us"><span>Xyntriq</span><p>Annotate a small representative batch and deliver a clear cost estimate.</p></div></div></div></div>
+      <div class="step reveal"><div class="step-num">03</div><div class="step-body"><h3>Confidentiality &amp; NDA</h3><div class="duo"><div class="you"><span>You</span><p>Review and sign. Scope, quality thresholds, and deadlines locked in writing.</p></div><div class="us"><span>Xyntriq</span><p>Prepare a full confidentiality agreement covering your data, guidelines, and models.</p></div></div></div></div>
+      <div class="step reveal"><div class="step-num">04</div><div class="step-body"><h3>Execution &amp; QA</h3><div class="duo"><div class="you"><span>You</span><p>Review sample batches at each milestone and share feedback.</p></div><div class="us"><span>Xyntriq</span><p>Trained, domain-matched annotators work through your dataset. No batch moves forward without passing internal QC.</p></div></div></div></div>
+      <div class="step reveal"><div class="step-num">05</div><div class="step-body"><h3>Expert Review</h3><div class="duo"><div class="you"><span>You</span><p>Confirm acceptance criteria before final delivery.</p></div><div class="us"><span>Xyntriq</span><p>Every batch passes automated validation and expert human review; consistency is tracked throughout.</p></div></div></div></div>
+      <div class="step reveal"><div class="step-num">06</div><div class="step-body"><h3>Delivery &amp; Handoff</h3><div class="duo"><div class="you"><span>You</span><p>Receive your dataset in the format you need, with a full quality report.</p></div><div class="us"><span>Xyntriq</span><p>Deliver clean, training-ready data on schedule, with ongoing support and fast iteration.</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Industries We Serve</div><h2>Mission-critical AI across sectors</h2></div>
+    <div class="chips reveal">
+      <span class="chip">Healthcare &amp; Medical Imaging</span><span class="chip">Dental</span><span class="chip">Autonomous Vehicles</span><span class="chip">Smart Cities</span><span class="chip">Computer Vision</span><span class="chip">Transportation &amp; Logistics</span><span class="chip">Retail &amp; E-commerce</span><span class="chip">Agriculture &amp; Farming</span><span class="chip">Geospatial &amp; Remote Sensing</span><span class="chip">Security &amp; Surveillance</span><span class="chip">Manufacturing</span><span class="chip">Finance &amp; Banking</span><span class="chip">Education &amp; EdTech</span><span class="chip">Real Estate</span>
+    </div>
+    <div style="text-align:center; margin-top:30px;" class="reveal"><a class="cta ghost" href="industries.html">Explore industries →</a></div>
+  </div>
+</section>
+
+<section id="contributors">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div class="eyebrow">Record videos · Get paid</div>
+      <h2>Become a POV video contributor</h2>
+      <p>Record first-person videos on your phone, earn weekly bonuses, and refer friends. Fully remote across Latin America.</p>
+      <a class="cta" href="contributors.html">Become a Contributor</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">FAQ</div><h2>Frequently asked questions</h2></div>
+    <div class="faq">
+      <details class="faq-item reveal"><summary>What is data annotation?</summary><p>Data annotation is the process of labeling data such as images, video, text, and audio so AI models can learn from it. Xyntriq delivers high-accuracy annotation for production-grade models.</p></details>
+      <details class="faq-item reveal"><summary>What is first-person (POV) video data collection?</summary><p>It records real-world tasks from a person's own point of view using a head-mounted smartphone, producing egocentric video used to train computer-vision models.</p></details>
+      <details class="faq-item reveal"><summary>Can I earn money recording videos for AI training?</summary>      <p>Yes. Xyntriq compensates contributors for approved video hours, with weekly payouts.</p></details>
+      <details class="faq-item reveal"><summary>What is consented AI training data?</summary><p>Data collected from people who have explicitly agreed to its use. This is required for ethical, compliant model training.</p></details>
+      <details class="faq-item reveal"><summary>What industries do you serve?</summary><p>Healthcare and medical imaging, dental, autonomous vehicles, agriculture, geospatial, retail, finance, and more, with domain-matched annotators for each.</p></details>
+      <details class="faq-item reveal"><summary>How do you ensure annotation quality?</summary><p>Multi-tier QC: guideline-driven labeling, automated validation, expert human review, and batch-level traceability with accuracy reporting.</p></details>
+      <details class="faq-item reveal"><summary>How is my data kept secure?</summary><p>Every engagement is NDA-first, with controlled access, India data residency, and documented consent management for collected data.</p></details>
+      <details class="faq-item reveal"><summary>How do I start a project?</summary><p>Contact us with your data and guidelines. We run a small pilot batch first so you can validate accuracy before committing to full production.</p></details>
+      <details class="faq-item reveal"><summary>Do you sign NDAs?</summary><p>Yes. Every engagement starts with an NDA/MSA covering your data, guidelines, and models, so your information stays confidential from day one.</p></details>
+      <details class="faq-item reveal"><summary>How fast can you start?</summary><p>As soon as we receive your sample data and guidelines. We run the pilot and return a quote typically within 48 hours of reviewing your batch.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="assets/logo-v2.png" alt="Xyntriq logo">Xyntriq</div>
+        <p>An AI data company producing consented datasets for training real-world AI systems.</p>
+        <div class="socials" style="margin-top:16px;">
+          <a href="https://www.linkedin.com/company/xyntriq" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.4H5.67v7.94h2.67zM7 9.2a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.14v-4.36c0-2.33-1.24-3.42-2.9-3.42-1.34 0-1.94.74-2.28 1.26v-1.08H10.5v7.94h2.66v-4.4c0-1.16.53-1.86 1.58-1.86 1 0 1.6.68 1.6 1.86v4.4h2.6z"/></svg></a>
+          <a href="https://www.facebook.com/share/1HeEK2csKp/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.instagram.com/xyn_triq?igsh=MWkzdTBlYjVicWh1aw==&amp;igsi=MWkzdTBlYjVicWh1aw==" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.05 1.9.25 2.3.4.6.24 1 .52 1.5 1 .48.5.76.9 1 1.5.16.4.36 1.1.4 2.3.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.04 1.2-.24 1.9-.4 2.3a4 4 0 0 1-1 1.5c-.5.48-.9.76-1.5 1-.4.16-1.1.36-2.3.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.04-1.9-.24-2.3-.4a4 4 0 0 1-1.5-1c-.48-.5-.76-.9-1-1.5-.16-.4-.36-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.04-1.2.24-1.9.4-2.3.24-.6.52-1 1-1.5.5-.48.9-.76 1.5-1 .4-.16 1.1-.36 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.43-1.3.82-.4.4-.62.8-.82 1.3-.16.4-.35 1-.4 2.1-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.05 1.1.24 1.7.4 2.1.2.5.43.9.82 1.3.4.4.8.62 1.3.82.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.43 1.3-.82.4-.4.62-.8.82-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1.1-.24-1.7-.4-2.1a3.5 3.5 0 0 0-.82-1.3c-.4-.4-.8-.62-1.3-.82-.4-.16-1-.35-2.1-.4-1.2-.06-1.6-.07-4.7-.07zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.1-3.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Services</h4><a href="services.html">Annotation</a><a href="services.html">Collection</a><a href="services.html">POV Video</a><a href="services.html">Validation</a></div>
+      <div><h4>Company</h4><div class="foot-sub"><a href="about.html">About</a><a href="video-data.html">Video Data</a><a href="security.html">Data Security</a><a href="careers.html">Careers</a></div><div class="foot-sub foot-sub-2"><a href="industries.html">Industries</a><a href="contributors.html">Contributors</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div></div>
+      <div><h4>Contact</h4><a href="https://wa.me/919217919818">+91 92179 19818</a><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a></div><div><h4>Legal</h4><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a><a href="acceptable-use.html">Acceptable Use Policy</a></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Xyntriq. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script src="assets/script.js?v=20"></script>
 </body>
 </html>

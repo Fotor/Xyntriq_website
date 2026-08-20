@@ -1,0 +1,191 @@
+{
+  "url": "https://hfqacugptqghkwgaxsex.supabase.co",
+  "auditedAt": "2026-08-18T10:49:36.129Z",
+  "openApi": {
+    "status": 401,
+    "ok": false,
+    "error": "Secret API key required"
+  },
+  "authSettings": {
+    "status": 200,
+    "ok": true,
+    "data": {
+      "external": {
+        "anonymous_users": false,
+        "apple": false,
+        "azure": false,
+        "bitbucket": false,
+        "discord": false,
+        "facebook": false,
+        "snapchat": false,
+        "figma": false,
+        "fly": false,
+        "github": false,
+        "gitlab": false,
+        "google": false,
+        "keycloak": false,
+        "kakao": false,
+        "linkedin": false,
+        "linkedin_oidc": false,
+        "notion": false,
+        "spotify": false,
+        "slack": false,
+        "slack_oidc": false,
+        "workos": false,
+        "twitch": false,
+        "twitter": false,
+        "email": true,
+        "phone": false,
+        "zoom": false
+      },
+      "disableSignup": false,
+      "mailerAutoconfirm": false,
+      "phoneAutoconfirm": false,
+      "smsProvider": "twilio",
+      "smsEnabled": null
+    }
+  },
+  "tables": [
+    {
+      "table": "profiles",
+      "status": 401,
+      "exists": false,
+      "message": "permission denied for table profiles",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "unauthorized (401)"
+    },
+    {
+      "table": "levels",
+      "status": 200,
+      "exists": true,
+      "message": null,
+      "sampleColumns": [
+        "id:string",
+        "position:number",
+        "label:string",
+        "hours:number",
+        "reward:string",
+        "created_at:string"
+      ],
+      "countNote": "has rows"
+    },
+    {
+      "table": "daily_hours",
+      "status": 401,
+      "exists": false,
+      "message": "permission denied for table daily_hours",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "unauthorized (401)"
+    },
+    {
+      "table": "recordings",
+      "status": 401,
+      "exists": false,
+      "message": "permission denied for table recordings",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "unauthorized (401)"
+    },
+    {
+      "table": "requests",
+      "status": 401,
+      "exists": false,
+      "message": "permission denied for table requests",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "unauthorized (401)"
+    },
+    {
+      "table": "contributors",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.contributors' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "videos",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.videos' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "submissions",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.submissions' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "payouts",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.payouts' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "bonuses",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.bonuses' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "users",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.users' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "tasks",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.tasks' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "projects",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.projects' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "applications",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.applications' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    },
+    {
+      "table": "sessions",
+      "status": 404,
+      "exists": false,
+      "message": "Could not find the table 'public.sessions' in the schema cache",
+      "sampleColumns": null,
+      "countNote": null,
+      "reason": "table does not exist (404)"
+    }
+  ]
+}

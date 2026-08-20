@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Contributor Dashboard, Xyntriq</title>
+<meta name="description" content="Your Xyntriq contributor dashboard: profile summary, LATAM project feed, and earnings. Sign up with your phone to get started.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xyntriq">
+<meta property="og:title" content="Contributor Dashboard, Xyntriq">
+<meta property="og:description" content="Your Xyntriq contributor dashboard: profile summary, LATAM project feed, and earnings. Sign up with your phone to get started.">
+<meta property="og:url" content="https://xyntriq.in/contributor-dashboard.html">
+<meta property="og:image" content="https://xyntriq.in/assets/logo-v2.png">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo-v2.png" alt="Xyntriq logo">Xyntriq</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="video-data.html">Video Data</a>
+      <a href="about.html">About</a>
+      <a href="contributors.html" class="active">Contributors</a>
+      <a href="security.html">Security</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="nav-cta" href="contributors.html">Sign up</a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap"><div class="eyebrow">Record videos · Get paid</div><h1>Contributor dashboard</h1><p>Your profile, the LATAM project feed, and your earnings, all in one place.</p></div>
+</div>
+
+<div id="dash-notice" class="setup-note wrap" hidden>
+  <strong>Dashboard requires Supabase.</strong> The site owner must verify the Supabase project URL and publishable key in <code>assets/supabase-config.js</code> (then redeploy). Once configured, sign up with your email on the <a href="contributors.html">contributors page</a> and your dashboard will appear here.
+</div>
+
+<section id="dash" hidden>
+  <div class="wrap">
+    <div class="dash-tabs" role="tablist" aria-label="Dashboard sections">
+      <button class="dash-tab active" data-panel="dash-profile" role="tab" type="button">Profile</button>
+      <button class="dash-tab" data-panel="dash-projects" role="tab" type="button">Projects</button>
+      <button class="dash-tab" data-panel="dash-earnings" role="tab" type="button">Earnings</button>
+    </div>
+
+    <!-- (a) Profile summary -->
+    <div id="dash-profile" class="dash-panel active" role="tabpanel">
+      <div class="card dash-card">
+        <div class="dash-card-head">
+          <h3>Profile summary</h3>
+          <span class="pill new" id="pf-status">new</span>
+        </div>
+        <div class="profile-field"><span class="k">Name</span><span id="pf-name">Not set</span></div>
+        <div class="profile-field"><span class="k">Email</span><span id="pf-phone">Not set</span></div>
+        <div class="profile-field"><span class="k">Country</span><span id="pf-country">Not set</span></div>
+        <div class="profile-field"><span class="k">Languages</span><span id="pf-languages">Not set</span></div>
+        <div class="profile-field"><span class="k">Experience</span><span id="pf-experience">Not set</span></div>
+      </div>
+    </div>
+
+    <!-- (b) LATAM project feed -->
+    <div id="dash-projects" class="dash-panel" role="tabpanel">
+      <div class="sec-head">
+        <div class="eyebrow">Open work</div>
+        <h2>LATAM project feed</h2>
+        <p>Featured live projects first. New tasks are added as they open.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card project-card">
+          <span class="pill feature">Featured</span>
+          <h3>LATAM Data Collection: POV Household Videos</h3>
+          <p class="pay-line">US$5 per approved video <span>+ US$5 first-5-hours bonus</span></p>
+          <ul class="req-list">
+            <li>iPhone 12+ / Pixel 6+ / Galaxy S21+</li>
+            <li>18+ · WhatsApp required</li>
+            <li>PT (Brazil) / ES (LATAM)</li>
+            <li>Region: LATAM</li>
+          </ul>
+          <a class="cta" href="https://xyntriq.in/contributors.html" target="_blank" rel="noopener">Apply</a>
+        </div>
+        <div class="card project-card">
+          <span class="pill coming">Coming soon</span>
+          <h3>Smart City Footage, Walking &amp; Transit</h3>
+          <p>Street-level POV walks and public-transit scenes across LATAM cities.</p>
+        </div>
+        <div class="card project-card">
+          <span class="pill coming">Coming soon</span>
+          <h3>Retail &amp; Market Scenes</h3>
+          <p>Indoor shopping trips and open-air market walks.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- (c) Earnings summary -->
+    <div id="dash-earnings" class="dash-panel" role="tabpanel">
+      <div class="card dash-card">
+        <div class="dash-card-head">
+          <h3>Earnings summary</h3>
+          <div class="rail-row"><span class="rail">UPI</span><span class="rail">Pix</span><span class="rail">PayPal</span></div>
+        </div>
+        <div class="ledger">
+          <div class="ledger-row">
+            <div><strong>Household POV: morning routine</strong><br><span class="dim-small">Delivered 12 Aug · QC in progress</span></div>
+            <div class="ledger-side"><span class="amt">US$5.00</span><span class="pill pending">Pending QC</span></div>
+          </div>
+          <div class="ledger-row">
+            <div><strong>Household POV: grocery run</strong><br><span class="dim-small">Approved · pays next cycle</span></div>
+            <div class="ledger-side"><span class="amt">US$5.00</span><span class="pill approved">Approved</span></div>
+          </div>
+          <div class="ledger-row">
+            <div><strong>First-5-hours bonus</strong><br><span class="dim-small">Approved · pays next cycle</span></div>
+            <div class="ledger-side"><span class="amt">US$5.00</span><span class="pill approved">Approved</span></div>
+          </div>
+          <div class="ledger-row">
+            <div><strong>Weekly payout</strong><br><span class="dim-small">Paid via Pix · 14 Aug</span></div>
+            <div class="ledger-side"><span class="amt">US$10.00</span><span class="pill paid">Paid</span></div>
+          </div>
+        </div>
+        <p class="ledger-note">Welcome. Your dashboard appears after you start contributing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="assets/logo-v2.png" alt="Xyntriq logo">Xyntriq</div>
+        <p>An AI data company producing consented datasets for training real-world AI systems.</p>
+        <div class="socials" style="margin-top:16px;">
+          <a href="https://www.linkedin.com/company/xyntriq" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.4H5.67v7.94h2.67zM7 9.2a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.14v-4.36c0-2.33-1.24-3.42-2.9-3.42-1.34 0-1.94.74-2.28 1.26v-1.08H10.5v7.94h2.66v-4.4c0-1.16.53-1.86 1.58-1.86 1 0 1.6.68 1.6 1.86v4.4h2.6z"/></svg></a>
+          <a href="https://www.facebook.com/share/1HeEK2csKp/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.instagram.com/xyn_triq?igsh=MWkzdTBlYjVicWh1aw==&amp;igsi=MWkzdTBlYjVicWh1aw==" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.05 1.9.25 2.3.4.6.24 1 .52 1.5 1 .48.5.76.9 1 1.5.16.4.36 1.1.4 2.3.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.04 1.2-.24 1.9-.4 2.3a4 4 0 0 1-1 1.5c-.5.48-.9.76-1.5 1-.4.16-1.1.36-2.3.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.04-1.9-.24-2.3-.4a4 4 0 0 1-1.5-1c-.48-.5-.76-.9-1-1.5-.16-.4-.36-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.04-1.2.24-1.9.4-2.3.24-.6.52-1 1-1.5.5-.48.9-.76 1.5-1 .4-.16 1.1-.36 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.43-1.3.82-.4.4-.62.8-.82 1.3-.16.4-.35 1-.4 2.1-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.05 1.1.24 1.7.4 2.1.2.5.43.9.82 1.3.4.4.8.62 1.3.82.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.43 1.3-.82.4-.4.62-.8.82-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1.1-.24-1.7-.4-2.1a3.5 3.5 0 0 0-.82-1.3c-.4-.4-.8-.62-1.3-.82-.4-.16-1-.35-2.1-.4-1.2-.06-1.6-.07-4.7-.07zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.1-3.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Services</h4><a href="services.html">Annotation</a><a href="services.html">Collection</a><a href="services.html">POV Video</a><a href="services.html">Validation</a></div>
+      <div><h4>Company</h4><div class="foot-sub"><a href="about.html">About</a><a href="video-data.html">Video Data</a><a href="security.html">Data Security</a><a href="careers.html">Careers</a></div><div class="foot-sub foot-sub-2"><a href="industries.html">Industries</a><a href="contributors.html">Contributors</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div></div>
+      <div><h4>Contact</h4><a href="https://wa.me/919217919818">+91 92179 19818</a><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a></div><div><h4>Legal</h4><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a><a href="acceptable-use.html">Acceptable Use Policy</a></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Xyntriq. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script src="assets/supabase-config.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="assets/contributor-dashboard.js" defer></script>
+<script src="assets/script.js?v=20"></script>
+</body>
+</html>
