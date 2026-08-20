@@ -183,16 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// smooth scrolling (Lenis): lazy-loaded, native scroll as fallback
+// smooth scrolling (Lenis): lazy-loaded AFTER first paint, native scroll as fallback
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var s = document.createElement('script');
-  s.src = 'https://unpkg.com/lenis@1.1.13/dist/lenis.min.js';
-  s.onload = function () {
-    if (!window.Lenis) return;
-    var lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
-    function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-  };
-  document.head.appendChild(s);
+  function bootLenis() {
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/lenis@1.1.13/dist/lenis.min.js';
+    s.onload = function () {
+      if (!window.Lenis) return;
+      var lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+      function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    };
+    document.head.appendChild(s);
+  }
+  if (document.readyState === 'complete') { setTimeout(bootLenis, 400); }
+  else { window.addEventListener('load', function () { setTimeout(bootLenis, 400); }); }
 })();
