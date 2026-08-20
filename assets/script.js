@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(function (e) {
       var v = e.target;
       if (e.isIntersecting) {
+        if (v.dataset.src && !v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
         var p = v.play();
         if (p && p.catch) p.catch(function () {});
       } else {
