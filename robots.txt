@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://xyntriq.in/sitemap.xml
+
+# LLM crawlers: machine-readable summary
+# https://xyntriq.in/llms.txt

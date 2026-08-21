@@ -1,0 +1,19 @@
+# Xyntriq
+
+> Xyntriq is an AI data annotation and collection company serving LATAM and India — image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets for production AI models.
+
+## Services
+- [Data Annotation](https://xyntriq.in/services): image, video, text, audio, LiDAR, point cloud and multimodal annotation
+- [Data Collection](https://xyntriq.in/services): custom image, video, egocentric (POV), audio and sensor data across LATAM and India
+- [Video Data (POV)](https://xyntriq.in/video-data): consented first-person video datasets
+- [Industries](https://xyntriq.in/industries): healthcare, dental, automotive, agriculture, geospatial, retail, finance
+- [Security & Compliance](https://xyntriq.in/security): NDA-first engagements, India data residency, consent management
+- [Contributors](https://xyntriq.in/contributors): paid remote contributor program in Latin America
+
+## Key facts
+- Pilot-first engagements: a small pilot batch before full production, with a quote typically within 48 hours of reviewing your sample.
+- Multi-tier quality control with expert human review and batch-level traceability.
+- Every engagement starts with an NDA/MSA.
+
+## Contact
+- [Contact page](https://xyntriq.in/contact) | sales@xyntriq.in
