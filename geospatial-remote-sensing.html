@@ -851,6 +851,38 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 <meta property="og:url" content="https://xyntriq.in/geospatial-remote-sensing">
 <meta property="og:image" content="https://xyntriq.in/assets/logo-v2.png">
 <meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Xyntriq annotate in geospatial data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Satellite scenes, segmentation, and labeling for remote sensing — delivered as real annotated imagery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the geospatial samples real?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — anonymized samples from production geospatial work, not stock renders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test Xyntriq on my own imagery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send a sample of your scenes; Xyntriq returns labeled examples and a fixed-scope quote."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -914,6 +946,16 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   </div>
 </section>
 
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">FAQ</div><h2>Questions, answered</h2></div>
+    <div class="faq">
+      <details class="faq-item reveal"><summary>What does Xyntriq annotate in geospatial data?</summary><p>Satellite scenes, segmentation, and labeling for remote sensing — delivered as real annotated imagery.</p></details>
+      <details class="faq-item reveal"><summary>Are the geospatial samples real?</summary><p>Yes — anonymized samples from production geospatial work, not stock renders.</p></details>
+      <details class="faq-item reveal"><summary>How do I test Xyntriq on my own imagery?</summary><p>Send a sample of your scenes; Xyntriq returns labeled examples and a fixed-scope quote.</p></details>
+    </div>
+  </div>
+</section>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -933,7 +975,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     <div class="foot-bottom"><span>© <span id="yr"></span> Xyntriq. All rights reserved.</span></div>
   </div>
 </footer>
-<script src="assets/script.js?v=23"></script>
+<script defer src="assets/script.js?v=24"></script>
 </body>
 </html>
 

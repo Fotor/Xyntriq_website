@@ -851,6 +851,38 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 <meta property="og:url" content="https://xyntriq.in/lidar-3d-sensing">
 <meta property="og:image" content="https://xyntriq.in/assets/logo-v2.png">
 <meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Xyntriq label in 3D?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Point-cloud annotation — 3D boxes and segmentation on real LiDAR scenes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the LiDAR samples real?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — anonymized point-cloud samples from production LiDAR work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test on my own point clouds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send a sample; Xyntriq returns labeled examples and a fixed-scope quote."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -912,6 +944,16 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   </div>
 </section>
 
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">FAQ</div><h2>Questions, answered</h2></div>
+    <div class="faq">
+      <details class="faq-item reveal"><summary>What does Xyntriq label in 3D?</summary><p>Point-cloud annotation — 3D boxes and segmentation on real LiDAR scenes.</p></details>
+      <details class="faq-item reveal"><summary>Are the LiDAR samples real?</summary><p>Yes — anonymized point-cloud samples from production LiDAR work.</p></details>
+      <details class="faq-item reveal"><summary>How do I test on my own point clouds?</summary><p>Send a sample; Xyntriq returns labeled examples and a fixed-scope quote.</p></details>
+    </div>
+  </div>
+</section>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -931,7 +973,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     <div class="foot-bottom"><span>© <span id="yr"></span> Xyntriq. All rights reserved.</span></div>
   </div>
 </footer>
-<script src="assets/script.js?v=23"></script>
+<script defer src="assets/script.js?v=24"></script>
 </body>
 </html>
 

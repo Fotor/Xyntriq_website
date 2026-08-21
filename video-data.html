@@ -851,6 +851,38 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 <meta property="og:url" content="https://xyntriq.in/video-data">
 <meta property="og:image" content="https://xyntriq.in/assets/logo-v2.png">
 <meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is egocentric (POV) video data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First-person footage recorded from the wearer's own point of view on a head-mounted smartphone — real tasks like cooking, driving, shopping, and household work, everything consented."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is POV data collected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contributors record genuine daily activities on their own smartphones with a head mount — nothing staged, everything consented."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does egocentric data go to work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Egocentric video trains computer-vision models in robotics, autonomous systems, AR/VR, and retail — wherever a system must understand what a person actually sees and does."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -922,6 +954,16 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   </div>
 </section>
 
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">FAQ</div><h2>Questions, answered</h2></div>
+    <div class="faq">
+      <details class="faq-item reveal"><summary>What is egocentric (POV) video data?</summary><p>First-person footage recorded from the wearer's own point of view on a head-mounted smartphone — real tasks like cooking, driving, shopping, and household work, everything consented.</p></details>
+      <details class="faq-item reveal"><summary>How is POV data collected?</summary><p>Contributors record genuine daily activities on their own smartphones with a head mount — nothing staged, everything consented.</p></details>
+      <details class="faq-item reveal"><summary>Where does egocentric data go to work?</summary><p>Egocentric video trains computer-vision models in robotics, autonomous systems, AR/VR, and retail — wherever a system must understand what a person actually sees and does.</p></details>
+    </div>
+  </div>
+</section>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -941,6 +983,6 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     <div class="foot-bottom"><span>© <span id="yr"></span> Xyntriq. All rights reserved.</span></div>
   </div>
 </footer>
-<script src="assets/script.js?v=23"></script>
+<script defer src="assets/script.js?v=24"></script>
 </body>
 </html>
