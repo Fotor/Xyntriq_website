@@ -561,7 +561,7 @@ section { padding: 80px 0; }
 
 /* industries chips */
 .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.chip { background: var(--surface); border: 1px solid var(--line); border-radius: 30px; padding: 11px 22px; font-size: 14px; color: var(--text); transition: border-color .2s, background .2s; }
+.chip { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; background: var(--surface); border: 1px solid var(--line); border-radius: 30px; padding: 11px 22px; font-size: 14px; color: var(--text); transition: border-color .2s, background .2s; }
 .chip:hover { border-color: var(--teal); background: var(--surface-2); }
 
 /* CTA band */
@@ -930,15 +930,15 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     </div>
     <div class="video-grid" style="margin-top:28px;">
       <div class="reveal">
-        <div class="video-wrap"><video autoplay muted playsinline loop disablepictureinpicture data-autoplay preload="metadata" poster="assets/video/pov-sample-2-poster.jpg"><source src="assets/video/pov-sample-2-silent.mp4" type="video/mp4"></video></div>
+        <div class="video-wrap"><video muted playsinline loop disablepictureinpicture data-autoplay preload="none" data-src="assets/video/pov-sample-2-silent.mp4" poster="assets/video/pov-sample-2-poster.jpg"></video></div>
         <p class="video-caption">First-person video: washing dishes</p>
       </div>
       <div class="reveal">
-        <div class="video-wrap"><video autoplay muted playsinline loop disablepictureinpicture data-autoplay preload="metadata" poster="assets/video/pov-raking-poster.jpg"><source src="assets/video/pov-raking.mp4" type="video/mp4"></video></div>
+        <div class="video-wrap"><video muted playsinline loop disablepictureinpicture data-autoplay preload="none" data-src="assets/video/pov-raking.mp4" poster="assets/video/pov-raking-poster.jpg"></video></div>
         <p class="video-caption">First-person video: raking leaves</p>
       </div>
       <div class="reveal">
-        <div class="video-wrap"><video autoplay muted playsinline loop disablepictureinpicture data-autoplay preload="metadata" poster="assets/video/pov-sample-poster.jpg"><source src="assets/video/pov-sample-silent.mp4" type="video/mp4"></video></div>
+        <div class="video-wrap"><video muted playsinline loop disablepictureinpicture data-autoplay preload="none" data-src="assets/video/pov-sample-silent.mp4" poster="assets/video/pov-sample-poster.jpg"></video></div>
         <p class="video-caption">First-person video: washing dishes</p>
       </div>
     </div>
