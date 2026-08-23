@@ -17,11 +17,11 @@ print('root favicon.ico + favicon-32x32.png in place')
 ORG = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Xyntriq",
+    "name": "XYNTRIQ",
     "url": "https://xyntriq.in",
     "logo": "https://xyntriq.in/assets/logo-v2.png",
     "image": "https://xyntriq.in/assets/logo-v2.png",
-    "description": "Xyntriq is an AI data annotation and collection company serving LATAM and India — image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets.",
+    "description": "XYNTRIQ is an AI data annotation and collection company serving LATAM and India — image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets.",
     "sameAs": ["https://www.linkedin.com/company/xyntriq"],
     "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "sales@xyntriq.in", "url": "https://xyntriq.in/contact"},
     "address": {"@type": "PostalAddress", "addressCountry": "IN"},

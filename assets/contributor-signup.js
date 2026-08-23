@@ -1,5 +1,5 @@
 /* ============================================================================
- * Xyntriq: contributor signup (contributors.html)
+ * XYNTRIQ: contributor signup (contributors.html)
  * Flow: 1) details + 18+ validation -> 2) email+password sign-up (Supabase
  *       email auth) -> 3) profile upsert -> 4) redirect to dashboard.
  *

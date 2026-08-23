@@ -1,5 +1,5 @@
 /* ============================================================================
- * Xyntriq: contributor dashboard (contributor-dashboard.html)
+ * XYNTRIQ: contributor dashboard (contributor-dashboard.html)
  * Auth gate: no Supabase session -> redirect to contributors.html.
  * Reads the same real config as the signup page (assets/supabase-config.js);
  * the live project uses EMAIL auth (phone auth is disabled: audited

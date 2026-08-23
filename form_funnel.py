@@ -11,10 +11,10 @@ repls = [
     # launch-bar button label
     ('>Join Discord</a>', '>Register Now</a>'),
     # launch-bar text (index + contributors)
-    ('Xyntriq app launching across India &amp; LATAM. Join our Discord for early access and launch details',
-     'Xyntriq app launching across India &amp; LATAM. Register for early access and launch details'),
-    ('Xyntriq app launching across India & LATAM. Join our Discord for early access and launch details',
-     'Xyntriq app launching across India & LATAM. Register for early access and launch details'),
+    ('XYNTRIQ app launching across India &amp; LATAM. Join our Discord for early access and launch details',
+     'XYNTRIQ app launching across India &amp; LATAM. Register for early access and launch details'),
+    ('XYNTRIQ app launching across India & LATAM. Join our Discord for early access and launch details',
+     'XYNTRIQ app launching across India & LATAM. Register for early access and launch details'),
 ]
 n = 0
 for html in sorted(site.glob('*.html')):

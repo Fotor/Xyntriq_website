@@ -1,4 +1,4 @@
-"""Xyntriq local preview server.
+"""XYNTRIQ local preview server.
 - Serves the site folder on 127.0.0.1:8080.
 - Extensionless URLs fall back to .html (e.g. /industries -> industries.html).
 - Sends no-store headers so browsers never serve stale pages/media.

@@ -1,5 +1,5 @@
 -- ============================================================================
--- Xyntriq: 0001_profiles.sql  (NON-DESTRUCTIVE / idempotent)
+-- XYNTRIQ: 0001_profiles.sql  (NON-DESTRUCTIVE / idempotent)
 --
 -- ⚠ REVIEW BEFORE RUNNING: this file is NOT auto-run anywhere.
 --    Run it manually once in the Supabase dashboard:

@@ -1,4 +1,4 @@
-# Xyntriq: Contributor Supabase Reconciliation Report
+# XYNTRIQ: Contributor Supabase Reconciliation Report
 
 **Date:** 2026-08-18 · **Project URL:** https://hfqacugptqghkwgaxsex.supabase.co
 **Method:** Read-only audit via Supabase REST + auth settings endpoints using the anon/publishable key (`sb_publishable_GpBrZiax2pFHpnNbAdXlEg_mtC1H_Uh`). No rows were inserted/updated/deleted, no tables altered, no auth emails/SMS sent, no migrations run. Raw audit data: [`supabase-live-audit.json`](supabase-live-audit.json).

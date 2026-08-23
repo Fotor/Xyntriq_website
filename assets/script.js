@@ -1,4 +1,4 @@
-// Xyntriq · shared interactions
+// XYNTRIQ · shared interactions
 document.addEventListener('DOMContentLoaded', () => {
   // footer year
   const yr = document.getElementById('yr');

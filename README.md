@@ -1,13 +1,13 @@
-# Xyntriq · Website
+# XYNTRIQ · Website
 
-Static website for **Xyntriq** (brand name), an AI data collection company producing consented first-person (POV) video datasets.
+Static website for **XYNTRIQ** (brand name), an AI data collection company producing consented first-person (POV) video datasets.
 
 ## What's inside
 
 - `index.html`: the full site (self-contained: HTML + CSS + structured data).
 - SEO meta tags (title, description, Open Graph, canonical).
 - AEO: answer-first FAQ for featured snippets / "People Also Ask".
-- GEO: a citable "About" blurb used consistently so AI models cite Xyntriq.
+- GEO: a citable "About" blurb used consistently so AI models cite XYNTRIQ.
 - JSON-LD structured data (Organization + Service + FAQPage).
 
 ## Deploy (GitHub Pages)
@@ -47,6 +47,6 @@ The contributor flow lives inside this static site: no separate app.
 
 ## Notes
 
-- Brand name everywhere is **"Xyntriq"** (not "Xyntriq AI Labs").
+- Brand name everywhere is **"XYNTRIQ"** (not "XYNTRIQ AI Labs").
 - Contributor pay is **$5 USD per approved video**.
-- Keep the "About" blurb (in the footer + `#about` section) identical on LinkedIn and directories: that consistency is what makes AI models cite Xyntriq.
+- Keep the "About" blurb (in the footer + `#about` section) identical on LinkedIn and directories: that consistency is what makes AI models cite XYNTRIQ.

@@ -1,5 +1,5 @@
 /* ============================================================================
- * Xyntriq: Supabase configuration
+ * XYNTRIQ: Supabase configuration
  * ----------------------------------------------------------------------------
  * 1. Create a free Supabase project at https://supabase.com (or open the
  *    existing one).

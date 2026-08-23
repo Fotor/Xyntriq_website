@@ -1,6 +1,6 @@
-# Xyntriq
+# XYNTRIQ
 
-> Xyntriq is an AI data annotation and collection company serving LATAM and India — image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets for production AI models.
+> XYNTRIQ is an AI data annotation and collection company serving LATAM and India — image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets for production AI models.
 
 ## Services
 - [Data Annotation](https://xyntriq.in/services): image, video, text, audio, LiDAR, point cloud and multimodal annotation
