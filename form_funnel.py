@@ -1,7 +1,7 @@
 import pathlib
 
 site = pathlib.Path(r'C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site')
-NEW = 'https://forms.gle/XNB6eBm8FRoAUgMv5'
+NEW = 'https://forms.gle/wgycJ5xVVbsLKKva9'
 
 repls = [
     # Discord invite -> new registration form
