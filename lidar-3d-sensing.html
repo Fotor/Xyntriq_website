@@ -13,8 +13,8 @@ gtag('config', 'G-0XEGY7LEF4');
 </script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>LiDAR &amp; 3D Sensing Data · XYNTRIQ</title>
-<meta name="description" content="LiDAR and 3D point cloud data: 3D bounding boxes, object segmentation, and ground-truth labeling for perception stacks.">
+<title>LiDAR &amp; 3D Point Cloud Annotation Services | XYNTRIQ</title>
+<meta name="description" content="3D LiDAR annotation: cuboid labeling, point-cloud segmentation, and object tracking for autonomous vehicles and robotics, from real production projects.">
 <link rel="canonical" href="https://xyntriq.in/lidar-3d-sensing">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -858,6 +858,8 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {"@type":"Question","name":"What annotation types do you provide for point clouds?","acceptedAnswer":{"@type":"Answer","text":"3D bounding boxes (cuboids), semantic segmentation, object tracking, and ground-truth labeling across LiDAR scenes."}},
+    {"@type":"Question","name":"Can you handle large LiDAR datasets?","acceptedAnswer":{"@type":"Answer","text":"Yes — we scale from pilot batches to full production datasets with multi-tier QA and batch-level traceability."}},
     {
       "@type": "Question",
       "name": "What does XYNTRIQ label in 3D?",
@@ -980,6 +982,8 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   <div class="wrap">
     <div class="sec-head reveal"><div class="eyebrow">FAQ</div><h2>Questions, answered</h2></div>
     <div class="faq">
+      <details class="faq-item reveal"><summary>What annotation types do you provide for point clouds?</summary><p>3D bounding boxes (cuboids), semantic segmentation, object tracking, and ground-truth labeling across LiDAR scenes.</p></details>
+      <details class="faq-item reveal"><summary>Can you handle large LiDAR datasets?</summary><p>Yes — we scale from pilot batches to full production datasets with multi-tier QA and batch-level traceability.</p></details>
       <details class="faq-item reveal"><summary>What does XYNTRIQ label in 3D?</summary><p>Point-cloud annotation — 3D boxes and segmentation on real LiDAR scenes.</p></details>
       <details class="faq-item reveal"><summary>Are the LiDAR samples real?</summary><p>Yes — anonymized point-cloud samples from production LiDAR work.</p></details>
       <details class="faq-item reveal"><summary>How do I test on my own point clouds?</summary><p>Send a sample; XYNTRIQ returns labeled examples and a fixed-scope quote.</p></details>

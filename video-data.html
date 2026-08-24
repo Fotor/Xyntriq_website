@@ -13,8 +13,8 @@ gtag('config', 'G-0XEGY7LEF4');
 </script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Video Data, POV &amp; Egocentric Collection and Annotation, XYNTRIQ</title>
-<meta name="description" content="XYNTRIQ collects and annotates consented first-person (POV) video and multimodal data across Latin America, capture protocols, consent flow, and multi-tier QA.">
+<title>Video Data Collection &amp; POV Annotation for AI | XYNTRIQ</title>
+<meta name="description" content="Custom video data collection and annotation: consented first-person (POV/egocentric) footage, scene labeling, and video annotation for computer-vision models across LATAM.">
 <link rel="canonical" href="https://xyntriq.in/video-data">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -858,6 +858,8 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {"@type":"Question","name":"What video annotation do you provide?","acceptedAnswer":{"@type":"Answer","text":"Frame-level and temporal labeling — object detection, tracking, activity segmentation, and scene understanding — on collected or client-supplied video."}},
+    {"@type":"Question","name":"Is the video data consented?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every record is captured with documented consent from vetted contributors, so your training data stays ethical and defensible."}},
     {
       "@type": "Question",
       "name": "What is egocentric (POV) video data?",
@@ -990,6 +992,8 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   <div class="wrap">
     <div class="sec-head reveal"><div class="eyebrow">FAQ</div><h2>Questions, answered</h2></div>
     <div class="faq">
+      <details class="faq-item reveal"><summary>What video annotation do you provide?</summary><p>Frame-level and temporal labeling — object detection, tracking, activity segmentation, and scene understanding — on collected or client-supplied video.</p></details>
+      <details class="faq-item reveal"><summary>Is the video data consented?</summary><p>Yes. Every record is captured with documented consent from vetted contributors, so your training data stays ethical and defensible.</p></details>
       <details class="faq-item reveal"><summary>What is egocentric (POV) video data?</summary><p>First-person footage recorded from the wearer's own point of view on a head-mounted smartphone — real tasks like cooking, driving, shopping, and household work, everything consented.</p></details>
       <details class="faq-item reveal"><summary>How is POV data collected?</summary><p>Contributors record genuine daily activities on their own smartphones with a head mount — nothing staged, everything consented.</p></details>
       <details class="faq-item reveal"><summary>Where does egocentric data go to work?</summary><p>Egocentric video trains computer-vision models in robotics, autonomous systems, AR/VR, and retail — wherever a system must understand what a person actually sees and does.</p></details>
