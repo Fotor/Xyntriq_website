@@ -1,3 +1,3 @@
-# Clean URLs are handled by Cloudflare Pages native canonicalization (test build)
-# Force www -> apex so Google does not see duplicate-content copies (fixes "Alternative page with proper canonical tag")
-https://www.xyntriq.in/* https://xyntriq.in/:splat 301
+# Clean URLs are handled by Cloudflare Pages native canonicalization
+# NOTE: www -> apex redirect is enforced by a Cloudflare zone-level Redirect Rule (Rules > Redirect Rules),
+# because Pages _redirects only supports relative-URL sources (absolute host rules are rejected at build time).
