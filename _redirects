@@ -1,1 +1,3 @@
 # Clean URLs are handled by Cloudflare Pages native canonicalization (test build)
+# Force www -> apex so Google does not see duplicate-content copies (fixes "Alternative page with proper canonical tag")
+https://www.xyntriq.in/* https://xyntriq.in/:splat 301
