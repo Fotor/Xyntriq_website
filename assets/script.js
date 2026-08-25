@@ -22,45 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Premium interactions: 3D tilt + magnetic buttons (skipped for reduced motion)
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.card, .p-card, .why-col').forEach(function (c) {
-    c.addEventListener('mousemove', function (e) {
-      var r = c.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      c.style.transform = 'perspective(900px) rotateX(' + (-y * 7).toFixed(2) + 'deg) rotateY(' + (x * 7).toFixed(2) + 'deg) translateY(-4px)';
-    });
-    c.addEventListener('mouseleave', function () { c.style.transform = ''; });
-  });
-  document.querySelectorAll('.cta, .nav-cta').forEach(function (b) {
-    b.addEventListener('mousemove', function (e) {
-      var r = b.getBoundingClientRect();
-      var x = (e.clientX - r.left - r.width / 2) * 0.18;
-      var y = (e.clientY - r.top - r.height / 2) * 0.28;
-      b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
-    });
-    b.addEventListener('mouseleave', function () { b.style.transform = ''; });
-  });
-})();
-
-// scroll progress bar
-(function () {
-  var bar = document.createElement('div');
-  bar.className = 'scroll-progress';
-  document.body.appendChild(bar);
-  var update = function () {
-    var h = document.documentElement;
-    var max = h.scrollHeight - h.clientHeight;
-    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
-  };
-  window.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
-  update();
-})();
-
 // auto-play videos when scrolled into view (muted)
 (function () {
   var vids = document.querySelectorAll('video[data-autoplay]');
@@ -88,24 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (v) { v.play(); btn.classList.add('hidden'); }
     });
   });
-})();
-
-// smooth scrolling (Lenis): lazy-loaded AFTER first paint, native scroll as fallback
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  function bootLenis() {
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/lenis@1.1.13/dist/lenis.min.js';
-    s.onload = function () {
-      if (!window.Lenis) return;
-      var lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
-      function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
-    };
-    document.head.appendChild(s);
-  }
-  if (document.readyState === 'complete') { setTimeout(bootLenis, 400); }
-  else { window.addEventListener('load', function () { setTimeout(bootLenis, 400); }); }
 })();
 
 // mobile menu toggle (burger)
