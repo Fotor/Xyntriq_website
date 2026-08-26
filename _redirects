@@ -1,3 +1,4 @@
 # Clean URLs are handled by Cloudflare Pages native canonicalization
 # NOTE: www -> apex redirect is enforced by a Cloudflare zone-level Redirect Rule (Rules > Redirect Rules),
 # because Pages _redirects only supports relative-URL sources (absolute host rules are rejected at build time).
+/index.html / 301

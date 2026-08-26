@@ -960,10 +960,21 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="XYNTRIQ">
 <meta property="og:title" content="XYNTRIQ · AI Data Annotation & Collection">
+<meta property="og:locale" content="en_US">
 <meta property="og:description" content="XYNTRIQ is a Udyam-registered AI data annotation and collection company trusted by enterprises and government programs for image, video, text, audio, and LiDAR annotation, plus consented first-person (POV) video datasets, across LATAM and India.">
 <meta property="og:url" content="https://xyntriq.in/">
 <meta property="og:image" content="https://xyntriq.in/assets/logo-v2.png">
 <meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "XYNTRIQ",
+  "url": "https://xyntriq.in",
+  "description": "AI data annotation and collection company: image, video, text, audio and LiDAR annotation plus first-person (POV) video datasets across Latin America and India.",
+  "publisher": {"@type": "Organization", "name": "XYNTRIQ", "url": "https://xyntriq.in", "logo": "https://xyntriq.in/assets/logo-v2.png"}
+}
+</script>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -1007,8 +1018,8 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 
 <div class="hero-track" id="heroTrack">
 <div class="hero hero-stage" id="heroStage">
-    <div class="hero-media-video">
-    <img id="heroPoster" class="hero-poster" src="assets/video/autonomous-sedan-poster-v3.webp" alt="" aria-hidden="true">
+  <div class="hero-media-video">
+    <img id="heroPoster" class="hero-poster" src="assets/video/autonomous-sedan-poster-v3.webp" alt="" aria-hidden="true" fetchpriority="high">
     <canvas id="heroScrub" class="hero-video" width="960" height="540"></canvas>
   </div>
   <div class="hero-shade"></div>
@@ -1071,9 +1082,9 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     </div>
     <div class="portfolio">
       <div class="p-card reveal"><span class="tag">Geospatial</span><img loading="lazy" decoding="async" src="assets/portfolio/Geospatial/remotesensing_Geospatial.webp" alt="Remote sensing annotation"><div class="p-body"><h3>Geospatial</h3><p>Remote sensing &amp; satellite imagery</p></div></div>
-      <div class="p-card reveal"><span class="tag">LiDAR</span><img loading="lazy" decoding="async" src="assets/portfolio/lidar/Lidaar_1.jpg" alt="LiDAR point cloud annotation"><div class="p-body"><h3>LiDAR &amp; Point Cloud</h3><p>3D point cloud labeling</p></div></div>
-      <div class="p-card reveal"><span class="tag">Agriculture</span><img loading="lazy" decoding="async" src="assets/portfolio/agriculture/Annotated.jpeg" alt="Agricultural crop annotation"><div class="p-body"><h3>Agriculture</h3><p>Crop segmentation &amp; keypoint</p></div></div>
-      <div class="p-card reveal"><span class="tag">Transcription</span><img loading="lazy" decoding="async" src="assets/portfolio/Transcription/Google_17.png" alt="Audio transcription"><div class="p-body"><h3>Audio &amp; Transcription</h3><p>Speech-to-text &amp; audio labeling</p></div></div>
+      <div class="p-card reveal"><span class="tag">LiDAR</span><img loading="lazy" decoding="async" src="assets/portfolio/lidar/Lidaar_1.webp" alt="LiDAR point cloud annotation"><div class="p-body"><h3>LiDAR &amp; Point Cloud</h3><p>3D point cloud labeling</p></div></div>
+      <div class="p-card reveal"><span class="tag">Agriculture</span><img loading="lazy" decoding="async" src="assets/portfolio/agriculture/Annotated.webp" alt="Agricultural crop annotation"><div class="p-body"><h3>Agriculture</h3><p>Crop segmentation &amp; keypoint</p></div></div>
+      <div class="p-card reveal"><span class="tag">Transcription</span><img loading="lazy" decoding="async" src="assets/portfolio/Transcription/Google_17.webp" alt="Audio transcription"><div class="p-body"><h3>Audio &amp; Transcription</h3><p>Speech-to-text &amp; audio labeling</p></div></div>
 
     </div>
     <div class="sec-head" style="margin-top:56px; margin-bottom:24px;">
