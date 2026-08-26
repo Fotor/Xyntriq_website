@@ -124,6 +124,21 @@ document.addEventListener('DOMContentLoaded', () => {
   update();
 })();
 
+// scroll progress bar (top of page)
+(function () {
+  var bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  function up() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', up, { passive: true });
+  window.addEventListener('resize', up, { passive: true });
+  window.addEventListener('load', up);
+  up();
+})();
+
 // auto-play videos when scrolled into view (muted)
 (function () {
   var vids = document.querySelectorAll('video[data-autoplay]');
