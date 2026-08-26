@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var canvas = document.getElementById('heroScrub');
   var poster = document.getElementById('heroPoster');
   if (!track || !canvas) return;
-  var N = 192, DIR = 'assets/video/scrub-frames-v2/';
+  var N = 192, DIR = 'assets/video/scrub-frames-v3/';
   var frames = [];
   var lastDrawn = -1;
   var cw = 0, ch = 0;
@@ -59,10 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
       var idx = Math.floor(f), frac = f % 1;
       var img1 = frames[idx];
       if (!img1 || !img1.complete) return;
-      var VX = 192, VY = 92, VW = 640, VH = 448;
-      var scale = Math.max(cw / VW, ch / VH);
+      var scale = Math.max(cw / 960, ch / 540);
       var sw = cw / scale, sh = ch / scale;
-      var sx = VX + (VW - sw) / 2, sy = VY + (VH - sh) / 2;
+      var sx = (960 - sw) / 2, sy = (540 - sh) / 2;
       ctx.drawImage(img1, sx, sy, sw, sh, 0, 0, cw, ch);
       if (frac > 0.01) {
         var img2 = frames[Math.min(N - 1, idx + 1)];
