@@ -22,6 +22,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Hero scroll-scrub video (POV driving footage)
+(function () {
+  var track = document.getElementById('heroTrack');
+  var video = document.getElementById('heroVideo');
+  if (!track || !video) return;
+  function update() {
+    var scrollMax = Math.max(1, track.offsetHeight + track.offsetTop - window.innerHeight);
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var p = Math.max(0, Math.min(1, y / scrollMax));
+    if (video.duration && isFinite(video.duration)) {
+      var t = p * video.duration;
+      if (Math.abs(video.currentTime - t) > 0.03) video.currentTime = t;
+    }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('wheel', update, { passive: true });
+  document.addEventListener('touchmove', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  video.addEventListener('loadedmetadata', update);
+  window.addEventListener('load', update);
+  update();
+})();
+
 // auto-play videos when scrolled into view (muted)
 (function () {
   var vids = document.querySelectorAll('video[data-autoplay]');
