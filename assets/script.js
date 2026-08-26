@@ -22,26 +22,95 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Hero scroll-scrub video (POV driving footage)
+// Smooth Canvas Scrub Hero (Apple-style buttery motion)
 (function () {
   var track = document.getElementById('heroTrack');
-  var video = document.getElementById('heroVideo');
-  if (!track || !video) return;
-  function update() {
+  var canvas = document.getElementById('heroScrub');
+  var poster = document.getElementById('heroPoster');
+  if (!track || !canvas) return;
+  var N = 192, DIR = 'assets/video/scrub-frames-v2/';
+  var frames = [];
+  var lastDrawn = -1;
+  var cw = 0, ch = 0;
+  window.__scrubF = 0;
+
+  function resizeCanvas() {
+    try {
+      var rect = canvas.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cw = Math.max(1, Math.round(rect.width * dpr));
+      ch = Math.max(1, Math.round(rect.height * dpr));
+      if (canvas.width !== cw || canvas.height !== ch) {
+        canvas.width = cw;
+        canvas.height = ch;
+      }
+    } catch (e) { /* keep defaults */ }
+  }
+
+  function draw(f, force) {
+    f = Math.max(0, Math.min(N - 1, f));
+    if (!force && Math.abs(f - lastDrawn) <= 0.02) return;
+    window.__scrubF = f;
+    lastDrawn = f;
+    if (!cw || !ch) resizeCanvas();
+    if (!cw || !ch) return;
+    try {
+      var ctx = canvas.getContext('2d', { alpha: false });
+      var idx = Math.floor(f), frac = f % 1;
+      var img1 = frames[idx];
+      if (!img1 || !img1.complete) return;
+      var scale = Math.max(cw / 960, ch / 540);
+      var sw = cw / scale, sh = ch / scale;
+      var sx = (960 - sw) / 2, sy = (540 - sh) / 2;
+      ctx.drawImage(img1, sx, sy, sw, sh, 0, 0, cw, ch);
+      if (frac > 0.01) {
+        var img2 = frames[Math.min(N - 1, idx + 1)];
+        if (img2 && img2.complete) {
+          ctx.globalAlpha = frac;
+          ctx.drawImage(img2, sx, sy, sw, sh, 0, 0, cw, ch);
+          ctx.globalAlpha = 1;
+        }
+      }
+    } catch (e) { /* never block scrubbing */ }
+  }
+
+  var ready = false;
+  var EAGER = 3, BATCH = 16;
+  for (var i = 1; i <= N; i++) {
+    (function (idx) {
+      var img = new Image();
+      img.onload = function () {
+        if (idx === 1 && !ready) { ready = true; draw(0, true); if (poster) poster.style.display = 'none'; }
+      };
+      frames.push(img);
+      if (idx <= EAGER) img.src = DIR + String(idx).padStart(5, '0') + '.webp';
+    })(i);
+  }
+  var startAt = EAGER + 1;
+  function loadNext() {
+    var end = Math.min(N, startAt + BATCH - 1);
+    for (var j = startAt; j <= end; j++) {
+      frames[j - 1].src = DIR + String(j).padStart(5, '0') + '.webp';
+    }
+    startAt = end + 1;
+    if (startAt <= N) setTimeout(loadNext, 120);
+  }
+  if (document.readyState === 'complete') { setTimeout(loadNext, 300); }
+  else { window.addEventListener('load', function () { setTimeout(loadNext, 300); }); }
+
+  var update = function () {
     var scrollMax = Math.max(1, track.offsetHeight + track.offsetTop - window.innerHeight);
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
     var p = Math.max(0, Math.min(1, y / scrollMax));
-    if (video.duration && isFinite(video.duration)) {
-      var t = p * video.duration;
-      if (Math.abs(video.currentTime - t) > 0.03) video.currentTime = t;
-    }
-  }
+    draw(p * (N - 1));
+  };
+
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('wheel', update, { passive: true });
   document.addEventListener('touchmove', update, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
-  video.addEventListener('loadedmetadata', update);
+  window.addEventListener('resize', function () { resizeCanvas(); update(); }, { passive: true });
   window.addEventListener('load', update);
+  resizeCanvas();
   update();
 })();
 
