@@ -74,36 +74,46 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) { /* never block scrubbing */ }
   }
 
-  var ready = false;
-  var EAGER = 3, BATCH = 16;
+  // preload ALL frames immediately (batched, no lazy wait) for buttery scrubbing
+  var PRE = 24;
   for (var i = 1; i <= N; i++) {
     (function (idx) {
       var img = new Image();
       img.onload = function () {
-        if (idx === 1 && !ready) { ready = true; draw(0, true); if (poster) poster.style.display = 'none'; }
+        if (idx === 1) { draw(0, true); if (poster) poster.style.display = 'none'; }
       };
       frames.push(img);
-      if (idx <= EAGER) img.src = DIR + String(idx).padStart(5, '0') + '.webp';
     })(i);
   }
-  var startAt = EAGER + 1;
+  var startAt = 1;
   function loadNext() {
-    var end = Math.min(N, startAt + BATCH - 1);
+    var end = Math.min(N, startAt + PRE - 1);
     for (var j = startAt; j <= end; j++) {
       frames[j - 1].src = DIR + String(j).padStart(5, '0') + '.webp';
     }
     startAt = end + 1;
-    if (startAt <= N) setTimeout(loadNext, 120);
+    if (startAt <= N) setTimeout(loadNext, 50);
   }
-  if (document.readyState === 'complete') { setTimeout(loadNext, 300); }
-  else { window.addEventListener('load', function () { setTimeout(loadNext, 300); }); }
+  setTimeout(loadNext, 50);
 
-  var update = function () {
+  var target = 0, current = 0, raf = null;
+
+  function update() {
     var scrollMax = Math.max(1, track.offsetHeight + track.offsetTop - window.innerHeight);
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
     var p = Math.max(0, Math.min(1, y / scrollMax));
-    draw(p * (N - 1));
-  };
+    target = p * (N - 1);
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+
+  function tick() {
+    raf = null;
+    var diff = target - current;
+    if (Math.abs(diff) < 0.001) { current = target; draw(current); return; }
+    current += diff * 0.22;
+    draw(current);
+    raf = requestAnimationFrame(tick);
+  }
 
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('wheel', update, { passive: true });
