@@ -1006,9 +1006,9 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 
 <div class="hero-track" id="heroTrack">
 <div class="hero hero-stage" id="heroStage">
-  <div class="hero-media-video">
-    <video id="heroVideo" class="hero-video" muted playsinline loop disablepictureinpicture preload="auto" src="assets/video/autonomous-drive-pov.mp4"></video>
-
+    <div class="hero-media-video">
+    <img id="heroPoster" class="hero-poster" src="assets/video/autonomous-sedan-poster-v3.webp" alt="" aria-hidden="true">
+    <canvas id="heroScrub" class="hero-video" width="960" height="540"></canvas>
   </div>
   <div class="hero-shade"></div>
   <div class="hero-edge-fade" aria-hidden="true"></div>
