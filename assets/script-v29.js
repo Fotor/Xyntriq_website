@@ -191,3 +191,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) close();
   });
 })();
+
+
+// Premium interactions: cursor-tracked card glow + 3D tilt + magnetic buttons (skipped for reduced motion)
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.card, .p-card, .why-col').forEach(function (c) {
+    c.addEventListener('mousemove', function (e) {
+      var r = c.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      c.style.transform = 'perspective(900px) rotateX(' + (-y * 7).toFixed(2) + 'deg) rotateY(' + (x * 7).toFixed(2) + 'deg) translateY(-4px)';
+    });
+    c.addEventListener('mouseleave', function () { c.style.transform = ''; });
+  });
+  document.querySelectorAll('.cta, .nav-cta').forEach(function (b) {
+    b.addEventListener('mousemove', function (e) {
+      var r = b.getBoundingClientRect();
+      var x = (e.clientX - r.left - r.width / 2) * 0.18;
+      var y = (e.clientY - r.top - r.height / 2) * 0.28;
+      b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+    });
+    b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+  });
+})();
