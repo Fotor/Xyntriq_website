@@ -5,7 +5,6 @@
 ## Services
 - [Data Annotation](https://xyntriq.in/services): image, video, text, audio, LiDAR, point cloud and multimodal annotation
 - [Data Collection](https://xyntriq.in/services): custom image, video, egocentric (POV), audio and sensor data across LATAM and India
-- [Video Data (POV)](https://xyntriq.in/video-data): consented first-person video datasets
 - [Industries](https://xyntriq.in/industries): healthcare, dental, automotive, agriculture, geospatial, retail, finance
 - [Security & Compliance](https://xyntriq.in/security): NDA-first engagements, India data residency, consent management
 - [Contributors](https://xyntriq.in/contributors): paid remote contributor program in Latin America
