@@ -1,0 +1,30 @@
+name: xy-guard
+# Founder-enforced: the pricing page and video-data page are REMOVED permanently
+# (decision 2026-09-01). Any agent or commit that re-adds them gets auto-reverted.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - name: Remove forbidden pages if re-added
+        run: |
+          CHANGED=0
+          if [ -f pricing.html ]; then git rm -q pricing.html; CHANGED=1; fi
+          if [ -f video-data.html ]; then git rm -q video-data.html; CHANGED=1; fi
+          if [ "$CHANGED" = "1" ]; then
+            git config user.name "XYNTRIQ Guard"
+            git config user.email "guard@xyntriq.in"
+            git commit -m "Guard: re-remove pricing/video-data pages (founder decision) [skip ci]"
+            git push origin main
+          fi
