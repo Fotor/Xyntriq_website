@@ -9,6 +9,11 @@
 - [Security & Compliance](https://xyntriq.in/security): NDA-first engagements, India data residency, consent management
 - [Contributors](https://xyntriq.in/contributors): paid remote contributor program in Latin America
 
+## Guides
+- [Phone-Based POV Video Data vs Traditional Collection Models](https://xyntriq.in/phone-based-pov-vs-traditional-models): the four training-data sourcing models compared — crowd platforms, studio collection, managed labeling, phone-based networks
+- [Crowd Platforms vs Managed Phone-Based Networks](https://xyntriq.in/crowd-platforms-vs-managed-phone-networks): workforce, coverage, rights, cost and speed to pilot compared
+- [Studio Collection vs Phone-Captured POV Video](https://xyntriq.in/studio-collection-vs-phone-captured-pov): realism, cost, consent and turnaround compared
+
 ## Key facts
 - Pilot-first engagements: a small pilot batch before full production, with a quote typically within 48 hours of reviewing your sample.
 - Multi-tier quality control with expert human review and batch-level traceability.
