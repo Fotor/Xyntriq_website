@@ -501,6 +501,9 @@ nav a:hover, nav a.active { color: var(--text); }
 @keyframes heroBreath { from { transform: scale(1); } to { transform: scale(1.06); } }
 .hero-track.hero-static .hero-poster { animation: heroBreath 16s ease-in-out infinite alternate; will-change: transform; }
 @media (prefers-reduced-motion: reduce) { .hero-track.hero-static .hero-poster { animation: none; } }
+/* Static hero (mobile): lightweight looping video instead of the frame scrub */
+.hero-video-mob { display: none; }
+.hero-track.hero-static .hero-video-mob { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3; }
 .hero-media-video { position: absolute; inset: 0; z-index: 0; }
 .hero-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
@@ -1020,6 +1023,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   <div class="hero-media-video">
     <img id="heroPoster" class="hero-poster" src="assets/video/autonomous-sedan-poster-v3.webp" alt="" aria-hidden="true" fetchpriority="high">
     <canvas id="heroScrub" class="hero-video" width="960" height="540"></canvas>
+    <video id="heroVideo" class="hero-video-mob" src="assets/video/autonomous-drive-pov-480p.mp4" poster="assets/video/autonomous-sedan-poster-v3.webp" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
   <div class="hero-shade"></div>
   <div class="hero-edge-fade" aria-hidden="true"></div>
@@ -1312,6 +1316,6 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   </div>
 </footer>
 
-<script defer src="assets/script-v30.js?v=30"></script>
+<script defer src="assets/script-v31.js?v=31"></script>
 </body>
 </html>
