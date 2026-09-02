@@ -28,6 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
   var canvas = document.getElementById('heroScrub');
   var poster = document.getElementById('heroPoster');
   if (!track || !canvas) return;
+
+  // Touch / small screens: skip the frame scrub entirely (9MB+ of WebP frames
+  // + per-scroll canvas decode). Show the preloaded poster with a CSS zoom.
+  var coarse = (window.matchMedia && (matchMedia('(pointer: coarse)').matches || matchMedia('(max-width: 900px)').matches)) || (window.innerWidth <= 900);
+  if (coarse) {
+    track.classList.add('hero-static');
+    return;
+  }
+
   var N = 192, DIR = 'assets/video/scrub-frames-v3/';
   var frames = [];
   var lastDrawn = -1;
@@ -94,7 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
     startAt = end + 1;
     if (startAt <= N) setTimeout(loadNext, 50);
   }
-  setTimeout(loadNext, 50);
+  // Defer the 9MB frame download: the poster already covers the first viewport.
+  // Start loading on the user's first scroll, or shortly after full page load.
+  var started = false;
+  function startLoad() {
+    if (started) return;
+    started = true;
+    window.removeEventListener('scroll', startLoad);
+    loadNext();
+  }
+  window.addEventListener('scroll', startLoad, { passive: true, once: true });
+  window.addEventListener('load', function () { setTimeout(startLoad, 800); });
 
   var target = 0, current = 0, raf = null;
 
