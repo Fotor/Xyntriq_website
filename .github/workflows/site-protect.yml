@@ -1,12 +1,17 @@
 name: xy-site-protect
 # Founder-enforced (2026-09-03): NO agent may delete or remove anything from the
 # website. Additions and edits are allowed. This guard auto-restores any file
-# that gets deleted/renamed, and any HTML edit that removes core footer links
-# or other protected invariants. Founder-approved permanent removals live in
+# that gets deleted/renamed, and any HTML edit that removes core footer links or
+# protected invariants. Founder-approved permanent removals live in
 # .github/site-delete-allowlist.txt and are exempt.
+# Two paths: (1) fast check on every push to main; (2) hourly scheduled sweep
+# that also catches commits using "[skip ci]" which bypass push triggers.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,30 +27,20 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 3
+          fetch-depth: 0   # full history needed by the hourly sweep
 
       - name: Audit & auto-restore deletions / removals
         run: |
           python3 - <<'PY'
-          import os, re, subprocess, sys
+          import os, subprocess, sys
 
           def sh(*a, check=False):
               r = subprocess.run(a, capture_output=True, text=True)
               if check and r.returncode != 0:
                   raise RuntimeError(r.stderr)
-              return r.stdout
+              return r.stdout.strip()
 
-          prev = sh("git", "rev-parse", "HEAD~1").strip()
-          if not prev:
-              print("site-guard: no previous commit; skip")
-              sys.exit(0)
-
-          status = sh("git", "diff", "--name-status", "-M", "HEAD~1", "HEAD").splitlines()
-          deleted = []
-          for line in status:
-              parts = line.split("\t")
-              if parts and parts[0][0] in ("D", "R"):
-                  deleted.append(parts[1])
+          EVENT = os.environ.get("GITHUB_EVENT_NAME", "push")
 
           allowed = []
           try:
@@ -65,8 +60,6 @@ jobs:
                       return True
               return False
 
-          restore = [p for p in deleted if not is_allowed(p)]
-
           tokens = [
               'href="about">About</a>', 'href="security">Data Security</a>',
               'href="careers">Careers</a>', 'href="news">News</a>',
@@ -76,22 +69,59 @@ jobs:
               'href="privacy">Privacy Policy</a>', 'href="cookies">Cookie Policy</a>',
               'href="acceptable-use">Acceptable Use Policy</a>',
           ]
-          changed_files = []
-          for line in status:
-              parts = line.split("\t")
-              if parts and parts[0][0] in ("M", "A", "R") and parts[-1].endswith(".html"):
-                  changed_files.append(parts[-1])
 
-          for f in sorted(set(changed_files)):
-              head = sh("git", "show", "HEAD:" + f)
-              base = sh("git", "show", "HEAD~1:" + f)
-              if not head or not base:
-                  continue  # added (base empty) or removed already handled
-              for t in tokens:
-                  if head.count(t) < base.count(t):
-                      restore.append(f)
-                      break
+          def count_tokens(text):
+              return sum(text.count(t) for t in tokens)
 
+          def last_touch(path):
+              return sh("git", "log", "--format=%H", "-1", "--", path)
+
+          restore = set()
+
+          # ---------- PUSH fast path: compare HEAD vs HEAD~1 ----------
+          if EVENT == "push":
+              prev = sh("git", "rev-parse", "HEAD~1")
+              if prev:
+                  status = sh("git", "diff", "--name-status", "-M", "HEAD~1", "HEAD").splitlines()
+                  for line in status:
+                      parts = line.split("\t")
+                      if not parts:
+                          continue
+                      typ = parts[0][0]
+                      if typ in ("D", "R"):
+                          path = parts[1]
+                          if not is_allowed(path):
+                              restore.add(path)
+                  for line in status:
+                      parts = line.split("\t")
+                      if parts and parts[0][0] in ("M", "A", "R") and parts[-1].endswith(".html"):
+                          f = parts[-1]
+                          head = sh("git", "show", "HEAD:" + f)
+                          base = sh("git", "show", "HEAD~1:" + f)
+                          if head and base and count_tokens(head) < count_tokens(base):
+                              restore.add(f)
+          # ---------- SCHEDULED/DISPATCH sweep: compare vs last-touch parent ----------
+          else:
+              tracked = sh("git", "ls-files").splitlines()
+              for path in tracked:
+                  if is_allowed(path):
+                      continue
+                  if not os.path.exists(path):
+                      restore.add(path)
+                      continue
+                  if path.endswith(".html"):
+                      touch = last_touch(path)
+                      if not touch:
+                          continue
+                      parent = sh("git", "rev-parse", touch + "^")
+                      if not parent:
+                          continue
+                      head = open(path, encoding="utf-8", errors="replace").read()
+                      base = sh("git", "show", parent + ":" + path)
+                      if base and count_tokens(head) < count_tokens(base):
+                          restore.add(path)
+
+          # ---------- founder-forbidden pages stay absent ----------
           forbidden = ["pricing.html", "video-data.html", "contributor-dashboard.html",
                        "assets/contributor-dashboard.js", "assets/supabase-config.js",
                        "assets/contributor-signup.js"]
@@ -101,16 +131,26 @@ jobs:
                   os.remove(f)
                   removed_forbidden.append(f)
 
-          restore = [f for f in sorted(set(restore)) if f not in forbidden]
+          restore = sorted(p for p in restore if p not in forbidden)
           if not restore and not removed_forbidden:
               print("site-guard: OK - nothing to restore")
               sys.exit(0)
 
-          for f in restore:
-              try:
-                  sh("git", "checkout", "HEAD~1", "--", f, check=True)
-              except Exception as e:
-                  print("site-guard: skip restore for", f, "->", e)
+          # restore from the commit right before the file's last touch (has content)
+          for f in list(restore):
+              touch = last_touch(f)
+              src = None
+              if touch:
+                  src = sh("git", "rev-parse", touch + "^")
+              if src:
+                  try:
+                      sh("git", "checkout", src, "--", f, check=True)
+                      print("restore", f, "from", src[:7])
+                  except Exception as e:
+                      print("skip", f, "->", e)
+                      restore.discard(f)
+              else:
+                  restore.discard(f)
 
           if not sh("git", "status", "--porcelain").strip():
               print("site-guard: OK (no changes needed)")
