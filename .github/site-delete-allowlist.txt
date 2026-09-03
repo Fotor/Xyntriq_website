@@ -1,0 +1,10 @@
+# XYNTRIQ Site Guard - founder-approved permanent removals.
+# Anything listed here (or under these paths) may be deleted by agents without auto-restore.
+# NEVER add paths here without an explicit founder instruction.
+#
+pricing.html
+video-data.html
+contributor-dashboard.html
+assets/contributor-dashboard.js
+assets/supabase-config.js
+assets/contributor-signup.js
