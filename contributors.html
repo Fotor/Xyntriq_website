@@ -960,31 +960,93 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 </div>
 
 <div class="page-hero">
-  <div class="wrap"><div class="eyebrow">India + LATAM · Record videos · No experience needed</div><h1>Become a POV video contributor</h1><p>Record first-person videos on your phone for AI training data and earn from home. XYNTRIQ is accepting contributors across India and Latin America.</p></div>
+  <div class="wrap"><div class="eyebrow">India + LATAM · Record videos · No experience needed</div><h1>Become a POV video contributor</h1><p>Record first-person videos on your phone for AI training data and earn from home. XYNTRIQ is accepting contributors across India and Latin America.</p><div class="cta-row" style="margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;"><a class="cta" href="https://forms.gle/TbTgYwHvJNVHzK5o7" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_india',{event_category:'contributor',event_label:'hero'});">Apply for India</a><a class="cta" href="https://forms.gle/oqPoz2U66rYEzkWv8" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_latam',{event_category:'contributor',event_label:'hero'});">Apply for LATAM</a></div></div>
 </div>
 
 <section id="signup" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Choose your region</div>
-      <h2>Contributor Registration</h2>
-      <p>Registration is open in <strong>India</strong> and <strong>Latin America (LATAM)</strong>. Select your region to open the correct registration form — it takes about two minutes.</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-bottom:26px;flex-wrap:wrap;">
+      <button type="button" onclick="i18n('en')" style="border:1px solid #94a3b8;color:#0f172a;border-radius:999px;padding:8px 18px;cursor:pointer;background:#fff;font-weight:600;">English</button>
+      <button type="button" onclick="i18n('es')" style="border:1px solid #94a3b8;color:#0f172a;border-radius:999px;padding:8px 18px;cursor:pointer;background:#fff;font-weight:600;">Español</button>
+      <button type="button" onclick="i18n('pt')" style="border:1px solid #94a3b8;color:#0f172a;border-radius:999px;padding:8px 18px;cursor:pointer;background:#fff;font-weight:600;">Português</button>
     </div>
 
-    <div class="grid g2" style="max-width:880px;margin:0 auto;">
-      <div class="card reveal" style="text-align:center;padding:38px 30px;">
-        <div class="eyebrow" style="margin-bottom:12px;">India</div>
-        <h3 style="font-size:30px;margin-bottom:12px;">India</h3>
-        <p style="margin-bottom:24px;color:#666;">Open to contributors across India — record from home on your own schedule.</p>
-        <a class="cta" href="https://forms.gle/TbTgYwHvJNVHzK5o7" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_india',{event_category:'contributor',event_label:'region-gate'});">Apply — India</a>
+    <div id="i18n-en">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Choose your region</div>
+        <h2>Contributor Registration</h2>
+        <p>Registration is open in <strong>India</strong> and <strong>Latin America (LATAM)</strong>. Select your region to open the correct registration form — it takes about two minutes.</p>
       </div>
-      <div class="card reveal" style="text-align:center;padding:38px 30px;">
-        <div class="eyebrow" style="margin-bottom:12px;">Latin America</div>
-        <h3 style="font-size:30px;margin-bottom:12px;">LATAM</h3>
-        <p style="margin-bottom:24px;color:#666;">Open to contributors across Latin America — Spanish- and Portuguese-speaking countries welcome.</p>
-        <a class="cta" href="https://forms.gle/oqPoz2U66rYEzkWv8" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_latam',{event_category:'contributor',event_label:'region-gate'});">Apply — LATAM</a>
+
+      <div class="grid g2" style="max-width:880px;margin:0 auto;">
+        <div class="card reveal" style="text-align:center;padding:38px 30px;">
+          <div class="eyebrow" style="margin-bottom:12px;">India</div>
+          <h3 style="font-size:30px;margin-bottom:12px;">India</h3>
+          <p style="margin-bottom:24px;color:#666;">Open to contributors across India — record from home on your own schedule.</p>
+          <a class="cta" href="https://forms.gle/TbTgYwHvJNVHzK5o7" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_india',{event_category:'contributor',event_label:'region-gate'});">Apply — India</a>
+        </div>
+        <div class="card reveal" style="text-align:center;padding:38px 30px;">
+          <div class="eyebrow" style="margin-bottom:12px;">Latin America</div>
+          <h3 style="font-size:30px;margin-bottom:12px;">LATAM</h3>
+          <p style="margin-bottom:24px;color:#666;">Open to contributors across Latin America — Spanish- and Portuguese-speaking countries welcome.</p>
+          <a class="cta" href="https://forms.gle/oqPoz2U66rYEzkWv8" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_latam',{event_category:'contributor',event_label:'region-gate'});">Apply — LATAM</a>
+        </div>
       </div>
+
+      <p style="margin:24px auto 0;max-width:780px;text-align:center;color:#475569;font-size:15px;line-height:1.8;"><strong>Who can apply</strong> — 18+, residents of India or Latin America · <strong>What you need</strong> — an eligible smartphone + basic head mount · <strong>How it works</strong> — apply, we verify, then onboarding &amp; training · <strong>Pay</strong> — per approved video hour, paid weekly</p>
     </div>
+
+    <div id="i18n-es" style="display:none;">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Elige tu región</div>
+        <h2>Registro de Colaboradores</h2>
+        <p>La inscripción está abierta en <strong>India</strong> y <strong>América Latina (LATAM)</strong>. Selecciona tu región para abrir el formulario correcto — solo toma unos dos minutos.</p>
+      </div>
+
+      <div class="grid g2" style="max-width:880px;margin:0 auto;">
+        <div class="card reveal" style="text-align:center;padding:38px 30px;">
+          <div class="eyebrow" style="margin-bottom:12px;">India</div>
+          <h3 style="font-size:30px;margin-bottom:12px;">India</h3>
+          <p style="margin-bottom:24px;color:#666;">Abierto a colaboradores en toda India — graba desde casa en tu propio horario.</p>
+          <a class="cta" href="https://forms.gle/TbTgYwHvJNVHzK5o7" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_india',{event_category:'contributor',event_label:'region-gate'});">Postular — India</a>
+        </div>
+        <div class="card reveal" style="text-align:center;padding:38px 30px;">
+          <div class="eyebrow" style="margin-bottom:12px;">América Latina</div>
+          <h3 style="font-size:30px;margin-bottom:12px;">LATAM</h3>
+          <p style="margin-bottom:24px;color:#666;">Abierto a colaboradores en toda América Latina — países de habla hispana y portuguesa son bienvenidos.</p>
+          <a class="cta" href="https://forms.gle/oqPoz2U66rYEzkWv8" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_latam',{event_category:'contributor',event_label:'region-gate'});">Postular — LATAM</a>
+        </div>
+      </div>
+
+      <p style="margin:24px auto 0;max-width:780px;text-align:center;color:#475569;font-size:15px;line-height:1.8;"><strong>Quién puede aplicar</strong> — mayores de 18 en India o América Latina · <strong>Qué necesitas</strong> — un smartphone compatible y un soporte de cabeza · <strong>Cómo funciona</strong> — aplica, verificamos y te capacitamos · <strong>Pago</strong> — por hora de video aprobada, pagos semanales</p>
+    </div>
+
+    <div id="i18n-pt" style="display:none;">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Escolha sua região</div>
+        <h2>Cadastro de Colaboradores</h2>
+        <p>As inscrições estão abertas na <strong>Índia</strong> e na <strong>América Latina (LATAM)</strong>. Selecione sua região para abrir o formulário correto — leva cerca de dois minutos.</p>
+      </div>
+
+      <div class="grid g2" style="max-width:880px;margin:0 auto;">
+        <div class="card reveal" style="text-align:center;padding:38px 30px;">
+          <div class="eyebrow" style="margin-bottom:12px;">Índia</div>
+          <h3 style="font-size:30px;margin-bottom:12px;">Índia</h3>
+          <p style="margin-bottom:24px;color:#666;">Aberto a colaboradores em toda a Índia — grave de casa, no seu próprio horário.</p>
+          <a class="cta" href="https://forms.gle/TbTgYwHvJNVHzK5o7" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_india',{event_category:'contributor',event_label:'region-gate'});">Inscrever — Índia</a>
+        </div>
+        <div class="card reveal" style="text-align:center;padding:38px 30px;">
+          <div class="eyebrow" style="margin-bottom:12px;">América Latina</div>
+          <h3 style="font-size:30px;margin-bottom:12px;">LATAM</h3>
+          <p style="margin-bottom:24px;color:#666;">Aberto a colaboradores em toda a América Latina — países de língua espanhola e portuguesa são bem-vindos.</p>
+          <a class="cta" href="https://forms.gle/oqPoz2U66rYEzkWv8" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_latam',{event_category:'contributor',event_label:'region-gate'});">Inscrever — LATAM</a>
+        </div>
+      </div>
+
+      <p style="margin:24px auto 0;max-width:780px;text-align:center;color:#475569;font-size:15px;line-height:1.8;"><strong>Quem pode participar</strong> — maiores de 18 anos na Índia ou América Latina · <strong>O que você precisa</strong> — um smartphone compatível e um suporte para a cabeça · <strong>Como funciona</strong> — inscreva-se, verificamos e você recebe o treinamento · <strong>Pagamento</strong> — por hora de vídeo aprovada, pagamentos semanais</p>
+    </div>
+
+    <script>(function(){window.i18n=function(l){['en','es','pt'].forEach(function(k){var e=document.getElementById('i18n-'+k);if(e){e.style.display=(k===l)?'':'none';}});};})();</script>
   </div>
 </section>
 
@@ -1011,11 +1073,6 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <div class="app-coming-soon" style="margin-bottom:30px; padding:20px; background:rgba(0,0,0,0.05); border-radius:8px;">
         <h3>XYNTRIQ App: Coming Soon</h3>
         <p>The XYNTRIQ data-collection app is being prepared for data collectors and data collection; it is coming soon and not yet available.</p>
-      </div>
-      <div class="join-group">
-        <h3>Join the Group</h3>
-        <p>Apply through your region's form above first — verified applicants receive the WhatsApp group invite automatically after submitting.</p>
-        <a class="cta" href="#signup" onclick="gtag('event','join_group_cta',{event_category:'contributor',event_label:'join-group'});">Choose your region</a>
       </div>
     </div>
   </div>
@@ -1060,7 +1117,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       </div>
       <div><h4>Services</h4><a href="services">Annotation</a><a href="services">Collection</a><a href="services">POV Video</a><a href="services">Validation</a></div>
       <div><h4>Company</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;white-space:nowrap;"><div class="foot-sub"><a href="about">About</a><a href="security">Data Security</a><a href="careers">Careers</a><a href="news">News</a></div><div class="foot-sub"><a href="industries">Industries</a><a href="contributors">Contributors</a><a href="resources">Resources</a><a href="as-seen-on">As Seen On</a><a href="contact">Contact</a></div></div></div>
-      <div><h4>Contact</h4><a href="https://wa.me/919217919818">+91 92179 19818</a><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8" style="color:var(--teal);font-weight:600;">Become a Vendor</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
+      <div><h4>Contact</h4><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8" style="color:var(--teal);font-weight:600;">Become a Vendor</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
     </div>
     <div class="foot-bottom"><span>© <span id="yr"></span> XYNTRIQ. All rights reserved.</span></div>
   </div>
