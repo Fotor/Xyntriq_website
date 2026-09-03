@@ -8,3 +8,5 @@ contributor-dashboard.html
 assets/contributor-dashboard.js
 assets/supabase-config.js
 assets/contributor-signup.js
+# Guard self-test artifact (keep absent; delete test used skip-ci path)
+.github/scratch-guard-test.txt
