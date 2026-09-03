@@ -1046,7 +1046,19 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <p style="margin:24px auto 0;max-width:780px;text-align:center;color:#475569;font-size:15px;line-height:1.8;"><strong>Quem pode participar</strong> — maiores de 18 anos na Índia ou América Latina · <strong>O que você precisa</strong> — um smartphone compatível e um suporte para a cabeça · <strong>Como funciona</strong> — inscreva-se, verificamos e você recebe o treinamento · <strong>Pagamento</strong> — por hora de vídeo aprovada, pagamentos semanais</p>
     </div>
 
-    <script>(function(){window.i18n=function(l){['en','es','pt'].forEach(function(k){var e=document.getElementById('i18n-'+k);if(e){e.style.display=(k===l)?'':'none';}});};})();</script>
+    <script>(function(){
+      function current(){
+        var s = null; try { s = localStorage.getItem('xyntriq_lang'); } catch (e) {}
+        if (s && ['en','es','pt'].indexOf(s) > -1) { return s; }
+        var l = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        if (l.indexOf('es') === 0) { return 'es'; }
+        if (l.indexOf('pt') === 0) { return 'pt'; }
+        return 'en';
+      }
+      function show(l){ ['en','es','pt'].forEach(function(k){ var e = document.getElementById('i18n-' + k); if (e) { e.style.display = (k === l) ? '' : 'none'; } }); }
+      window.i18n = function(l){ show(l); try { localStorage.setItem('xyntriq_lang', l); } catch (e) {} };
+      show(current());
+    })();</script>
   </div>
 </section>
 
@@ -1096,9 +1108,9 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   <div class="wrap">
     <div class="cta-band reveal">
       <div class="eyebrow">Vendors &amp; recruitment agencies — India &amp; LATAM</div>
-      <h2>Vendor Registration</h2>
+      <h2>Become a Vendor</h2>
       <p>We work with vendors and recruitment agencies across India and Latin America. If your team or agency can supply data collection, annotation, and POV video services — or recruit contributors at scale — register as a vendor. You'll be contacted for future project availability based on your capability.</p>
-      <a class="cta" href="https://forms.gle/KQkQXGjdAL577Ueb8" target="_blank" rel="noopener">Vendor Registration</a>
+      <a class="cta" href="https://forms.gle/KQkQXGjdAL577Ueb8" target="_blank" rel="noopener">Become a Vendor</a>
     </div>
   </div>
 </section>
@@ -1117,7 +1129,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       </div>
       <div><h4>Services</h4><a href="services">Annotation</a><a href="services">Collection</a><a href="services">POV Video</a><a href="services">Validation</a></div>
       <div><h4>Company</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;white-space:nowrap;"><div class="foot-sub"><a href="about">About</a><a href="security">Data Security</a><a href="careers">Careers</a><a href="news">News</a></div><div class="foot-sub"><a href="industries">Industries</a><a href="contributors">Contributors</a><a href="resources">Resources</a><a href="as-seen-on">As Seen On</a><a href="contact">Contact</a></div></div></div>
-      <div><h4>Contact</h4><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8" style="color:var(--teal);font-weight:600;">Vendor Registration</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
+      <div><h4>Contact</h4><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8" style="color:var(--teal);font-weight:600;">Become a Vendor</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
     </div>
     <div class="foot-bottom"><span>© <span id="yr"></span> XYNTRIQ. All rights reserved.</span></div>
   </div>
