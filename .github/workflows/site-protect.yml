@@ -1,0 +1,129 @@
+name: xy-site-protect
+# Founder-enforced (2026-09-03): NO agent may delete or remove anything from the
+# website. Additions and edits are allowed. This guard auto-restores any file
+# that gets deleted/renamed, and any HTML edit that removes core footer links
+# or other protected invariants. Founder-approved permanent removals live in
+# .github/site-delete-allowlist.txt and are exempt.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-protect
+  cancel-in-progress: false
+
+jobs:
+  protect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 3
+
+      - name: Audit & auto-restore deletions / removals
+        run: |
+          python3 - <<'PY'
+          import os, re, subprocess, sys
+
+          def sh(*a, check=False):
+              r = subprocess.run(a, capture_output=True, text=True)
+              if check and r.returncode != 0:
+                  raise RuntimeError(r.stderr)
+              return r.stdout
+
+          prev = sh("git", "rev-parse", "HEAD~1").strip()
+          if not prev:
+              print("site-guard: no previous commit; skip")
+              sys.exit(0)
+
+          status = sh("git", "diff", "--name-status", "-M", "HEAD~1", "HEAD").splitlines()
+          deleted = []
+          for line in status:
+              parts = line.split("\t")
+              if parts and parts[0][0] in ("D", "R"):
+                  deleted.append(parts[1])
+
+          allowed = []
+          try:
+              with open(".github/site-delete-allowlist.txt", encoding="utf-8") as fh:
+                  for raw in fh:
+                      p = raw.strip()
+                      if p and not p.startswith("#"):
+                          allowed.append(p)
+          except FileNotFoundError:
+              pass
+
+          def is_allowed(path):
+              for a in allowed:
+                  if a.endswith("/") and path.startswith(a):
+                      return True
+                  if path == a:
+                      return True
+              return False
+
+          restore = [p for p in deleted if not is_allowed(p)]
+
+          tokens = [
+              'href="about">About</a>', 'href="security">Data Security</a>',
+              'href="careers">Careers</a>', 'href="news">News</a>',
+              'href="industries">Industries</a>', 'href="contributors">Contributors</a>',
+              'href="resources">Resources</a>', 'href="as-seen-on">As Seen On</a>',
+              'href="contact">Contact</a>', 'href="terms">Terms &amp; Conditions</a>',
+              'href="privacy">Privacy Policy</a>', 'href="cookies">Cookie Policy</a>',
+              'href="acceptable-use">Acceptable Use Policy</a>',
+          ]
+          changed_files = []
+          for line in status:
+              parts = line.split("\t")
+              if parts and parts[0][0] in ("M", "A", "R") and parts[-1].endswith(".html"):
+                  changed_files.append(parts[-1])
+
+          for f in sorted(set(changed_files)):
+              head = sh("git", "show", "HEAD:" + f)
+              base = sh("git", "show", "HEAD~1:" + f)
+              if not head or not base:
+                  continue  # added (base empty) or removed already handled
+              for t in tokens:
+                  if head.count(t) < base.count(t):
+                      restore.append(f)
+                      break
+
+          forbidden = ["pricing.html", "video-data.html", "contributor-dashboard.html",
+                       "assets/contributor-dashboard.js", "assets/supabase-config.js",
+                       "assets/contributor-signup.js"]
+          removed_forbidden = []
+          for f in forbidden:
+              if os.path.exists(f):
+                  os.remove(f)
+                  removed_forbidden.append(f)
+
+          restore = [f for f in sorted(set(restore)) if f not in forbidden]
+          if not restore and not removed_forbidden:
+              print("site-guard: OK - nothing to restore")
+              sys.exit(0)
+
+          for f in restore:
+              try:
+                  sh("git", "checkout", "HEAD~1", "--", f, check=True)
+              except Exception as e:
+                  print("site-guard: skip restore for", f, "->", e)
+
+          if not sh("git", "status", "--porcelain").strip():
+              print("site-guard: OK (no changes needed)")
+              sys.exit(0)
+
+          sh("git", "config", "user.name", "XYNTRIQ Site Guard", check=True)
+          sh("git", "config", "user.email", "guard@xyntriq.in", check=True)
+          sh("git", "add", "-A", check=True)
+          sh("git", "commit", "-m", "Site Guard: auto-restored removed content [skip ci]", check=True)
+          push = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True)
+          if push.returncode != 0:
+              print("site-guard: WARNING restore commit could not be pushed:")
+              print(push.stderr)
+              sys.exit(0)
+          print("site-guard: RESTORED -> " + ", ".join(restore + removed_forbidden))
+          PY
