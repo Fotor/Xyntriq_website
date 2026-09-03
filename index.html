@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-0XEGY7LEF4');
 </script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com https://launchbuff.com https://postyourstartup.co https://launchnest.io https://www.stork.ai https://1000ai.best; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>XYNTRIQ · AI Data Annotation &amp; Collection</title>
 <meta name="description" content="XYNTRIQ is a Udyam-registered AI data annotation and collection company trusted by enterprises and government programs for image, video, text, audio, and LiDAR annotation, plus consented first-person (POV) video datasets, across LATAM and India.">
@@ -24,7 +24,7 @@ gtag('config', 'G-0XEGY7LEF4');
 <meta name="keywords" content="data annotation, annotation services, ai data annotation, data collection, pov video data, image annotation, video annotation, egocentric video dataset">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/video/autonomous-sedan-poster-v2.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/video/autonomous-sedan-poster-v3.webp" fetchpriority="high">
 <style>
 /* Google Fonts CSS inlined */
 /* cyrillic-ext */
@@ -493,6 +493,17 @@ nav a:hover, nav a.active { color: var(--text); }
 .hero-track { position: relative; height: 300vh; }
 .hero { position: sticky; top: 0; height: 100vh; height: 100svh; text-align: center; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .hero-track { height: 100vh; } }
+/* Static hero (touch/small screens): poster only, no 9MB frame scrub */
+.hero-track.hero-static { height: 100vh; height: 100svh; }
+.hero-track.hero-static .hero-stage { position: relative; }
+.hero-track.hero-static .hero-video { display: none; }
+.hero-track.hero-static .hero-poster { z-index: 2; }
+@keyframes heroBreath { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-track.hero-static .hero-poster { animation: heroBreath 16s ease-in-out infinite alternate; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .hero-track.hero-static .hero-poster { animation: none; } }
+/* Static hero (mobile): lightweight looping video instead of the frame scrub */
+.hero-video-mob { display: none; }
+.hero-track.hero-static .hero-video-mob { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3; }
 .hero-media-video { position: absolute; inset: 0; z-index: 0; }
 .hero-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
@@ -626,7 +637,7 @@ section { padding: 80px 0; }
 
 /* footer */
 footer { background: #070b10; border-top: 1px solid var(--line); padding: 56px 0 36px; }
-.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+.foot-grid { display: grid; grid-template-columns: 2fr auto auto auto auto; gap: 40px; margin-bottom: 40px; }
 .foot-grid > div:nth-child(n+2) { display: grid; grid-template-columns: 1fr; column-gap: 28px; row-gap: 10px; align-items: start; }
 .foot-grid > div:nth-child(n+2) a { margin: 0; }
 .foot-grid h4 { grid-column: 1 / -1; }
@@ -860,7 +871,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   "logo": "https://xyntriq.in/assets/logo-v2.png",
   "description": "AI data annotation and collection company delivering image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets.",
   "email": "sales@xyntriq.in",
-  "sameAs": ["https://www.linkedin.com/company/xyntriq", "https://wellfound.com/company/xyntriq"],
+  "sameAs": ["https://www.linkedin.com/company/xyntriq"],
   "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "sales@xyntriq.in", "url": "https://xyntriq.in/contact"},
   "address": {"@type": "PostalAddress", "addressCountry": "IN"},
   "makesOffer": [
@@ -890,15 +901,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
         "text": "It records real-world tasks from a person's own point of view using a head-mounted smartphone, producing egocentric video used to train computer-vision models."
       }
     },
-    {
-      "@type": "Question",
-      "name": "Can I earn money recording videos for AI training?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. XYNTRIQ compensates contributors for approved video hours, with weekly payouts."
-      }
-    },
-    {
+        {
       "@type": "Question",
       "name": "What is consented AI training data?",
       "acceptedAnswer": {
@@ -986,33 +989,32 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <a href="/" class="active">Home</a>
       <a href="services">Services</a>
       <a href="industries">Industries</a>
-      <a href="video-data">Video Data</a>
+      <a href="news">News</a>
       <a href="about">About</a>
       <a href="contributors">Contributors</a>
       <a href="security">Security</a>
       <a href="careers">Careers</a>
       <a href="contact">Contact</a>
     </nav>
-    <div class="nav-actions"><a class="nav-cta" href="contact">Get Started</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+    <div class="nav-actions"><a class="nav-cta" href="request-sample">Sample Batch</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="/" class="active">Home</a>
     <a href="services">Services</a>
     <a href="industries">Industries</a>
-    <a href="video-data">Video Data</a>
+    <a href="news">News</a>
     <a href="about">About</a>
     <a href="contributors">Contributors</a>
     <a href="security">Security</a>
     <a href="careers">Careers</a>
     <a href="contact">Contact</a>
-    <a class="mm-cta" href="contact">Get Started</a>
+    <a class="mm-cta" href="request-sample">Request a Sample Batch</a>
   </div>
 </header>
 
 <div class="launch-bar" id="launch-bar" role="region" aria-label="XYNTRIQ app launch announcement">
   <div class="launch-bar-inner">
-    <p class="launch-bar-text">XYNTRIQ app launching across India &amp; LATAM. Register for early access and launch details</p>
-    <a class="launch-bar-btn" href="https://forms.gle/NMUQicnrSyUBce28A" target="_blank" rel="noopener">Register Now</a>
+    <p class="launch-bar-text">XYNTRIQ app launching across India &amp; LATAM — contributor registration is open now.</p>
   </div>
 </div>
 
@@ -1021,6 +1023,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   <div class="hero-media-video">
     <img id="heroPoster" class="hero-poster" src="assets/video/autonomous-sedan-poster-v3.webp" alt="" aria-hidden="true" fetchpriority="high">
     <canvas id="heroScrub" class="hero-video" width="960" height="540"></canvas>
+    <video id="heroVideo" class="hero-video-mob" src="assets/video/autonomous-drive-pov-480p.mp4" poster="assets/video/autonomous-sedan-poster-v3.webp" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
   <div class="hero-shade"></div>
   <div class="hero-edge-fade" aria-hidden="true"></div>
@@ -1247,13 +1250,31 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   </div>
 </section>
 
+<section id="earn">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div class="eyebrow">Contributor network</div>
+      <h2>Record everyday videos on your phone for real AI datasets</h2>
+      <p>Join the XYNTRIQ contributor network across India and LATAM. Record everyday tasks first-person (POV) with your smartphone, and help build real-world AI training datasets. A basic head mount is all you need — no professional equipment.</p>
+      <div class="compliance-strip" style="margin-top:0;margin-bottom:22px;">
+        <span>India + LATAM</span><span>Referral rewards</span><span>Full training</span>
+      </div>
+      <div class="cta-row">
+        <a class="cta" href="https://forms.gle/TbTgYwHvJNVHzK5o7" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_india',{event_category:'contributor',event_label:'earn-block'});">Apply for India</a>
+        <a class="cta" href="https://forms.gle/oqPoz2U66rYEzkWv8" target="_blank" rel="noopener" onclick="gtag('event','join_contributor_latam',{event_category:'contributor',event_label:'earn-block'});">Apply for LATAM</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contributors">
   <div class="wrap">
     <div class="cta-band reveal">
       <div class="eyebrow">Work with us</div>
       <h2>Become our vendor</h2>
       <p>Offer data collection, annotation, and POV video services for XYNTRIQ projects. Registered vendors are contacted for future project availability based on their capability.</p>
-      <a class="cta" href="https://forms.gle/KQkQXGjdAL577Ueb8" target="_blank" rel="noopener">Become a Vendor</a>
+      <a class="cta" href="https://forms.gle/KQkQXGjdAL577Ueb8" target="_blank" rel="noopener">Vendor Registration</a>
     </div>
   </div>
 </section>
@@ -1264,8 +1285,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     <div class="faq">
       <details class="faq-item reveal"><summary>What is data annotation?</summary><p>Data annotation is the process of labeling data such as images, video, text, and audio so AI models can learn from it. XYNTRIQ delivers high-accuracy annotation for production-grade models.</p></details>
       <details class="faq-item reveal"><summary>What is first-person (POV) video data collection?</summary><p>It records real-world tasks from a person's own point of view using a head-mounted smartphone, producing egocentric video used to train computer-vision models.</p></details>
-      <details class="faq-item reveal"><summary>Can I earn money recording videos for AI training?</summary>      <p>Yes. XYNTRIQ compensates contributors for approved video hours, with weekly payouts.</p></details>
-      <details class="faq-item reveal"><summary>What is consented AI training data?</summary><p>Data collected from people who have explicitly agreed to its use. This is required for ethical, compliant model training.</p></details>
+            <details class="faq-item reveal"><summary>What is consented AI training data?</summary><p>Data collected from people who have explicitly agreed to its use. This is required for ethical, compliant model training.</p></details>
       <details class="faq-item reveal"><summary>What industries do you serve?</summary><p>Healthcare and medical imaging, dental, autonomous vehicles, agriculture, geospatial, retail, finance, and more, with domain-matched annotators for each.</p></details>
       <details class="faq-item reveal"><summary>How do you ensure annotation quality?</summary><p>Multi-tier QC: guideline-driven labeling, automated validation, expert human review, and batch-level traceability with accuracy reporting.</p></details>
       <details class="faq-item reveal"><summary>How is my data kept secure?</summary><p>Every engagement is NDA-first, with controlled access, India data residency, and documented consent management for collected data.</p></details>
@@ -1274,18 +1294,6 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <details class="faq-item reveal"><summary>How fast can you start?</summary><p>As soon as we receive your sample data and guidelines. We run the pilot and return a quote typically within 48 hours of reviewing your batch.</p></details>
     </div>
   </div>
-</section>
-
-<section class="as-seen-on" style="text-align:center;padding:28px 20px;">
-  <h2 style="font-size:20px;">As seen on</h2>
-  <p style="font-size:14px;color:#666;">Featured on leading platforms:</p>
-  <p style="font-size:15px;line-height:2;">
-    <a href="https://www.producthunt.com/products/xyntriq" rel="noopener" style="margin:0 10px;">Product Hunt</a> ·
-    <a href="https://launchbuff.com/best/ai-ml" rel="noopener" style="margin:0 10px;">LaunchBuff</a> ·
-    <a href="https://indianstartupmap.com/company/xyntriq" rel="noopener" style="margin:0 10px;">Indian Startup Map</a> ·
-    <a href="https://stackscope.dev/directory/2026-08-28" rel="noopener" style="margin:0 10px;">StackScope</a> ·
-    <a href="https://wellfound.com/company/xyntriq" rel="noopener" style="margin:0 10px;">Wellfound</a>
-  </p>
 </section>
 
 <footer>
@@ -1300,14 +1308,14 @@ select option, select optgroup { background: var(--surface); color: var(--text);
           <a href="https://www.instagram.com/xyn_triq?igsh=MWkzdTBlYjVicWh1aw==&amp;igsi=MWkzdTBlYjVicWh1aw==" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.05 1.9.25 2.3.4.6.24 1 .52 1.5 1 .48.5.76.9 1 1.5.16.4.36 1.1.4 2.3.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.04 1.2-.24 1.9-.4 2.3a4 4 0 0 1-1 1.5c-.5.48-.9.76-1.5 1-.4.16-1.1.36-2.3.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.04-1.9-.24-2.3-.4a4 4 0 0 1-1.5-1c-.48-.5-.76-.9-1-1.5-.16-.4-.36-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.04-1.2.24-1.9.4-2.3.24-.6.52-1 1-1.5.5-.48.9-.76 1.5-1 .4-.16 1.1-.36 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.43-1.3.82-.4.4-.62.8-.82 1.3-.16.4-.35 1-.4 2.1-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.05 1.1.24 1.7.4 2.1.2.5.43.9.82 1.3.4.4.8.62 1.3.82.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.43 1.3-.82.4-.4.62-.8.82-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1.1-.24-1.7-.4-2.1a3.5 3.5 0 0 0-.82-1.3c-.4-.4-.8-.62-1.3-.82-.4-.16-1-.35-2.1-.4-1.2-.06-1.6-.07-4.7-.07zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.1-3.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
         </div>
       </div>
-      <div><h4>Services</h4><a href="services">Annotation</a><a href="services">Collection</a><a href="services">POV Video</a><a href="services">Validation</a></div>
-      <div><h4>Company</h4><div class="foot-sub"><a href="about">About</a><a href="video-data">Video Data</a><a href="security">Data Security</a><a href="careers">Careers</a></div><div class="foot-sub foot-sub-2"><a href="industries">Industries</a><a href="contributors">Contributors</a><a href="resources">Resources</a><a href="contact">Contact</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8">Become a Vendor</a></div></div>
-      <div><h4>Contact</h4><a href="https://wa.me/919217919818">+91 92179 19818</a><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="mailto:hr@xyntriq.in">hr@xyntriq.in</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
+      <div><h4>Guides</h4><a href="phone-based-pov-vs-traditional-models">POV vs Traditional Models</a><a href="crowd-platforms-vs-managed-phone-networks">Crowd vs Managed Networks</a><a href="studio-collection-vs-phone-captured-pov">Studio vs Phone-Captured</a></div><div><h4>Services</h4><a href="services">Annotation</a><a href="services">Collection</a><a href="services">POV Video</a><a href="services">Validation</a></div>
+      <div><h4>Company</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;white-space:nowrap;"><div class="foot-sub"><a href="about">About</a><a href="security">Data Security</a><a href="careers">Careers</a><a href="news">News</a></div><div class="foot-sub"><a href="industries">Industries</a><a href="contributors">Contributors</a><a href="resources">Resources</a><a href="as-seen-on">As Seen On</a><a href="contact">Contact</a></div></div></div>
+      <div><h4>Contact</h4><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8" style="color:var(--teal);font-weight:600;">Vendor Registration</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
     </div>
-    <div class="foot-bottom"><span>© <span id="yr"></span> XYNTRIQ. All rights reserved.</span></div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> XYNTRIQ. All rights reserved.</span><a href="https://www.stork.ai/en/xyntriq" rel="nofollow" title="Stork Verified - stork.ai AI tools directory"><img src="https://www.stork.ai/badge/verified-dark.svg" alt="Stork Verified - stork.ai AI tools directory" width="216" height="44" style="height:36px;width:auto;display:block;" /></a><a href="https://1000ai.best/projects/xyntriq-1929?utm_source=badge" target="_blank" rel="noopener noreferrer" title="Featured on 1000 AI"><img src="https://1000ai.best/images/badges/featured-on-dark.svg" alt="Featured on 1000 AI" width="256" height="80" style="height:36px;width:auto;display:block;" /></a></div>
   </div>
 </footer>
 
-<script defer src="assets/script-v28.js?v=28"></script>
+<script defer src="assets/script-v31.js?v=31"></script>
 </body>
 </html>
