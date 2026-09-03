@@ -8,4 +8,3 @@ contributor-dashboard.html
 assets/contributor-dashboard.js
 assets/supabase-config.js
 assets/contributor-signup.js
-.github/scratch-guard-test.txt
