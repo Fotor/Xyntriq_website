@@ -9,22 +9,41 @@ export async function onRequest(context) {
   const headers = { "Host": "www.stork.ai" };
   const ua = context.request.headers.get("user-agent");
   if (ua) headers["User-Agent"] = ua;
+  const timeout = new AbortController();
+  const timer = setTimeout(() => timeout.abort(), 15000);
   try {
-    const res = await fetch(target, { headers, redirect: "manual" });
+    // Follow upstream redirects so /news/* always returns real content (never an empty 200).
+    let res;
+    try {
+      res = await fetch(target, { headers, redirect: "follow", signal: timeout.signal });
+    } catch (err) {
+      clearTimeout(timer);
+      // One retry after a short pause, then give up gracefully.
+      await new Promise((r) => setTimeout(r, 800));
+      res = await fetch(target, { headers, redirect: "follow" });
+    }
+    clearTimeout(timer);
     const ctype = res.headers.get("content-type") || "text/html; charset=utf-8";
-    if (ctype.includes("text/html")) {
+    if (ctype.includes("text/html") && res.ok) {
       const html = await res.text();
-      return new Response(applyTheme(html), {
+      let out;
+      try {
+        out = applyTheme(html);
+      } catch (e) {
+        out = html; // theme injection must never take the feed down
+      }
+      return new Response(out, {
         status: 200,
         headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" }
       });
     }
     const body = await res.arrayBuffer();
     return new Response(body, {
-      status: 200,
+      status: res.status,
       headers: { "content-type": ctype, "cache-control": "no-store" }
     });
   } catch (e) {
+    clearTimeout(timer);
     return new Response("News feed temporarily unavailable.", { status: 502, headers: { "content-type": "text/plain" } });
   }
 }
