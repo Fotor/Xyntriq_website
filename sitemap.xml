@@ -153,6 +153,41 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://xyntriq.in/news/desk</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://xyntriq.in/news/building-an-auditable-vision-stack-from-pov-video-to-code</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xyntriq.in/news/how-to-set-up-a-sample-pilot-for-egocentric-training-data</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xyntriq.in/news/the-state-of-physical-world-training-data-egocentric-video-and-localized-qa</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xyntriq.in/news/sourcing-real-world-training-data-three-vendor-models-compared</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xyntriq.in/news/how-to-pipeline-egocentric-video-datasets-for-machine-perception</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://xyntriq.in/crowd-platforms-vs-managed-phone-networks</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
