@@ -13,8 +13,8 @@ gtag('config', 'G-0XEGY7LEF4');
 </script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com https://launchbuff.com https://postyourstartup.co https://launchnest.io https://www.stork.ai https://1000ai.best; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>XYNTRIQ · AI Data Annotation &amp; Collection</title>
-<meta name="description" content="XYNTRIQ is a Udyam-registered AI data annotation and collection company trusted by enterprises and government programs for image, video, text, audio, and LiDAR annotation, plus consented first-person (POV) video datasets, across LATAM and India.">
+<title>XYNTRIQ · AI Training Data That Survives the Real World</title>
+<meta name="description" content="Models fail in the field when their training data never left the lab. XYNTRIQ captures and annotates real-world data, including POV video, built to your spec.">
 <link rel="canonical" href="https://xyntriq.in/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -962,7 +962,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 </script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="XYNTRIQ">
-<meta property="og:title" content="XYNTRIQ · AI Data Annotation & Collection">
+<meta property="og:title" content="XYNTRIQ · AI Training Data That Survives the Real World">
 <meta property="og:locale" content="en_US">
 <meta property="og:description" content="XYNTRIQ is a Udyam-registered AI data annotation and collection company trusted by enterprises and government programs for image, video, text, audio, and LiDAR annotation, plus consented first-person (POV) video datasets, across LATAM and India.">
 <meta property="og:url" content="https://xyntriq.in/">
@@ -978,6 +978,56 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   "publisher": {"@type": "Organization", "name": "XYNTRIQ", "url": "https://xyntriq.in", "logo": "https://xyntriq.in/assets/logo-v2.png"}
 }
 </script>
+<style id="portfolio-rework-css">
+/* ---- portfolio: five work labels, two of them open an image + video ---- */
+/* The live design lays .p-card out as gapped, rounded cards on a --surface fill,
+   so these rules must only change the column count. Earlier drafts added
+   border-left/padding hacks that belonged to the hairline reskin and would have
+   drawn stray lines and shifted content inside the rounded cards. */
+.portfolio{grid-template-columns:repeat(5,minmax(0,1fr))}
+a.p-card{display:block;color:inherit;text-decoration:none;cursor:pointer}
+a.p-card:focus-visible{outline:2px solid var(--teal-2,#2dd4bf);outline-offset:3px}
+a.p-card .p-body h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(45,212,191,.45)}
+a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
+.p-open{display:inline-block;margin-top:8px;font-family:var(--mono,monospace);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--teal-2,#2dd4bf)}
+.p-open::after{content:" \2192"}
+
+/* breakpoints aligned to the page's own (900px and 560px) so nothing fights */
+@media (max-width:1100px){
+  .portfolio{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .portfolio{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .portfolio{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---- image + video overlay, themed from the page's own tokens ---- */
+.wk-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:22px}
+.wk-overlay[hidden]{display:none}
+.wk-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.9)}
+.wk-panel{position:relative;width:100%;max-width:1080px;max-height:calc(100vh - 44px);overflow:auto;
+  background:var(--surface,#1E293B);border:1px solid var(--line,#334155);border-radius:16px;padding:30px 30px 34px}
+.wk-close{position:absolute;top:14px;right:14px;background:none;border:1px solid var(--line,#334155);
+  border-radius:8px;color:var(--text,#F8FAFC);font-family:var(--mono,monospace);font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;cursor:pointer}
+.wk-close:hover{border-color:var(--teal-2,#2dd4bf);color:var(--teal-2,#2dd4bf)}
+.wk-tag{display:block;font-family:var(--mono,monospace);font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--teal-2,#2dd4bf);margin-bottom:10px}
+.wk-head h3{font-family:var(--sans,inherit);font-size:24px;color:var(--text,#F8FAFC);margin:0 0 8px;letter-spacing:-.02em}
+.wk-head p{color:var(--dim,#94A3B8);font-size:14.5px;margin:0 0 22px}
+.wk-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.wk-fig{margin:0;border:1px solid var(--line,#334155);border-radius:12px;overflow:hidden;background:var(--bg,#0F172A)}
+.wk-fig img,.wk-fig video{width:100%;display:block;aspect-ratio:16/10;object-fit:contain;background:var(--bg,#0F172A)}
+.wk-fig figcaption{padding:10px 12px;border-top:1px solid var(--line,#334155);color:var(--dim,#94A3B8);
+  font-family:var(--mono,monospace);font-size:11px;letter-spacing:1px;text-transform:uppercase}
+@media (max-width:900px){
+  .wk-media{grid-template-columns:minmax(0,1fr)}
+  .wk-panel{padding:24px 18px 26px;border-radius:14px}
+  .wk-head h3{font-size:20px}
+}
+</style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -1028,7 +1078,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
   <div class="hero-shade"></div>
   <div class="hero-edge-fade" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="eyebrow">Data collection &amp; annotation</div>
+    <div class="eyebrow">Training data that survives the real world</div>
     <h1>POV video and <span class="grad">annotated datasets</span></h1>
     <p>XYNTRIQ collects and annotates multimodal data: video, text, images, and audio, including egocentric (POV) video, produced in Latin America and India and delivered to enterprise standards.</p>
     <div class="cta-row">
@@ -1084,11 +1134,33 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <p>Every dataset starts raw and ends precisely labeled. We're bound by NDA with every client, so we can't show names or logos. Here's the work itself, anonymized for confidentiality.</p>
     </div>
     <div class="portfolio">
-      <div class="p-card reveal"><span class="tag">Geospatial</span><img loading="lazy" decoding="async" src="assets/portfolio/Geospatial/remotesensing_Geospatial.webp" alt="Remote sensing annotation"><div class="p-body"><h3>Geospatial</h3><p>Remote sensing &amp; satellite imagery</p></div></div>
-      <div class="p-card reveal"><span class="tag">LiDAR</span><img loading="lazy" decoding="async" src="assets/portfolio/lidar/Lidaar_1.webp" alt="LiDAR point cloud annotation"><div class="p-body"><h3>LiDAR &amp; Point Cloud</h3><p>3D point cloud labeling</p></div></div>
-      <div class="p-card reveal"><span class="tag">Agriculture</span><img loading="lazy" decoding="async" src="assets/portfolio/agriculture/Annotated.webp" alt="Agricultural crop annotation"><div class="p-body"><h3>Agriculture</h3><p>Crop segmentation &amp; keypoint</p></div></div>
-      <div class="p-card reveal"><span class="tag">Transcription</span><img loading="lazy" decoding="async" src="assets/portfolio/Transcription/Google_17.webp" alt="Audio transcription"><div class="p-body"><h3>Audio &amp; Transcription</h3><p>Speech-to-text &amp; audio labeling</p></div></div>
-
+      <a class="p-card reveal p-card--link" href="agriculture-farming" data-work="agriculture">
+        <span class="tag">Agriculture</span>
+        <img loading="lazy" decoding="async" src="assets/portfolio/agriculture/Annotated.webp" alt="Agricultural crop annotation">
+        <div class="p-body"><h3>Agriculture</h3><p>Crop segmentation &amp; keypoint</p></div>
+        <span class="p-open">View image &amp; video</span>
+      </a>
+      <a class="p-card reveal p-card--link" href="transcription-audio" data-work="transcription">
+        <span class="tag">Audio transcription</span>
+        <img loading="lazy" decoding="async" src="assets/portfolio/Transcription/Google_17.webp" alt="Audio transcription">
+        <div class="p-body"><h3>Audio &amp; Transcription</h3><p>Speech-to-text &amp; audio labeling</p></div>
+        <span class="p-open">View image &amp; video</span>
+      </a>
+      <div class="p-card reveal">
+        <span class="tag">Geospatial</span>
+        <img loading="lazy" decoding="async" src="assets/portfolio/Geospatial/remotesensing_Geospatial.webp" alt="Remote sensing annotation">
+        <div class="p-body"><h3>Geospatial</h3><p>Remote sensing &amp; satellite imagery</p></div>
+      </div>
+      <div class="p-card reveal">
+        <span class="tag">LiDAR</span>
+        <img loading="lazy" decoding="async" src="assets/portfolio/lidar/Lidaar_1.webp" alt="LiDAR point cloud annotation">
+        <div class="p-body"><h3>LiDAR</h3><p>3D point cloud labeling</p></div>
+      </div>
+      <div class="p-card reveal">
+        <span class="tag">Cloud</span>
+        <img loading="lazy" decoding="async" src="assets/portfolio/lidar/Lidaar.webp" alt="Point cloud annotation">
+        <div class="p-body"><h3>Point Cloud</h3><p>Dense 3D point labelling</p></div>
+      </div>
     </div>
     <div class="sec-head" style="margin-top:56px; margin-bottom:24px;">
       <div class="eyebrow">Sample footage</div>
@@ -1317,5 +1389,109 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 </footer>
 
 <script defer src="assets/script-v31.js?v=31"></script>
+<div class="wk-overlay" id="wkOverlay" hidden>
+  <div class="wk-backdrop" data-wk-close></div>
+  <div class="wk-panel" role="dialog" aria-modal="true" aria-labelledby="wkTitle">
+    <button class="wk-close" type="button" data-wk-close>Close</button>
+    <div class="wk-head">
+      <span class="wk-tag" id="wkTag"></span>
+      <h3 id="wkTitle"></h3>
+      <p id="wkDesc"></p>
+    </div>
+    <div class="wk-media">
+      <figure class="wk-fig">
+        <img id="wkImg" alt="" loading="lazy" decoding="async">
+        <figcaption id="wkImgCap"></figcaption>
+      </figure>
+      <figure class="wk-fig">
+        <video id="wkVideo" controls playsinline preload="none"></video>
+        <figcaption id="wkVidCap"></figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+<script>
+/* Work overlay: image + video for a portfolio item, opened on the same page.
+   The mp4 source is attached only on open and detached on close, so the
+   18.8 MB agriculture showreel is never fetched unless it is actually viewed. */
+(function () {
+  var WORKS = {
+    agriculture: {
+      tag: 'Agriculture',
+      title: 'Agriculture',
+      desc: 'Crop segmentation and keypoint annotation, delivered with a batch quality report.',
+      img: 'assets/portfolio/agriculture/Annotated.webp',
+      imgCap: 'Annotated crop sample',
+      video: 'assets/portfolio/agriculture/showreel.mp4',
+      vidCap: 'Agriculture showreel'
+    },
+    transcription: {
+      tag: 'Audio transcription',
+      title: 'Audio & Transcription',
+      desc: 'Speech-to-text, speaker separation and segment-level audio labeling.',
+      img: 'assets/portfolio/Transcription/Google_17.webp',
+      imgCap: 'Annotated audio sample',
+      video: 'assets/portfolio/Transcription/transcription.mp4',
+      vidCap: 'Transcription sample'
+    }
+  };
+
+  var ov = document.getElementById('wkOverlay');
+  if (!ov) return;
+  var elTag = document.getElementById('wkTag'),
+      elTitle = document.getElementById('wkTitle'),
+      elDesc = document.getElementById('wkDesc'),
+      elImg = document.getElementById('wkImg'),
+      elImgCap = document.getElementById('wkImgCap'),
+      elVid = document.getElementById('wkVideo'),
+      elVidCap = document.getElementById('wkVidCap'),
+      lastFocus = null;
+
+  function open(key) {
+    var w = WORKS[key];
+    if (!w) return;
+    elTag.textContent = w.tag;
+    elTitle.textContent = w.title;
+    elDesc.textContent = w.desc;
+    elImg.src = w.img;
+    elImg.alt = w.title + ' annotated sample';
+    elImgCap.textContent = w.imgCap;
+    elVidCap.textContent = w.vidCap;
+    elVid.setAttribute('poster', w.img);
+    if (elVid.getAttribute('src') !== w.video) elVid.setAttribute('src', w.video);
+    try { elVid.load(); } catch (e) {}
+    ov.hidden = false;
+    lastFocus = document.activeElement;
+    document.documentElement.style.overflow = 'hidden';
+    var c = ov.querySelector('.wk-close');
+    if (c) c.focus();
+  }
+
+  function close() {
+    ov.hidden = true;
+    try { elVid.pause(); } catch (e) {}
+    elVid.removeAttribute('src');
+    try { elVid.load(); } catch (e) {}
+    document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var card = t.closest('[data-work]');
+    if (card) {
+      e.preventDefault();
+      open(card.getAttribute('data-work'));
+      return;
+    }
+    if (t.closest('[data-wk-close]')) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !ov.hidden) close();
+  });
+})();
+</script>
 </body>
 </html>
