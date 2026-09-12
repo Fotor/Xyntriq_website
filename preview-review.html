@@ -1655,10 +1655,15 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
          draw threshold everywhere except dead centre - measured at just 18.6%
          coverage. One core falloff, modulated by rings and spokes, reads as a
          dense glowing mass with a dissolving edge. */
-      var core = 1 - smoothstep(0.0, 0.95, rrm);
-      var rings = 0.55 + 0.45 * Math.sin(rrm * 6.0 - t * 1.25);
-      var ang = 0.5 + 0.5 * Math.sin(Math.atan2(it.ry[j], it.rx[i]) * 7 + t * 0.6);
-      v = core * (0.55 + 0.45 * rings) * (0.80 + 0.20 * ang);
+      /* The core must NOT saturate. The shared alpha ladder makes anything above
+         0.38 opaque, so an over-bright core becomes a flat disc and the rings and
+         spokes vanish entirely (measured: zero angular variance across the disc).
+         Keeping the product below ~0.75 leaves the structure inside the ladder's
+         range, so it renders as rings and spokes instead of a glowing blob. */
+      var core = 1 - smoothstep(0.0, 0.98, rrm);
+      var rings = 0.5 + 0.5 * Math.sin(rrm * 7.5 - t * 1.30);
+      var ang = 0.5 + 0.5 * Math.sin(Math.atan2(it.ry[j], it.rx[i]) * 8 + t * 0.50);
+      v = core * (0.30 + 0.70 * rings) * (0.62 + 0.38 * ang) * 0.92;
       vref.z = core;
     }
     return v;
