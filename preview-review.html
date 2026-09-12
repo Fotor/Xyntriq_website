@@ -1681,11 +1681,19 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
         var v = field(it, i, j, it.rx[i], it.ry[j], t, vref);
         if (v <= 0.10) { p[o + 3] = 0; continue; }
         var h = hash(i, j, bucket), a;
-        if (v > 0.66)      a = 1;
+        if (it.form === 'mass') {
+          /* The mass is a volumetric form, so it uses continuous alpha rather
+             than the on/off dither ladder. The ladder is right for the globe,
+             where sparsity IS the look, but on the mass it quantised everything
+             to three visible levels and flattened the rings and spokes into a
+             single ramp. Continuous alpha keeps the structure. */
+          a = v * 1.15;
+          if (a > 1) a = 1;
+        } else if (v > 0.66) a = 1;
         else if (v > 0.38) a = h < 0.60 ? 1 : (h < 0.80 ? 0.42 : 0);
         else if (v > 0.20) a = h < 0.28 ? 0.8 : (h < 0.40 ? 0.28 : 0);
         else               a = h < 0.06 ? 0.45 : 0;
-        if (a === 0) { p[o + 3] = 0; continue; }
+        if (a <= 0.004) { p[o + 3] = 0; continue; }
         var k = (v - 0.22) / 0.78;
         if (k < 0) k = 0; else if (k > 1) k = 1;
         p[o]     = 20 + k * 222;
