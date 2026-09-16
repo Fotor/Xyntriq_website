@@ -1122,17 +1122,19 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
 #process,#enterprise,#contributors{position:relative;overflow:hidden}
 #process > .wrap,#enterprise > .wrap,#contributors > .wrap{position:relative;z-index:1}
 .px-bg{position:absolute;top:0;right:0;height:100%;z-index:0;pointer-events:none;display:block}
-.px-stream{width:min(62%,820px);opacity:.58;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);
-          mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
-/* Both section graphics are anchored BELOW the section so the light rises from
-   the bottom edge and stops short of the copy. The mass previously sat centred
-   on the section, directly behind the closing paragraph, which made the text
-   unreadable ("auditable path, built" over near-white pixels). */
-.px-grid{left:0;width:100%;opacity:.42;
-  -webkit-mask-image:radial-gradient(125% 100% at 50% 116%,#000 0%,transparent 74%);
-          mask-image:radial-gradient(125% 100% at 50% 116%,#000 0%,transparent 74%)}
-.px-mass{left:0;width:100%;opacity:.46;
+/* ALL THREE section graphics are anchored BELOW their section so the light rises
+   from the bottom edge and dies out before it reaches the copy. Anything centred
+   or right-anchored sits behind body text and destroys it: the mass made the
+   closing paragraph unreadable, and the left-fading right band did the same to
+   the process copy (worst-point contrast measured 1.06:1 - words invisible).
+   Opacities are also pulled back. The graphics are ambient, not foreground. */
+.px-stream{left:0;width:100%;opacity:.30;
+  -webkit-mask-image:radial-gradient(115% 86% at 50% 126%,#000 0%,transparent 70%);
+          mask-image:radial-gradient(115% 86% at 50% 126%,#000 0%,transparent 70%)}
+.px-grid{left:0;width:100%;opacity:.28;
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 124%,#000 0%,transparent 70%);
+          mask-image:radial-gradient(120% 90% at 50% 124%,#000 0%,transparent 70%)}
+.px-mass{left:0;width:100%;opacity:.42;
   -webkit-mask-image:radial-gradient(120% 92% at 50% 134%,#000 0%,transparent 72%);
           mask-image:radial-gradient(120% 92% at 50% 134%,#000 0%,transparent 72%)}
 @media (max-width:900px){ .px-stream{width:100%;opacity:.34} .px-grid,.px-mass{opacity:.30} }
@@ -1369,7 +1371,10 @@ a, button, input, select, textarea,
 }
 .step:hover .step-num { border-color: var(--teal) !important; color: var(--teal-2) !important; }
 
-.chip, .why-tag, .hs-chip, .tag {
+/* .hs-chip is deliberately NOT in this list: the hero stat tiles are sized to
+   just fit their labels, and adding a 1px border eats 2px of content width and
+   forces "Multimodal" to break across two lines. Their existing border stands. */
+.chip, .why-tag, .tag {
   background: none !important;
   border: 1px solid var(--line) !important;
 }
@@ -1405,16 +1410,21 @@ h1, h2, h3, h4 { line-height: 1.12 !important; }
    1. .foot-grid is `2fr auto auto auto auto`. The `auto` tracks cannot shrink,
       so the footer pushed the page 47px wider than the viewport and phones
       scrolled sideways. minmax(0,1fr) is what allows a track to shrink.
-   2. .nav-actions never collapses to the hamburger, so the nav links and the
-      pill collide with the wordmark. The mobile menu already carries its own
-      CTA (.mm-cta), so hiding the desktop cluster on mobile loses nothing.
+   2. The desktop nav never collapses, so the link list and the pill collide with
+      the wordmark. The FIRST attempt at this hid .nav-actions - but .menu-btn
+      lives INSIDE .nav-actions, so that removed the hamburger too and left the
+      phone with no navigation at all, which is worse than the overlap.
+      Now only the desktop-only parts collapse: the link list and the header CTA.
+      The hamburger stays, and the mobile menu carries its own CTA (.mm-cta).
    --------------------------------------------------------------------------- */
 .foot-grid > div,
 .foot-grid h4 { min-width: 0; }
 
 @media (max-width: 900px) {
   .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .nav-actions { display: none !important; }
+  .nav > nav,
+  .nav nav,
+  .nav-cta { display: none !important; }
   .menu-btn { display: flex !important; }
 }
 @media (max-width: 560px) {
@@ -2064,9 +2074,14 @@ h1, h2, h3, h4 { line-height: 1.12 !important; }
         if (a <= 0.004) { p[o + 3] = 0; continue; }
         var k = (v - 0.22) / 0.78;
         if (k < 0) k = 0; else if (k > 1) k = 1;
-        p[o]     = 20 + k * 222;
-        p[o + 1] = 116 + k * 134;
-        p[o + 2] = 110 + k * 140;
+        /* Ramp from the real brand teal (#14B8A6 = 20,184,166) up to near white.
+           The previous ramp started at a dark muddy cyan (20,116,110), which over
+           the dark page composited to olive-grey rather than reading as brand
+           colour. Keeping green dominant across the whole range holds the hue at
+           every density level. */
+        p[o]     = 20  + k * 220;
+        p[o + 1] = 184 + k * 71;
+        p[o + 2] = 166 + k * 87;
         p[o + 3] = a * 255;
       }
     }
