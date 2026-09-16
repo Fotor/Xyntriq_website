@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap">
 </head>
 <body>
-<p style="font-family:system-ui,sans-serif;text-align:center;padding-top:40vh;">Redirecting to the <a href="https://xyntriq.in/contributors#signup">XYNTRIQ contributor registration</a>…</p>
+<!-- This is a redirect stub, not a content page: it sends the visitor to
+     /contributors#signup immediately. So it deliberately does NOT carry the
+     site's stylesheet - that would be ~34KB of CSS for a page nobody sees.
+     The only visible element is this fallback line, and it uses the brand's
+     own stack (Roboto) so that even the split second before the redirect
+     matches the rest of the site. -->
+<p style="font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center;padding-top:40vh;">Redirecting to the <a href="https://xyntriq.in/contributors#signup">XYNTRIQ contributor registration</a>…</p>
 </body>
 </html>
