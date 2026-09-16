@@ -1028,6 +1028,199 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
   .wk-head h3{font-size:20px}
 }
 </style>
+<style id="deai-css">
+/* ===========================================================================
+   XYNTRIQ front-end pass - removing what makes the page read as machine-made.
+
+   SCOPE (revised). The card components are deliberately NOT restyled. Their
+   live treatment - fill, frost, radius, border, hover behaviour - is kept
+   exactly as it is. An earlier version of this file flattened the cards into
+   outlined cells and squared every corner; that was overreach and has been
+   removed.
+
+    What is left is only:
+      1. decorative furniture removed (no effect on layout or components)
+      2. one considered easing curve
+      3. one legibility defect fixed
+      4. two pre-existing mobile defects fixed
+
+    BRAND BOOK COMPLIANCE (Xyntriq Brand Book by Pomelli).
+      Palette - Navy Ink #1E293B, Tropical Teal #14B8A6, Pure White #FFFFFF,
+      Obsidian Black #0F172A. Nothing here introduces a colour outside it; the
+      only literal colour used is Obsidian Black, and every other value is
+      inherited from the design system's own tokens rather than redefined.
+
+      Typography - the brand book names Roboto as the PRIMARY TYPEFACE, and the
+      live site already uses it. An earlier version of this file swapped Roboto
+      for Space Grotesk; that CONTRADICTED the brand book and has been removed.
+      No font-family, weight or tracking is overridden here any more, so the
+      brand book's typeface and the site's own typographic treatment stand
+      exactly as designed.
+
+      Imagery - the pass adds no imagery and changes no imagery. It never
+      references the brand book's imagery page and contains no url() at all.
+
+      HERO TAGLINE - UNTOUCHED (founder instruction, 17 Sep). Nothing in this
+      file affects the hero headline, the eyebrow, or the footage behind them.
+      Sections 1a and 4 are deliberately empty for that reason. The hero
+      renders exactly as it does on the live site today.
+
+    Loaded after the design system so it wins on equal specificity.
+    =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1a. HERO HEADLINE - DELIBERATELY NOT TOUCHED (founder instruction, 17 Sep)
+
+   `.grad` clips a three-stop teal gradient to the back half of the h1
+   ("annotated datasets"). An earlier version of this pass flattened it to a
+   single colour. The founder has asked that the hero tagline area stay exactly
+   as it is live, so this rule is removed and the gradient stands.
+
+   Note: `.grad` is used exactly ONCE on the homepage - that h1 span - so
+   restoring it cannot affect any other section.
+   --------------------------------------------------------------------------- */
+
+
+/* ---------------------------------------------------------------------------
+   1b. DECORATION DEVICES
+   Five pieces of pure ornament. None of them carry layout, content or state,
+   so removing them cannot break anything - they are paint on top of the design.
+
+   - .card::before and friends paint a 460px radial-gradient INSIDE every card.
+     The card's own fill, radius and border are untouched; this only removes a
+     glow drawn on top of them. Say the word and it comes back.
+   - body::after lays a grain texture over the entire page at z-index 9999.
+   - .cta::after animates a white shimmer from left:-120% to left:130% across
+     every button on hover.
+   - .sec-head h2::after draws a 56x3px centred gradient bar under 13 headings.
+   - footer h4::after draws a teal bar under every footer column heading.
+   --------------------------------------------------------------------------- */
+.card::before,
+.p-card::before,
+.why-col::before,
+.duo > div::before { display: none !important; }
+
+body::after { display: none !important; }
+
+.cta::after,
+.nav-cta::after { display: none !important; }
+
+.sec-head h2::after { display: none !important; }
+
+footer h4::after { display: none !important; }
+
+/* the blurred decorative blobs, if any are rendered (90px of blur on coloured
+   circles, purely ornamental) */
+.orb { display: none !important; }
+
+/* ---------------------------------------------------------------------------
+   2. TYPE - NOT OVERRIDDEN, BY BRAND-BOOK RULE
+
+   The brand book names Roboto as the primary typeface, and the live site already
+   renders it. So the typeface is left alone.
+
+   An earlier version of this file replaced Roboto with Space Grotesk, on the
+   reasoning that Roboto is the Android system default and so reads as an
+   unmade decision. That reasoning was wrong in this case: Roboto is not a
+   default here, it is the brand's stated choice, and overriding it would have
+   put the site out of step with the brand book. The swap, the 700 weight cap
+   that existed to suit Space Grotesk, the tighter leading added to compensate
+   for it, and the heading tracking are all removed together.
+
+   Nothing in this file sets font-family, font-weight, line-height or
+   letter-spacing any more. The site's own typography is the typography.
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   3. MOTION
+   22 transitions and 6 keyframes, but not one cubic-bezier: everything moved on
+   the browser default curve. One considered curve applied consistently is most
+   of what separates a crafted page from a generated one.
+   --------------------------------------------------------------------------- */
+a, button, input, select, textarea,
+.card, .chip, .cta, .p-card, .svc, .step, .faq-item {
+  transition-timing-function: cubic-bezier(.2, .7, .3, 1) !important;
+}
+.reveal {
+  transition-timing-function: cubic-bezier(.2, .7, .3, 1) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   4. HERO COPY - DELIBERATELY NOT TOUCHED (founder instruction, 17 Sep)
+
+   An earlier version of this section added two things here:
+
+     .hero-content::before   a radial scrim of Obsidian Black behind the copy
+     .eyebrow                a text-shadow, to separate it from the footage
+
+   Both existed to fix a single measured defect: the 12px teal eyebrow
+   (#2dd4bf, luminance 0.514) sits on hero footage of luminance ~0.294, which is
+   nearly isoluminant, giving text contrast of 1.64:1 - genuinely unreadable.
+
+   The founder has asked that the hero tagline area stay exactly as it is live,
+   so both rules are removed and the hero renders precisely as it does today.
+
+   KNOWN CONSEQUENCE, unchanged from live: the eyebrow sits at 1.64:1, well
+   below the 4.5:1 readability threshold. Options if it is ever wanted, none of
+   which alter layout: shift the eyebrow to a lighter tint, or darken the hero
+   footage itself in the source video. Left as-is by instruction - this is a
+   record of the trade-off, not an oversight.
+   --------------------------------------------------------------------------- */
+
+
+/* ---------------------------------------------------------------------------
+   5. MOBILE DEFECTS (both pre-existing on the live site)
+
+   1. .foot-grid is `2fr auto auto auto auto`. The `auto` tracks cannot shrink,
+      so the footer pushed the page wider than the viewport and phones scrolled
+      sideways. minmax(0,1fr) is what allows a track to shrink.
+   2. The desktop nav never collapses, so the link list and the pill collide
+      with the wordmark. The first attempt at this hid .nav-actions - but
+      .menu-btn lives INSIDE it, so that removed the hamburger too and left the
+      phone with no navigation at all, which is worse than the overlap. Now only
+      the desktop-only parts collapse: the link list and the header CTA. The
+      hamburger stays, and the mobile menu carries its own CTA (.mm-cta).
+   --------------------------------------------------------------------------- */
+.foot-grid > div,
+.foot-grid h4 { min-width: 0; }
+
+/* Six tracks, because the homepage footer already contains six blocks (brand +
+   Guides + Services + Company + Contact + Legal) while .foot-grid only defines
+   five - so the Legal column was being pushed onto a second row and leaving a
+   dead gap. This is a pre-existing layout defect on the live homepage, fixable
+   without touching a single word of the footer. */
+@media (min-width: 1201px) {
+  .foot-grid { grid-template-columns: 2fr auto auto auto auto auto; }
+}
+@media (max-width: 1200px) {
+  .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+/* NOTE - this is the one place the pass hides a visible element: the header link
+   list and header CTA collapse into the hamburger at <=900px, because on a phone
+   they were overlapping the wordmark. The hamburger menu already carries the
+   same links, so nothing is lost - but it is a visible change, not pure paint. */
+@media (max-width: 900px) {
+  .nav > nav,
+  .nav nav,
+  .nav-cta { display: none !important; }
+  .menu-btn { display: flex !important; }
+}
+@media (max-width: 560px) {
+  .foot-grid { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion stays respected.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+</style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>

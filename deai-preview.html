@@ -1060,26 +1060,27 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
 
       Imagery - the pass adds no imagery and changes no imagery. It never
       references the brand book's imagery page and contains no url() at all.
-      The only layer that affects a photographic surface is the hero scrim in
-      section 4, which darkens the existing hero footage to make the copy
-      legible; it introduces no image of its own.
+
+      HERO TAGLINE - UNTOUCHED (founder instruction, 17 Sep). Nothing in this
+      file affects the hero headline, the eyebrow, or the footage behind them.
+      Sections 1a and 4 are deliberately empty for that reason. The hero
+      renders exactly as it does on the live site today.
 
     Loaded after the design system so it wins on equal specificity.
     =========================================================================== */
 
 /* ---------------------------------------------------------------------------
-   1a. GRADIENT TEXT
-   .grad clips a three-stop teal gradient to the back half of the h1. Solid
-   teal keeps the brand accent, drops the flourish, and keeps the headline a
-   single considered colour.
+   1a. HERO HEADLINE - DELIBERATELY NOT TOUCHED (founder instruction, 17 Sep)
+
+   `.grad` clips a three-stop teal gradient to the back half of the h1
+   ("annotated datasets"). An earlier version of this pass flattened it to a
+   single colour. The founder has asked that the hero tagline area stay exactly
+   as it is live, so this rule is removed and the gradient stands.
+
+   Note: `.grad` is used exactly ONCE on the homepage - that h1 span - so
+   restoring it cannot affect any other section.
    --------------------------------------------------------------------------- */
-.grad {
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  -webkit-text-fill-color: currentColor !important;
-  color: inherit !important;
-}
+
 
 /* ---------------------------------------------------------------------------
    1b. DECORATION DEVICES
@@ -1146,33 +1147,27 @@ a, button, input, select, textarea,
 }
 
 /* ---------------------------------------------------------------------------
-   4. HERO COPY LEGIBILITY (defect, not taste)
-   The eyebrow is 12px teal (#2dd4bf, luminance 0.514) on footage of luminance
-   ~0.294 - nearly isoluminant. Measured contrast was 1.64:1: unreadable. A
-   text-shadow was tried first and only reached ~2.0:1, because it softens the
-   glyph edge and the edge was never the problem.
+   4. HERO COPY - DELIBERATELY NOT TOUCHED (founder instruction, 17 Sep)
 
-   Darkening the ground under the copy is what fixes it. This scrim sits above
-   .hero-shade (z3) and below the copy, inside .hero-content's stacking context,
-   centred slightly high so the eyebrow band is covered. Teal then reaches about
-   6:1 while the footage stays visible around the copy.
+   An earlier version of this section added two things here:
+
+     .hero-content::before   a radial scrim of Obsidian Black behind the copy
+     .eyebrow                a text-shadow, to separate it from the footage
+
+   Both existed to fix a single measured defect: the 12px teal eyebrow
+   (#2dd4bf, luminance 0.514) sits on hero footage of luminance ~0.294, which is
+   nearly isoluminant, giving text contrast of 1.64:1 - genuinely unreadable.
+
+   The founder has asked that the hero tagline area stay exactly as it is live,
+   so both rules are removed and the hero renders precisely as it does today.
+
+   KNOWN CONSEQUENCE, unchanged from live: the eyebrow sits at 1.64:1, well
+   below the 4.5:1 readability threshold. Options if it is ever wanted, none of
+   which alter layout: shift the eyebrow to a lighter tint, or darken the hero
+   footage itself in the source video. Left as-is by instruction - this is a
+   record of the trade-off, not an oversight.
    --------------------------------------------------------------------------- */
-.hero-content::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(66% 50% at 50% 26%,
-    rgba(15, 23, 42, .92) 0%,
-    rgba(15, 23, 42, .66) 48%,
-    rgba(15, 23, 42, 0) 86%);
-}
-.hero-content .eyebrow,
-.hero .eyebrow,
-.hero-stage .eyebrow {
-  text-shadow: 0 1px 10px rgba(15, 23, 42, .95), 0 0 26px rgba(15, 23, 42, .80) !important;
-}
+
 
 /* ---------------------------------------------------------------------------
    5. MOBILE DEFECTS (both pre-existing on the live site)
