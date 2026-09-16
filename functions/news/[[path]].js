@@ -28,7 +28,7 @@ export async function onRequest(context) {
       const html = await res.text();
       let out;
       try {
-        out = applyTheme(html);
+        out = applyTheme(html, url.pathname);
       } catch (e) {
         out = html; // theme injection must never take the feed down
       }
@@ -58,12 +58,28 @@ const EXTRA =
   "var(--bg)!important}" +
   ".shot.blank{background:linear-gradient(140deg,rgba(20,184,166,.26),rgba(20,184,166,.07))!important}";
 
-function applyTheme(html) {
+// Canonical: force the non-trailing-slash form of the requested /news path
+// (/news -> https://xyntriq.in/news, /news/x -> https://xyntriq.in/news/x), so the
+// /news and /news/ index pair can never advertise two competing canonicals.
+function canonicalHref(pathname) {
+  const p = String(pathname || "/news");
+  const trimmed = p.length > 1 ? p.replace(/\/+$/, "") : p;
+  return "https://xyntriq.in" + (trimmed === "" ? "/news" : trimmed);
+}
+
+function applyTheme(html, pathname) {
   let out = html;
   if (/:root\{--accent/.test(out)) {
     out = out.replace(/:root\{--accent[^}]*\}/, THEME);
   } else {
     out = out.replace("</head>", "<style>" + THEME + "</style></head>");
+  }
+  // Pin the canonical to this exact URL form before returning the themed page.
+  const canonical = '<link rel="canonical" href="' + canonicalHref(pathname) + '">';
+  if (/<link[^>]*rel=["']?canonical["']?[^>]*>/i.test(out)) {
+    out = out.replace(/<link[^>]*rel=["']?canonical["']?[^>]*>/i, canonical);
+  } else {
+    out = out.replace("</head>", canonical + "</head>");
   }
   return out.replace("</style>", EXTRA + "</style>");
 }
