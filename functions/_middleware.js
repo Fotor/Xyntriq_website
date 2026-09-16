@@ -176,6 +176,120 @@ const FALLBACK_404_HTML =
 //   }
 //
 // Never touch /assets/*, non-HTML responses, or the /news proxy output.
-function withExtensions(response, _context) {
-  return response;
+const MATOMO_ORIGIN = "xyntriq.matomo.cloud";
+
+// CSP hosts Matomo needs, each added only to its own directive and only when
+// it is not already listed there (so this stays idempotent).
+const CSP_ADDITIONS = [
+  { directive: "script-src", host: "https://cdn.matomo.cloud" },
+  { directive: "img-src", host: "https://xyntriq.matomo.cloud" },
+  { directive: "connect-src", host: "https://xyntriq.matomo.cloud" }
+];
+
+// Official Matomo snippet - Site ID 1 on https://xyntriq.matomo.cloud/
+const MATOMO_SNIPPET =
+  "<!-- Matomo -->\n" +
+  "<script>\n" +
+  "  var _paq = window._paq = window._paq || [];\n" +
+  "  _paq.push(['trackPageView']);\n" +
+  "  _paq.push(['enableLinkTracking']);\n" +
+  "  (function() {\n" +
+  '    var u="https://xyntriq.matomo.cloud/";\n' +
+  "    _paq.push(['setTrackerUrl', u+'matomo.php']);\n" +
+  "    _paq.push(['setSiteId', '1']);\n" +
+  "    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];\n" +
+  "    g.async=true; g.src='https://cdn.matomo.cloud/xyntriq.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);\n" +
+  "  })();\n" +
+  "</script>\n" +
+  "<!-- End Matomo Code -->\n";
+
+// Everything that is not blocked flows through here before it is returned.
+// Additive and 200-HTML-only: anything else is handed back byte-for-byte.
+async function withExtensions(response, _context) {
+  try {
+    // Only a normal, successful HTML page is ever inspected.
+    if (!response || response.status !== 200) return response;
+
+    const ctype = (response.headers.get("content-type") || "").toLowerCase();
+    if (ctype.indexOf("text/html") === -1) return response;
+
+    // Read a clone so the ORIGINAL response stays untouched as the fallback.
+    const source = response.clone();
+    const html = await source.text();
+
+    // Checked on the page as served, before the CSP rewrite adds the host.
+    const alreadyHasMatomo = html.indexOf(MATOMO_ORIGIN) !== -1;
+
+    let next = relaxCsp(html);
+    if (!alreadyHasMatomo) next = injectMatomo(next);
+
+    // Nothing changed -> return the original response, byte-for-byte.
+    if (next === html) return response;
+
+    const headers = new Headers(response.headers);
+    // The body changed, so these can no longer be trusted.
+    headers.delete("content-length");
+    headers.delete("content-encoding");
+    headers.delete("etag");
+
+    return new Response(next, {
+      status: response.status,
+      statusText: response.statusText,
+      headers
+    });
+  } catch (_) {
+    // Any unexpected problem -> the original response, unchanged.
+    return response;
+  }
+}
+
+// Allow the Matomo hosts in the page's own CSP meta tag. Only that one tag is
+// touched, only the listed directives change, nothing else in it moves.
+function relaxCsp(html) {
+  try {
+    return html.replace(
+      /<meta\b[^>]*http-equiv\s*=\s*["']?content-security-policy["']?[^>]*>/gi,
+      (tag) => tag.replace(/(content\s*=\s*)("([^"]*)"|'([^']*)')/i, (match, prefix, _all, dquote, squote) => {
+        const quote = dquote !== undefined ? '"' : "'";
+        const value = dquote !== undefined ? dquote : squote;
+        return prefix + quote + relaxCspValue(value) + quote;
+      })
+    );
+  } catch (_) {
+    return html;
+  }
+}
+
+// Append a host to one directive of a CSP value. A host that is already listed
+// is left alone, so no page can ever gain a duplicate.
+function relaxCspValue(value) {
+  return String(value).split(";").map((segment) => {
+    const trimmed = segment.trim();
+    if (!trimmed) return segment;
+
+    const parts = /^(\S+)(?:\s+([\s\S]*))?$/.exec(trimmed);
+    if (!parts) return segment;
+
+    const name = parts[1].toLowerCase();
+    const sources = (parts[2] || "").split(/\s+/).filter(Boolean);
+
+    let changed = false;
+    for (const rule of CSP_ADDITIONS) {
+      if (rule.directive !== name) continue;
+      if (sources.indexOf(rule.host) !== -1) continue;
+      sources.push(rule.host);
+      changed = true;
+    }
+    if (!changed) return segment;
+
+    return segment.replace(trimmed, parts[1] + " " + sources.join(" "));
+  }).join(";");
+}
+
+// Drop the snippet in just before </head>. Callers skip this when the page
+// already carries the tracker.
+function injectMatomo(html) {
+  const head = html.search(/<\/head\s*>/i);
+  if (head === -1) return html;
+  return html.slice(0, head) + MATOMO_SNIPPET + html.slice(head);
 }
