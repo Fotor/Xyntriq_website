@@ -1369,11 +1369,32 @@ a, button, input, select, textarea,
 .play-overlay svg { background: rgba(15, 23, 42, .72) !important; border: 1px solid var(--line) !important; }
 
 /* ---------------------------------------------------------------------------
-   Hero eyebrow legibility. It is a small teal label sitting over the brightest
-   part of the hero media, where it measured as nearly unreadable. A soft dark
-   text-shadow separates it from the footage without altering the hero's overall
-   look - unlike strengthening .hero-shade, which would darken the whole frame.
+   HERO COPY LEGIBILITY.
+
+   The eyebrow is 12px teal (#2dd4bf, luminance 0.514) sitting on footage whose
+   local luminance is around 0.294 - the two are nearly isoluminant, so text
+   contrast measured 1.64:1, far below readable. A text-shadow was tried first
+   and only reached ~2.0:1: it softens the glyph edge, but the edge was never
+   the problem, so no amount of shadow fixes isoluminance.
+
+   What fixes it is darkening the ground beneath the copy. This scrim sits above
+   .hero-shade (z3) and below the copy, inside .hero-content's own stacking
+   context, and is centred slightly high so the eyebrow band is covered. It also
+   protects the headline and paragraph. On a scrim of ~.9 alpha the teal reaches
+   roughly 6:1, and the footage stays visible around the copy.
    --------------------------------------------------------------------------- */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(66% 50% at 50% 26%,
+    rgba(15, 23, 42, .92) 0%,
+    rgba(15, 23, 42, .66) 48%,
+    rgba(15, 23, 42, 0) 86%);
+}
+/* keep the shadow as well: it helps the glyph edges over the remaining texture */
 .hero-content .eyebrow,
 .hero .eyebrow,
 .hero-stage .eyebrow {
