@@ -1369,6 +1369,18 @@ a, button, input, select, textarea,
 .play-overlay svg { background: rgba(15, 23, 42, .72) !important; border: 1px solid var(--line) !important; }
 
 /* ---------------------------------------------------------------------------
+   Hero eyebrow legibility. It is a small teal label sitting over the brightest
+   part of the hero media, where it measured as nearly unreadable. A soft dark
+   text-shadow separates it from the footage without altering the hero's overall
+   look - unlike strengthening .hero-shade, which would darken the whole frame.
+   --------------------------------------------------------------------------- */
+.hero-content .eyebrow,
+.hero .eyebrow,
+.hero-stage .eyebrow {
+  text-shadow: 0 1px 10px rgba(15, 23, 42, .95), 0 0 26px rgba(15, 23, 42, .80) !important;
+}
+
+/* ---------------------------------------------------------------------------
    Leading. Roboto's default leading was left in place when the face changed,
    and Space Grotesk sits differently on the line, so the section headings came
    out loose. Tighter leading on headings is also most of what makes a page read
