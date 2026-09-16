@@ -1032,11 +1032,15 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
 /* --- footer on phones -----------------------------------------------------
    `1fr` tracks carry an automatic min-content floor, so the widest footer
    column could not shrink and pushed the page ~22px wider than a 375px phone.
-   minmax(0,1fr) removes the floor; min-width:0 lets the sub-column wrap. */
+   minmax(0,1fr) removes the floor; min-width:0 lets the sub-column wrap.
+   The restack breakpoint is 1200px, not 900px: with six blocks the
+   five `auto` tracks cannot shrink, so the `2fr` brand track collapsed
+   to 0px between 901px and ~1180px and its text bled into the next
+   column. Six columns are clean only from ~1182px. */
 .foot-grid > div,
 .foot-grid h4,
 .foot-sub { min-width: 0; }
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
@@ -1048,7 +1052,7 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
    holds six blocks - the brand plus Guides/Services/Company/Contact/Legal - so
    the Legal column was pushed onto a second row and left a dead gap under the
    brand. This is desktop-only; the mobile rules below already restack. */
-@media (min-width: 901px) {
+@media (min-width: 1201px) {
   .foot-grid { grid-template-columns: 2fr auto auto auto auto auto; }
 }
 </style>
@@ -1289,8 +1293,10 @@ a, button, input, select, textarea,
 .foot-grid > div,
 .foot-grid h4 { min-width: 0; }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 900px) {
   .nav > nav,
   .nav nav,
   .nav-cta { display: none !important; }
