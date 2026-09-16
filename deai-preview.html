@@ -1028,33 +1028,6 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
   .wk-panel{padding:24px 18px 26px;border-radius:14px}
   .wk-head h3{font-size:20px}
 }
-
-/* --- footer on phones -----------------------------------------------------
-   `1fr` tracks carry an automatic min-content floor, so the widest footer
-   column could not shrink and pushed the page ~22px wider than a 375px phone.
-   minmax(0,1fr) removes the floor; min-width:0 lets the sub-column wrap.
-   The restack breakpoint is 1200px, not 900px: with six blocks the
-   five `auto` tracks cannot shrink, so the `2fr` brand track collapsed
-   to 0px between 901px and ~1180px and its text bled into the next
-   column. Six columns are clean only from ~1182px. */
-.foot-grid > div,
-.foot-grid h4,
-.foot-sub { min-width: 0; }
-@media (max-width: 1200px) {
-  .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 560px) {
-  .foot-grid { grid-template-columns: minmax(0, 1fr); }
-}
-
-/* --- footer columns: six blocks need six tracks ---------------------------
-   .foot-grid defined `2fr auto auto auto auto` (five tracks) but the footer
-   holds six blocks - the brand plus Guides/Services/Company/Contact/Legal - so
-   the Legal column was pushed onto a second row and left a dead gap under the
-   brand. This is desktop-only; the mobile rules below already restack. */
-@media (min-width: 1201px) {
-  .foot-grid { grid-template-columns: 2fr auto auto auto auto auto; }
-}
 </style>
 <style id="space-grotesk-css">
 /* Space Grotesk, inlined to match how this project ships fonts */
@@ -1293,9 +1266,21 @@ a, button, input, select, textarea,
 .foot-grid > div,
 .foot-grid h4 { min-width: 0; }
 
+/* Six tracks, because the homepage footer already contains six blocks (brand +
+   Guides + Services + Company + Contact + Legal) while .foot-grid only defines
+   five - so the Legal column was being pushed onto a second row and leaving a
+   dead gap. This is a pre-existing layout defect on the live homepage, fixable
+   without touching a single word of the footer. */
+@media (min-width: 1201px) {
+  .foot-grid { grid-template-columns: 2fr auto auto auto auto auto; }
+}
 @media (max-width: 1200px) {
   .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
 }
+/* NOTE - this is the one place the pass hides a visible element: the header link
+   list and header CTA collapse into the hamburger at <=900px, because on a phone
+   they were overlapping the wordmark. The hamburger menu already carries the
+   same links, so nothing is lost - but it is a visible change, not pure paint. */
 @media (max-width: 900px) {
   .nav > nav,
   .nav nav,
