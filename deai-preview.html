@@ -1028,6 +1028,29 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
   .wk-panel{padding:24px 18px 26px;border-radius:14px}
   .wk-head h3{font-size:20px}
 }
+
+/* --- footer on phones -----------------------------------------------------
+   `1fr` tracks carry an automatic min-content floor, so the widest footer
+   column could not shrink and pushed the page ~22px wider than a 375px phone.
+   minmax(0,1fr) removes the floor; min-width:0 lets the sub-column wrap. */
+.foot-grid > div,
+.foot-grid h4,
+.foot-sub { min-width: 0; }
+@media (max-width: 900px) {
+  .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .foot-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- footer columns: six blocks need six tracks ---------------------------
+   .foot-grid defined `2fr auto auto auto auto` (five tracks) but the footer
+   holds six blocks - the brand plus Guides/Services/Company/Contact/Legal - so
+   the Legal column was pushed onto a second row and left a dead gap under the
+   brand. This is desktop-only; the mobile rules below already restack. */
+@media (min-width: 901px) {
+  .foot-grid { grid-template-columns: 2fr auto auto auto auto auto; }
+}
 </style>
 <style id="space-grotesk-css">
 /* Space Grotesk, inlined to match how this project ships fonts */
