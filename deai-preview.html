@@ -1116,62 +1116,31 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
 </style>
 <style id="deai-css">
 /* ===========================================================================
-   XYNTRIQ frontend pass - removing what makes the page read as machine-made.
+   XYNTRIQ front-end pass - removing what makes the page read as machine-made.
 
-   Every rule below answers a specific tell that was measured in the live
-   stylesheet, not a matter of taste. The brand palette is UNTOUCHED
-   (#0F172A / #1E293B / #14B8A6). This is execution, not a rebrand: same
-   colours, same content, same layout - the surface treatment and type change.
+   SCOPE (revised). The card components are deliberately NOT restyled. Their
+   live treatment - fill, frost, radius, border, hover behaviour - is kept
+   exactly as it is. An earlier version of this file flattened the cards into
+   outlined cells and squared every corner; that was overreach and has been
+   removed.
 
-   Loaded after the design system so it wins on equal specificity.
+   What is left is only:
+     1. decorative furniture removed (no effect on layout or components)
+     2. the typeface
+     3. one considered easing curve
+     4. one legibility defect fixed
+     5. two pre-existing mobile defects fixed
+
+   Brand palette untouched. Loaded after the design system so it wins on equal
+   specificity.
    =========================================================================== */
 
 /* ---------------------------------------------------------------------------
-   TELL 1 - GLASSMORPHISM
-   Live sheet: 14 backdrop-filter declarations, 15 blur() uses.
-   Frosted translucent panels are the single most recognisable generated-UI
-   signature, and a 16px blur is expensive to paint on every scroll frame.
-   Panels become opaque and are separated by hairlines instead - which is how
-   print and editorial layout separate things.
+   1a. GRADIENT TEXT
+   .grad clips a three-stop teal gradient to the back half of the h1. Solid
+   teal keeps the brand accent, drops the flourish, and keeps the headline a
+   single considered colour.
    --------------------------------------------------------------------------- */
-/* Overlays that must stay opaque or content shows through them. */
-.signup-card,
-.dash-card,
-.dash-panel,
-.mobile-menu {
-  background: var(--surface) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid var(--line) !important;
-}
-
-/* Content cells go the other way: NO fill at all, defined purely by a hairline.
-   A #1E293B panel on a #0F172A page is only a small luminance step, so a filled
-   card reads as a smudge rather than a card - that is why the first pass looked
-   "undesigned". An outlined cell states its edge explicitly, which is how print
-   and editorial layout do it. */
-.card,
-.duo > div,
-.why-col,
-.p-card {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid var(--line) !important;
-}
-
-/* TELL 1b - the decorative blurred blobs. 90px of blur on coloured circles,
-   purely ornamental. */
-.orb { display: none !important; }
-
-/* ---------------------------------------------------------------------------
-   TELL 2 - GRADIENT TEXT
-   .grad paints the back half of the H1 with a three-stop teal gradient clipped
-   to the glyphs. Solid teal keeps the brand accent and drops the flourish.
-   --------------------------------------------------------------------------- */
-/* Making the second half solid teal only flattens the same two-colour headline
-   device, so the headline becomes one colour and colour is carried by the
-   eyebrow instead. Revert here if the accent is wanted back. */
 .grad {
   background: none !important;
   -webkit-background-clip: border-box !important;
@@ -1181,47 +1150,18 @@ a.p-card:hover .p-body h3{text-decoration-color:var(--teal-2,#2dd4bf)}
 }
 
 /* ---------------------------------------------------------------------------
-   TELL 3 - NEON GLOWS AND HOVER LIFTS
-   Live sheet: 31 box-shadow rules, 16 of them coloured halos, plus a
-   translateY lift on essentially every interactive element. Reacting by
-   glowing and floating is decoration; reacting by border and colour reads as
-   designed. Focus states keep a visible ring - accessibility is not optional.
-   --------------------------------------------------------------------------- */
-.cta,
-.cta:hover,
-.cta.ghost:hover,
-/* the BASE states matter as much as the hover states: .card and .p-card carry a
-   1px inset white hairline via box-shadow even when not hovered, which is a
-   leftover of the frosted look */
-.card,
-.p-card,
-.why-col,
-.duo > div,
-.card:hover,
-.why-col:hover,
-.p-card:hover,
-.chip:hover,
-.duo > div:hover,
-.alt .card:hover,
-.step:hover .step-num,
-.launch-bar-btn:hover,
-.play-overlay svg,
-.prop .dot2,
-.hs-chip,
-.scroll-progress {
-  box-shadow: none !important;
-}
+   1b. DECORATION DEVICES
+   Five pieces of pure ornament. None of them carry layout, content or state,
+   so removing them cannot break anything - they are paint on top of the design.
 
-/* ---------------------------------------------------------------------------
-   TELL 3b - FOUR DEVICES MISSED ON THE FIRST PASS. All four are pure decoration
-   and all four are stock generated-UI furniture:
-   - .card::before / .p-card::before / .why-col::before paint a 460px
-     radial-gradient inside every card, so each one has an internal glow.
-   - body::after lays a grain texture over the ENTIRE page at z-index 9999.
-   - .cta::after / .nav-cta::after animate a white shimmer from left:-120% to
-     left:130% across every button on hover.
-   - footer h4::after draws a 26x2px teal bar under every footer column
-     heading, the same device already removed from the section headings.
+   - .card::before and friends paint a 460px radial-gradient INSIDE every card.
+     The card's own fill, radius and border are untouched; this only removes a
+     glow drawn on top of them. Say the word and it comes back.
+   - body::after lays a grain texture over the entire page at z-index 9999.
+   - .cta::after animates a white shimmer from left:-120% to left:130% across
+     every button on hover.
+   - .sec-head h2::after draws a 56x3px centred gradient bar under 13 headings.
+   - footer h4::after draws a teal bar under every footer column heading.
    --------------------------------------------------------------------------- */
 .card::before,
 .p-card::before,
@@ -1233,70 +1173,22 @@ body::after { display: none !important; }
 .cta::after,
 .nav-cta::after { display: none !important; }
 
+.sec-head h2::after { display: none !important; }
+
 footer h4::after { display: none !important; }
 
-/* the process spine was a 2px gradient; a solid hairline is the same idea
-   without the gradient */
-.pipeline::before { background: var(--line) !important; width: 1px !important; }
-
-.cta:hover,
-.chip:hover,
-.alt .card:hover,
-.launch-bar-btn:hover,
-.step:hover .step-num,
-.duo > div:hover {
-  transform: none !important;
-}
-
-.card:hover,
-.why-col:hover,
-.duo > div:hover,
-.chip:hover,
-.alt .card:hover,
-.p-card:hover,
-.tag:hover {
-  border-color: var(--teal) !important;
-}
-
-.field input:focus,
-.field select:focus {
-  outline: none !important;
-  border-color: var(--teal) !important;
-  box-shadow: 0 0 0 2px rgba(20, 184, 166, .25) !important;
-}
+/* the blurred decorative blobs, if any are rendered (90px of blur on coloured
+   circles, purely ornamental) */
+.orb { display: none !important; }
 
 /* ---------------------------------------------------------------------------
-   TELL 4 - UNIFORM ROUNDING
-   39 border-radius rules across the sheet - 9/10/12/16/18/30px, plus several
-   50% circles. Consistent softness everywhere is the template signature.
-   Square corners are the fastest single change that stops a page reading as
-   generated, and they make the hairline grid legible.
-   --------------------------------------------------------------------------- */
-*, *::before, *::after { border-radius: 0 !important; }
-
-/* ---------------------------------------------------------------------------
-   TELL 5 - STOCK FLOURISHES
-   .sec-head h2::after draws a 56x3px centred gradient bar under every one of
-   the 13 section headings - a stock template device. Hierarchy comes from the
-   eyebrow label and the type scale instead. The CTA band's gradient wash and
-   the gradient scroll bar go the same way.
-   --------------------------------------------------------------------------- */
-.sec-head h2::after { display: none !important; }
-.cta-band {
-  background: var(--surface) !important;
-  border: 1px solid var(--line) !important;
-}
-.scroll-progress { background: var(--teal) !important; }
-
-/* ---------------------------------------------------------------------------
-   TELL 6 - TYPE
-   Roboto is the Android system default: it reads as no decision having been
+   2. TYPE
+   Roboto is the Android system default, so it reads as no decision having been
    made. Space Grotesk shares a family lineage with the Space Mono already on
-   the page, so display and labels read as one deliberate system rather than
-   two borrowed defaults. Space Grotesk tops out at 700, so headings are capped
-   there to avoid faux-bold synthesis.
+   the page, so display and labels read as one deliberate system. Space Grotesk
+   tops out at 700, so headings are capped there to avoid faux-bold synthesis.
    --------------------------------------------------------------------------- */
-body, button, input, select, textarea, .cta, .nav-cta {
+body, button, input, select, textarea {
   font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
 }
 h1, h2, h3, h4 {
@@ -1304,84 +1196,42 @@ h1, h2, h3, h4 {
   font-weight: 700 !important;
   letter-spacing: -.03em !important;
 }
+/* tighter leading: Roboto's default was left in place when the face changed,
+   and Space Grotesk sits differently on the line, so headings came out loose */
+h1, h2, h3, h4 { line-height: 1.12 !important; }
+.sec-head h2 { line-height: 1.14 !important; }
 
-/* the tracked micro-label is a legitimate editorial device, but 3px of tracking
-   on 15 separate elements is the generated version of it. Tighten, and let
-   Space Mono carry the character. */
-.eyebrow, .tag, .why-tag, .launch-bar-text, .video-caption, .foot-brand span {
+/* the tracked micro-label is a legitimate device, but 3px of tracking across
+   15 separate elements is the generated version of it */
+.eyebrow, .tag, .why-tag, .launch-bar-text, .video-caption {
   letter-spacing: 1.4px !important;
 }
 
 /* ---------------------------------------------------------------------------
-   TELL 7 - MOTION
-   22 transitions and 6 keyframes, but not one cubic-bezier: everything moves on
-   the browser's default curve. A single considered curve, applied consistently,
-   is most of what separates a crafted page from a generated one. Durations come
-   down a little so feedback feels immediate rather than floaty.
+   3. MOTION
+   22 transitions and 6 keyframes, but not one cubic-bezier: everything moved on
+   the browser default curve. One considered curve applied consistently is most
+   of what separates a crafted page from a generated one.
    --------------------------------------------------------------------------- */
 a, button, input, select, textarea,
-.card, .chip, .cta, .p-card, .svc, .step, .step-num, .faq-item, .hs-chip {
+.card, .chip, .cta, .p-card, .svc, .step, .faq-item {
   transition-timing-function: cubic-bezier(.2, .7, .3, 1) !important;
-  transition-duration: .16s !important;
 }
 .reveal {
   transition-timing-function: cubic-bezier(.2, .7, .3, 1) !important;
 }
 
 /* ---------------------------------------------------------------------------
-   TELL 8 - TEMPLATE COMPONENTS
-   70px numbered circles for process steps, and pill-shaped chips. Both are
-   stock. Steps become a hairline square with a mono numeral; chips become
-   hairline squares with no fill.
-   --------------------------------------------------------------------------- */
-.step-num {
-  border-radius: 0 !important;
-  background: none !important;
-  border: 1px solid var(--line) !important;
-  color: var(--dim) !important;
-  font-family: var(--mono) !important;
-  font-size: 13px !important;
-  width: 46px !important;
-  height: 46px !important;
-}
-.step:hover .step-num { border-color: var(--teal) !important; color: var(--teal-2) !important; }
+   4. HERO COPY LEGIBILITY (defect, not taste)
+   The eyebrow is 12px teal (#2dd4bf, luminance 0.514) on footage of luminance
+   ~0.294 - nearly isoluminant. Measured contrast was 1.64:1: unreadable. A
+   text-shadow was tried first and only reached ~2.0:1, because it softens the
+   glyph edge and the edge was never the problem.
 
-/* .hs-chip is deliberately NOT in this list: the hero stat tiles are sized to
-   just fit their labels, and adding a 1px border eats 2px of content width and
-   forces "Multimodal" to break across two lines. Their existing border stands. */
-.chip, .why-tag, .tag {
-  background: none !important;
-  border: 1px solid var(--line) !important;
-}
-.chip:hover { background: var(--surface) !important; }
-
-/* secondary buttons: hairline rather than filled, so the primary CTA is the
-   only filled thing on the page and actually reads as primary */
-.cta.ghost, .ghost {
-  background: none !important;
-  border: 1px solid var(--line) !important;
-  color: var(--text) !important;
-}
-.cta.ghost:hover, .ghost:hover { border-color: var(--teal) !important; color: var(--teal-2) !important; }
-
-/* play overlays: circular button over a square image was the tell; square it
-   and let the hairline do the work */
-.play-overlay svg { background: rgba(15, 23, 42, .72) !important; border: 1px solid var(--line) !important; }
-
-/* ---------------------------------------------------------------------------
-   HERO COPY LEGIBILITY.
-
-   The eyebrow is 12px teal (#2dd4bf, luminance 0.514) sitting on footage whose
-   local luminance is around 0.294 - the two are nearly isoluminant, so text
-   contrast measured 1.64:1, far below readable. A text-shadow was tried first
-   and only reached ~2.0:1: it softens the glyph edge, but the edge was never
-   the problem, so no amount of shadow fixes isoluminance.
-
-   What fixes it is darkening the ground beneath the copy. This scrim sits above
-   .hero-shade (z3) and below the copy, inside .hero-content's own stacking
-   context, and is centred slightly high so the eyebrow band is covered. It also
-   protects the headline and paragraph. On a scrim of ~.9 alpha the teal reaches
-   roughly 6:1, and the footage stays visible around the copy.
+   Darkening the ground under the copy is what fixes it. This scrim sits above
+   .hero-shade (z3) and below the copy, inside .hero-content's stacking context,
+   centred slightly high so the eyebrow band is covered. Teal then reaches about
+   6:1 while the footage stays visible around the copy.
    --------------------------------------------------------------------------- */
 .hero-content::before {
   content: '';
@@ -1394,7 +1244,6 @@ a, button, input, select, textarea,
     rgba(15, 23, 42, .66) 48%,
     rgba(15, 23, 42, 0) 86%);
 }
-/* keep the shadow as well: it helps the glyph edges over the remaining texture */
 .hero-content .eyebrow,
 .hero .eyebrow,
 .hero-stage .eyebrow {
@@ -1402,28 +1251,17 @@ a, button, input, select, textarea,
 }
 
 /* ---------------------------------------------------------------------------
-   Leading. Roboto's default leading was left in place when the face changed,
-   and Space Grotesk sits differently on the line, so the section headings came
-   out loose. Tighter leading on headings is also most of what makes a page read
-   as typeset rather than as a default.
-   --------------------------------------------------------------------------- */
-h1, h2, h3, h4 { line-height: 1.12 !important; }
-.sec-head h2 { line-height: 1.14 !important; }
-.sec-head p { max-width: 62ch; margin-left: auto !important; margin-right: auto !important; }
-
-/* ---------------------------------------------------------------------------
-   BREAKAGE FIXES (mobile) - both pre-existing on the live site, both visible
-   on a phone, neither acceptable in a front-end pass:
+   5. MOBILE DEFECTS (both pre-existing on the live site)
 
    1. .foot-grid is `2fr auto auto auto auto`. The `auto` tracks cannot shrink,
-      so the footer pushed the page 47px wider than the viewport and phones
-      scrolled sideways. minmax(0,1fr) is what allows a track to shrink.
-   2. The desktop nav never collapses, so the link list and the pill collide with
-      the wordmark. The FIRST attempt at this hid .nav-actions - but .menu-btn
-      lives INSIDE .nav-actions, so that removed the hamburger too and left the
-      phone with no navigation at all, which is worse than the overlap.
-      Now only the desktop-only parts collapse: the link list and the header CTA.
-      The hamburger stays, and the mobile menu carries its own CTA (.mm-cta).
+      so the footer pushed the page wider than the viewport and phones scrolled
+      sideways. minmax(0,1fr) is what allows a track to shrink.
+   2. The desktop nav never collapses, so the link list and the pill collide
+      with the wordmark. The first attempt at this hid .nav-actions - but
+      .menu-btn lives INSIDE it, so that removed the hamburger too and left the
+      phone with no navigation at all, which is worse than the overlap. Now only
+      the desktop-only parts collapse: the link list and the header CTA. The
+      hamburger stays, and the mobile menu carries its own CTA (.mm-cta).
    --------------------------------------------------------------------------- */
 .foot-grid > div,
 .foot-grid h4 { min-width: 0; }
