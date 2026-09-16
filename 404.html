@@ -10,7 +10,7 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root { --bg: #0a0e13; --card: #0f151c; --line: #1c2833; --text: #E2E8F0; --dim: #94A3B8; --teal: #14b8a6; --teal-2: #2dd4bf; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Roboto, system-ui, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  body { background: var(--bg); color: var(--text); font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
   .box { text-align: center; max-width: 480px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 48px 36px; }
   .code { font-size: 72px; font-weight: 900; line-height: 1; color: var(--teal-2); letter-spacing: -.02em; }
   .brand { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; }
@@ -51,6 +51,8 @@
   ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
