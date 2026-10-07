@@ -1,23 +1,66 @@
 # XYNTRIQ
 
-> XYNTRIQ is an AI data annotation and collection company serving LATAM and India — image, video, text, audio, LiDAR annotation and consented first-person (POV) video datasets for production AI models.
+> XYNTRIQ is the managed data partner for teams whose models have to work in the physical world. We collect and annotate consented egocentric (POV) video, image, audio, text and LiDAR data across India and Latin America, with documented consent per record and batch-level traceability. Pilot-first engagements, NDA and MSA friendly, India data residency.
 
-## Services
-- [Data Annotation](https://xyntriq.in/services): image, video, text, audio, LiDAR, point cloud and multimodal annotation
-- [Data Collection](https://xyntriq.in/services): custom image, video, egocentric (POV), audio and sensor data across LATAM and India
-- [Industries](https://xyntriq.in/industries): healthcare, dental, automotive, agriculture, geospatial, retail, finance
-- [Security & Compliance](https://xyntriq.in/security): NDA-first engagements, India data residency, consent management
-- [Contributors](https://xyntriq.in/contributors): paid remote contributor program in Latin America
+## What we do
+
+- [Data Annotation](https://xyntriq.in/services): image, video, text, audio, LiDAR, point cloud and multimodal annotation for production-grade models
+- [Data Collection](https://xyntriq.in/services): custom image, video, egocentric (POV), audio, speech and sensor collection across India and Latin America
+- [Data Validation and QA](https://xyntriq.in/services): independent validation, auditing and quality assurance with batch-level reporting
+- [First-Person (POV) Video](https://xyntriq.in/phone-based-pov-vs-traditional-models): consented egocentric video datasets capturing real-world tasks from the person's own point of view
+- [Dataset Curation](https://xyntriq.in/services): cleaning, balancing, deduplication and metadata enrichment of model-ready datasets
+
+## Industries
+
+- [Healthcare and Medical Imaging](https://xyntriq.in/healthcare-medical): MRI, DICOM and clinical annotation with de-identification first
+- [LiDAR and 3D Sensing](https://xyntriq.in/lidar-3d-sensing): point cloud and 3D bounding box labeling
+- [Geospatial and Remote Sensing](https://xyntriq.in/geospatial-remote-sensing): satellite and aerial imagery segmentation
+- [Autonomous Vehicles and Robotics](https://xyntriq.in/automotive-robotics): perception data for physical AI
+- [Agriculture and Farming](https://xyntriq.in/agriculture-farming): crop segmentation and keypoint annotation
+- [Transportation and Logistics](https://xyntriq.in/transportation-logistics)
+- [Retail and E-commerce](https://xyntriq.in/retail-ecommerce): product imagery datasets and attribute labeling
+- [Audio and Transcription](https://xyntriq.in/transcription-audio): speech, transcription and multilingual audio corpora
+- [All industries](https://xyntriq.in/industries)
+
+## Reference
+
+- [Annotation services in India](https://xyntriq.in/annotation-services-india)
+- [LLM and multimodal training data](https://xyntriq.in/llm-training-data)
+- [Cost of data annotation](https://xyntriq.in/cost-of-data-annotation)
+- [Sample data](https://xyntriq.in/sample-data)
 
 ## Guides
-- [Phone-Based POV Video Data vs Traditional Collection Models](https://xyntriq.in/phone-based-pov-vs-traditional-models): the four training-data sourcing models compared — crowd platforms, studio collection, managed labeling, phone-based networks
+
+- [Phone-Based POV Video Data vs Traditional Collection Models](https://xyntriq.in/phone-based-pov-vs-traditional-models): the four training-data sourcing models compared, covering crowd platforms, studio collection, managed labeling and phone-based networks
 - [Crowd Platforms vs Managed Phone-Based Networks](https://xyntriq.in/crowd-platforms-vs-managed-phone-networks): workforce, coverage, rights, cost and speed to pilot compared
 - [Studio Collection vs Phone-Captured POV Video](https://xyntriq.in/studio-collection-vs-phone-captured-pov): realism, cost, consent and turnaround compared
 
-## Key facts
-- Pilot-first engagements: a small pilot batch before full production, with a quote typically within 48 hours of reviewing your sample.
-- Multi-tier quality control with expert human review and batch-level traceability.
-- Every engagement starts with an NDA/MSA.
+## Technical library
+
+- [Balancing egocentric video datasets without keeping every frame](https://xyntriq.in/news/balance-egocentric-video-datasets-without-keeping-every-frame)
+- [A human evaluation stack for domain-specific model benchmarks](https://xyntriq.in/news/a-human-evaluation-stack-for-domain-specific-model-benchmarks)
+- [Training data compliance: India data residency and consent protocols](https://xyntriq.in/news/training-data-compliance-digest-india-data-residency-and-consent-protocols)
+- [Structuring 3D bounding boxes and point clouds for robotics perception](https://xyntriq.in/news/structuring-3d-bounding-boxes-and-point-clouds-for-robotics-perception)
+- [Structuring an acoustic evaluation stack for regional speech models](https://xyntriq.in/news/structuring-an-acoustic-evaluation-stack-for-regional-speech-models)
+- [Multi-tier human QA vs automated pre-labeling for vision datasets](https://xyntriq.in/news/multi-tier-human-qa-vs-automated-pre-labeling-for-vision-datasets)
+- [Point cloud annotation: spatial density and multi-sensor alignment](https://xyntriq.in/news/point-cloud-annotation-digest-spatial-density-and-multi-sensor-alignment)
+- [Labeling crop segmentation and keypoints without noise](https://xyntriq.in/news/labeling-crop-segmentation-and-keypoints-without-noise)
+- [Building an auditable vision stack from POV video to code](https://xyntriq.in/news/building-an-auditable-vision-stack-from-pov-video-to-code)
+- [How to set up a sample pilot for egocentric training data](https://xyntriq.in/news/how-to-set-up-a-sample-pilot-for-egocentric-training-data)
+- [The state of physical-world training data: egocentric video and localized QA](https://xyntriq.in/news/the-state-of-physical-world-training-data-egocentric-video-and-localized-qa)
+- [Sourcing real-world training data: three vendor models compared](https://xyntriq.in/news/sourcing-real-world-training-data-three-vendor-models-compared)
+- [How to pipeline egocentric video datasets for machine perception](https://xyntriq.in/news/how-to-pipeline-egocentric-video-datasets-for-machine-perception)
+
+## How we work
+
+- Pilot first. A representative sample batch is annotated against your guidelines, and you measure quality against your own acceptance criteria before committing to volume.
+- Fixed scope and a written quote, typically inside 48 hours of the pilot review.
+- Multi-tier quality control with expert human review, batch-level acceptance thresholds and full traceability.
+- Documented consent captured per record, not once at intake.
+- Every engagement starts with an NDA and MSA.
+- Udyam-registered Indian MSME with GST-compliant invoicing and India data residency, which makes us procurement-ready for enterprise and government programs.
 
 ## Contact
-- [Contact page](https://xyntriq.in/contact) | sales@xyntriq.in
+
+- [Request a pilot](https://xyntriq.in/request-sample)
+- [Contact](https://xyntriq.in/contact) | sales@xyntriq.in
