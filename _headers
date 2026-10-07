@@ -1,5 +1,57 @@
+# XYNTRIQ site header rules
+#
+# PATCH NOTE (7 Oct 2026)
+# The audit found four pages live and crawlable that must not be:
+#   /frontend-preview.html
+#   /deai-preview.html
+#   /preview-review.html
+#   /footer-preview.html   <-- this one also renders an internal build note
+#
+# robots.txt is "Allow: /" for all agents, so nothing currently blocks them.
+# Deleting the files is the real fix. These rules are the belt-and-braces layer
+# that keeps a preview page out of the index even if one ships again by accident.
+#
+# IMPORTANT: this file only takes effect on hosts that support it
+# (Cloudflare Pages, Netlify). GitHub Pages ignores _headers entirely.
+# Confirm which host serves xyntriq.in before relying on this layer.
+
+# --- existing rules, preserved ---
+
 /assets/script*.js
   Cache-Control: no-cache, max-age=0
 
 /assets/video/*.mp4
   X-Robots-Tag: noindex, nofollow
+
+# --- preview and draft pages: never indexable ---
+
+/*preview*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/preview-review.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/deai-preview.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/frontend-preview.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/footer-preview.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+# --- internal workspaces: never served ---
+
+/reports/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  X-Frame-Options: DENY
+
+/AGENTS.md
+  X-Robots-Tag: noindex, nofollow
+
+# --- baseline hardening ---
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
