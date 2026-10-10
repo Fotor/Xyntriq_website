@@ -1,6 +1,6 @@
 import pathlib
 
-site = pathlib.Path(r'C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site')
+site = pathlib.Path(__file__).resolve().parent
 font_css = (site / 'font_css_inline.txt').read_text(encoding='utf-8')
 
 old_pattern = ('<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap" onload="this.onload=null;this.rel=\'stylesheet\'">'

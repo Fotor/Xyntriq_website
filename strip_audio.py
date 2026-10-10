@@ -1,7 +1,7 @@
 import subprocess, os
 
-ffmpeg = r"C:\Users\Prashant Chaudhary\AppData\Roaming\Accio\pre-install\ab1f8a6ee51b\python\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe"
-base = r"C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site\assets\video"
+ffmpeg = os.environ.get("FFMPEG", "ffmpeg")
+base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'video')
 
 jobs = [
     ("pov-sample.mp4", "pov-sample-silent.mp4"),

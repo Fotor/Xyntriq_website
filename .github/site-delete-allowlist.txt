@@ -10,3 +10,9 @@ assets/supabase-config.js
 assets/contributor-signup.js
 # Guard self-test artifact (keep absent; delete test used skip-ci path)
 .github/scratch-guard-test.txt
+# Founder instruction 2026-10-10: de-identify the public site.
+# Original client SOW PDF replaced by an anonymised version (see replacement
+# file in assets/portfolio/agriculture/); the unredacted original must stay out.
+assets/portfolio/agriculture/Xyntriq AI Labs_Agricultural_project_SOW_For_XP (3).pdf
+# Internal Supabase audit data was being served publicly at /reports/* - never publish.
+reports/

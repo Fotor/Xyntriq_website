@@ -1,6 +1,6 @@
 import pathlib, json
 
-site = pathlib.Path(r'C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site')
+site = pathlib.Path(__file__).resolve().parent
 
 def faq_block(pairs):
     details = '\n'.join(

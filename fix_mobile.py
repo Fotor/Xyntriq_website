@@ -1,6 +1,6 @@
 import pathlib, re
 
-site = pathlib.Path(r'C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site')
+site = pathlib.Path(__file__).resolve().parent
 css = (site / 'assets' / 'style.css').read_text(encoding='utf-8')
 
 STYLE_OPEN = '<style>\n/* assets/style.css inlined for LCP */'

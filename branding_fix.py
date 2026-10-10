@@ -1,7 +1,7 @@
 import pathlib, json, shutil
 from PIL import Image
 
-site = pathlib.Path(r'C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site')
+site = pathlib.Path(__file__).resolve().parent
 assets = site / 'assets'
 
 # 1. create favicon-32x32.png from logo

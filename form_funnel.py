@@ -1,6 +1,6 @@
 import pathlib
 
-site = pathlib.Path(r'C:\Users\Prashant Chaudhary\OneDrive\Documents\Prashant\Agents\Agentic Nikhil\xyntriq-site')
+site = pathlib.Path(__file__).resolve().parent
 NEW = 'https://forms.gle/44TEJ2htNGxpaQpW9'
 
 repls = [
