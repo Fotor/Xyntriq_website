@@ -192,6 +192,14 @@ footer a:hover { color: var(--teal-2); }
 .foot-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; margin-bottom: 12px; }
 .foot-brand img { width: 30px; height: 30px; }
 .foot-bottom { border-top: 1px solid var(--line); padding-top: 22px; font-size: 13px; color: var(--dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.foot-badges { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-left: auto; }
+
+/* Mobile: the 3 badges cannot fit one row inside the 304px container, so drop to two
+   centred rows instead of leaving a half-empty row packed to the left edge. */
+@media (max-width: 640px) {
+  .foot-badges { width: 100%; margin-left: 0; justify-content: center; gap: 12px; }
+  .foot-badges img { height: 30px !important; }
+}
 
 @media (max-width: 900px) {
   .hero h1 { font-size: 38px; } .g2, .g3, .g4, .portfolio { grid-template-columns: 1fr 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; }
