@@ -11,7 +11,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-0XEGY7LEF4');
 </script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com https://launchbuff.com https://postyourstartup.co https://launchnest.io; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://sc02.alicdn.com https://sc04.alicdn.com https://launchbuff.com https://postyourstartup.co https://launchnest.io https://www.stork.ai https://1000ai.best https://peerpush.com; media-src 'self' https://sc02.alicdn.com https://sc04.alicdn.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://cloudflareinsights.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://forms.gle">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>About · XYNTRIQ AI Data Company</title>
 <meta name="description" content="XYNTRIQ is an AI data company providing multimodal data collection and annotation of video, text, images, and audio, including consented first-person (POV) video, for production-grade AI systems.">
@@ -218,6 +218,15 @@ footer a:hover { color: var(--teal-2); }
 .foot-brand img { width: 30px; height: 30px; }
 .foot-bottom { border-top: 1px solid var(--line); padding-top: 22px; font-size: 13px; color: var(--dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
+
+.foot-badges { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-left: auto; }
+
+/* Mobile: the 3 badges cannot fit one row inside the 304px container, so drop to two
+   centred rows instead of leaving a half-empty row packed to the left edge. */
+@media (max-width: 640px) {
+  .foot-badges { width: 100%; margin-left: 0; justify-content: center; gap: 12px; }
+  .foot-badges img { height: 30px !important; }
+}
 @media (max-width: 900px) {
   .hero h1 { font-size: 38px; } .g2, .g3, .g4, .portfolio { grid-template-columns: 1fr 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; }
   nav { display: none; } .menu-btn { display: flex; } .foot-grid { grid-template-columns: 1fr 1fr; }
@@ -562,7 +571,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
       <div><h4>Company</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;white-space:nowrap;"><div class="foot-sub"><a href="about">About</a><a href="security">Data Security</a><a href="careers">Careers</a><a href="news">News</a></div><div class="foot-sub"><a href="industries">Industries</a><a href="contributors">Contributors</a><a href="resources">Resources</a><a href="as-seen-on">As Seen On</a><a href="contact">Contact</a></div></div></div>
       <div><h4>Contact</h4><a href="mailto:sales@xyntriq.in">sales@xyntriq.in</a><a href="mailto:info@xyntriq.in">info@xyntriq.in</a><a href="https://forms.gle/KQkQXGjdAL577Ueb8" style="color:var(--teal);font-weight:600;">Vendor Registration</a></div><div><h4>Legal</h4><a href="terms">Terms &amp; Conditions</a><a href="privacy">Privacy Policy</a><a href="cookies">Cookie Policy</a><a href="acceptable-use">Acceptable Use Policy</a></div>
     </div>
-    <div class="foot-bottom"><span>© <span id="yr"></span> XYNTRIQ. All rights reserved. No part of this website may be copied, reproduced, or reused without written permission.</span></div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> XYNTRIQ. All rights reserved. No part of this website may be copied, reproduced, or reused without written permission.</span><div class="foot-badges"><a href="https://www.stork.ai/en/xyntriq" rel="nofollow" title="Stork Verified - stork.ai AI tools directory"><img src="https://www.stork.ai/badge/verified-dark.svg" alt="Stork Verified - stork.ai AI tools directory" width="216" height="44" style="height:36px;width:auto;display:block;" /></a><a href="https://1000ai.best/projects/xyntriq-1929?utm_source=badge" target="_blank" rel="noopener noreferrer" title="Featured on 1000 AI"><img src="https://1000ai.best/images/badges/featured-on-dark.svg" alt="Featured on 1000 AI" width="256" height="80" style="height:36px;width:auto;display:block;" /></a><a href="https://peerpush.com/p/xyntriq" target="_blank" rel="noopener noreferrer" title="Awarded Trending Now on PeerPush"><img src="https://peerpush.com/p/xyntriq/badge.png" alt="XYNTRIQ - Awarded Trending Now on PeerPush" width="460" height="130" style="height:36px;width:auto;display:block;filter:invert(1) hue-rotate(180deg) drop-shadow(0 0 4px rgba(20,184,166,.55)) drop-shadow(0 0 12px rgba(20,184,166,.25));" /></a></div></div>
   </div>
 </footer>
 <script defer src="assets/script-v31.js?v=31"></script>
