@@ -27,8 +27,6 @@
 - [Annotation services in India](https://xyntriq.in/annotation-services-india)
 - [LLM and multimodal training data](https://xyntriq.in/llm-training-data)
 - [Cost of data annotation](https://xyntriq.in/cost-of-data-annotation)
-- [Sample data](https://xyntriq.in/sample-data)
-
 ## Guides
 
 - [Phone-Based POV Video Data vs Traditional Collection Models](https://xyntriq.in/phone-based-pov-vs-traditional-models): the four training-data sourcing models compared, covering crowd platforms, studio collection, managed labeling and phone-based networks
@@ -62,5 +60,5 @@
 
 ## Contact
 
-- [Request a pilot](https://xyntriq.in/request-sample)
+- [Request a pilot](https://xyntriq.in/pilot)
 - [Contact](https://xyntriq.in/contact) | sales@xyntriq.in

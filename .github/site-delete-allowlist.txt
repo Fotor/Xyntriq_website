@@ -20,3 +20,7 @@ reports/
 # All 34 articles are committed as real pages under news/; the Stork wire proxy that
 # rendered /news from stork.ai is retired, so static files must win the route.
 functions/news/[[path]].js
+# Founder instruction 2026-11-18: the entry point is a pilot, not sample data.
+# Both pages are retired; every CTA now routes to /pilot.
+request-sample.html
+sample-data.html
