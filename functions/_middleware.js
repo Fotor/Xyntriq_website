@@ -78,8 +78,10 @@ const BLOCKED_PATHS = new Set([
   "/font_css_inline.txt",
   "/readme.md",
   "/agents.md",
-  "/cname",
-  "/request-sample.html" // legacy draft page
+  "/cname"
+  // /request-sample.html must NOT be listed here. It is a 301 in _redirects, and
+  // a hard 404 from this function wins over that redirect, which is why the old
+  // .html URL was still dead-ending. The page itself is gone from the repo.
 ]);
 
 // Any *.py sitting at the site root. The [^/] keeps /assets/* and /news/*
