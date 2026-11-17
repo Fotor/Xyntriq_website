@@ -473,6 +473,10 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 .form-success .big { font-family: var(--mono); font-size: 34px; color: var(--teal-2); margin-bottom: 10px; }
 .alt-cta { margin-top: 18px; text-align: center; font-size: 13.5px; color: var(--dim); }
 .alt-cta a { color: var(--teal-2); }
+/* style.css covers .field input / .field select but never .field textarea */
+.field textarea { background: var(--surface-2); border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; color: var(--text); font: inherit; font-size: 14.5px; line-height: 1.5; width: 100%; min-height: 88px; resize: vertical; transition: border-color .2s, box-shadow .2s; }
+.field textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(20,184,166,.18); }
+.field textarea::placeholder { color: #64748b; }
 </style>
 </head>
 <body>
