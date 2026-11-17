@@ -2,3 +2,9 @@
 # NOTE: www -> apex redirect is enforced by a Cloudflare zone-level Redirect Rule (Rules > Redirect Rules),
 # because Pages _redirects only supports relative-URL sources (absolute host rules are rejected at build time).
 /index.html / 301
+# Entry point is a pilot, not sample data (2026-11-18). Retired pages point at /pilot
+# so existing links and search results carry over instead of dead-ending.
+/request-sample /pilot 301
+/request-sample.html /pilot 301
+/sample-data /pilot 301
+/sample-data.html /pilot 301
