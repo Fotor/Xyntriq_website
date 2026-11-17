@@ -477,36 +477,88 @@ select option, select optgroup { background: var(--surface); color: var(--text);
 }
 </script>
 <style>
-/* ---- news article styles (static news section) ---- */
-.post-meta{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;color:var(--dim);font-size:14px;margin-top:18px}
-.post-meta .dot{opacity:.45}
-.post-hero{max-width:820px;margin:28px auto 0}
-.post-hero img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
-.keypoints{max-width:760px;margin:30px auto;border:1px solid var(--line);background:rgba(20,184,166,.07);border-radius:14px;padding:22px 26px}
-.keypoints .label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-2);margin-bottom:12px}
-.keypoints ol{margin:0 0 0 20px}
-.keypoints li{margin:9px 0;color:#E2E8F0}
-.post-body{max-width:760px;margin:0 auto;font-size:17.5px;line-height:1.78;color:#E2E8F0}
-.post-body p{margin:0 0 20px}
-.post-body h2{font-size:26px;line-height:1.28;margin:40px 0 14px;color:#fff;letter-spacing:-.01em}
-.post-body h3{font-size:21px;line-height:1.3;margin:32px 0 12px;color:#fff}
-.post-body a{color:var(--teal-2);text-decoration:underline;text-underline-offset:3px}
-.post-body ul,.post-body ol{margin:0 0 20px 24px}
-.post-body li{margin:8px 0}
-.post-body img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin:28px 0}
-.post-body blockquote{border-left:3px solid var(--teal);padding:4px 0 4px 18px;margin:26px 0;color:var(--dim)}
-.post-related{max-width:820px;margin:56px auto 0;padding-top:26px;border-top:1px solid var(--line)}
-.post-related h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
-.post-related a{display:block;padding:14px 0;border-bottom:1px solid rgba(51,65,85,.55);color:var(--text)}
-.post-related a:hover{color:var(--teal-2)}
-.post-related .d{display:block;color:var(--dim);font-size:13px;margin-top:4px}
-.news-item{display:block;padding:26px 0;border-bottom:1px solid var(--line)}
-.news-item:hover h2{color:var(--teal-2)}
-.news-item h2{font-size:22px;line-height:1.32;margin-bottom:8px;color:var(--text)}
-.news-item p{color:var(--dim);font-size:15px;margin-bottom:8px}
-.news-item .d{color:var(--dim);font-size:13px;font-family:var(--mono)}
+/* ===== XYNTRIQ news: reading experience ===== */
+.post-head{max-width:860px;margin:0 auto;padding:148px 28px 0}
+.post-head .kicker{display:flex;flex-wrap:wrap;gap:9px;align-items:center;font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-2)}
+.post-head .kicker .sep{color:var(--line)}
+.post-head h1{font-size:clamp(28px,3.7vw,46px);line-height:1.12;letter-spacing:-.026em;font-weight:800;margin:18px 0 18px;color:#fff}
+.post-head .dek{font-size:clamp(16px,1.5vw,19px);line-height:1.62;color:#C7D2E1;max-width:730px}
+.byline{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.byline img{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);flex:0 0 auto}
+.byline .who{font-size:14.5px;font-weight:700;color:#E9EFF7;letter-spacing:.01em}
+.byline .when{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin-top:3px;letter-spacing:.02em}
+.post-hero{max-width:1000px;margin:40px auto 0;padding:0 28px}
+.post-hero img{width:100%;max-height:430px;object-fit:cover;border-radius:18px;border:1px solid var(--line);display:block;box-shadow:0 26px 60px rgba(0,0,0,.4)}
+.tldr{max-width:760px;margin:38px auto 0;padding:26px 30px;border:1px solid rgba(20,184,166,.34);border-left:3px solid var(--teal);border-radius:14px;background:linear-gradient(120deg,rgba(20,184,166,.11),rgba(20,184,166,.028))}
+.tldr .label{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-2);margin-bottom:14px}
+.tldr ol{margin:0 0 0 21px;color:#E8EEF6}
+.tldr li{margin:10px 0;line-height:1.6;font-size:16px}
+.post-grid{display:grid;grid-template-columns:206px minmax(0,700px);gap:58px;max-width:1010px;margin:46px auto 0;padding:0 28px;align-items:start}
+.post-grid.no-toc{grid-template-columns:minmax(0,700px);justify-content:center}
+.toc{position:sticky;top:104px}
+.toc .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:13px}
+.toc a{display:block;padding:7px 0 7px 13px;border-left:2px solid var(--line);color:var(--dim);font-size:13px;line-height:1.42;text-decoration:none;transition:color .15s,border-color .15s}
+.toc a:hover{color:var(--teal-2);border-color:var(--teal)}
+.post-body{font-size:18px;line-height:1.78;color:#E4EAF2;min-width:0}
+.post-body p{margin:0 0 22px}
+.post-body > p:first-child{font-size:19px;color:#F1F5F9}
+.post-body h2{font-size:24px;line-height:1.3;margin:46px 0 16px;color:#fff;letter-spacing:-.015em;padding-left:16px;border-left:3px solid var(--teal);scroll-margin-top:110px}
+.post-body h3{font-size:19.5px;line-height:1.35;margin:34px 0 12px;color:#fff;scroll-margin-top:110px}
+.post-body a{color:var(--teal-2);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.post-body a:hover{color:#7fffd4}
+.post-body ul,.post-body ol{margin:0 0 22px 24px}
+.post-body li{margin:9px 0}
+.post-body img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin:30px 0}
+.post-body blockquote{border-left:3px solid var(--teal);padding:6px 0 6px 20px;margin:28px 0;color:#C7D2E1;font-size:19px;font-style:italic}
+.post-cta{max-width:820px;margin:60px auto 0;padding:0 28px}
+.post-cta .cta-band{padding:40px 34px}
+.post-cta .cta-band h2{font-size:clamp(22px,2.6vw,30px)}
+.post-related{max-width:1010px;margin:64px auto 80px;padding:0 28px}
+.post-related .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.news-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(30,41,59,.44);transition:transform .18s,border-color .18s,box-shadow .25s}
+.news-card:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 18px 44px rgba(0,0,0,.38)}
+.news-card .thumb{aspect-ratio:16/9;overflow:hidden;background:#0b1220}
+.news-card .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.news-card:hover .thumb img{transform:scale(1.045)}
+.news-card .body{padding:19px 21px 22px;display:flex;flex-direction:column;flex:1}
+.news-card h3{font-size:16.5px;line-height:1.36;margin:0 0 10px;color:#fff;letter-spacing:-.01em}
+.news-card p{color:var(--dim);font-size:13.5px;line-height:1.55;margin:0 0 15px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.news-meta{display:flex;flex-wrap:wrap;gap:7px 10px;align-items:center;color:var(--dim);font-size:12px;font-family:var(--mono);letter-spacing:.02em}
+.news-meta .sep{opacity:.4}
+.lead-card{display:grid;grid-template-columns:1.08fr .92fr;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:rgba(30,41,59,.5);text-decoration:none;color:inherit;max-width:1000px;margin:0 auto;transition:border-color .2s,transform .2s,box-shadow .25s}
+.lead-card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 26px 60px rgba(0,0,0,.4)}
+.lead-card .lead-media{position:relative;background:#0b1220}
+.lead-card .lead-media img{width:100%;height:100%;object-fit:cover;display:block;min-height:260px}
+.lead-card .lead-body{padding:34px 38px;display:flex;flex-direction:column;justify-content:center}
+.lead-card .pill-lead{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-2);margin-bottom:14px}
+.lead-card h2{font-size:clamp(21px,2.3vw,29px);line-height:1.24;margin:0 0 12px;color:#fff;letter-spacing:-.022em}
+.lead-card p{color:var(--dim);font-size:15px;line-height:1.6;margin:0 0 18px}
+.news-section{padding:56px 0 24px}
+.news-section .sec-label{display:flex;align-items:baseline;gap:14px;max-width:1100px;margin:0 auto 24px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.news-section .sec-label .rule{flex:1;height:1px;background:var(--line)}
+@media (max-width:1024px){.news-grid{grid-template-columns:repeat(2,1fr)}.post-grid{grid-template-columns:minmax(0,1fr);gap:0}.toc{display:none}}
+@media (max-width:760px){
+  .post-head{padding:120px 20px 0}
+  .post-head h1{font-size:clamp(26px,7vw,34px)}
+  .post-hero{padding:0 20px;margin-top:30px}
+  .post-hero img{max-height:260px;border-radius:14px}
+  .tldr{margin:30px 20px 0;padding:22px 22px}
+  .post-grid{padding:0 20px;margin-top:36px}
+  .post-body{font-size:17px;line-height:1.75}
+  .post-body > p:first-child{font-size:17.5px}
+  .post-body h2{font-size:21px;margin-top:38px}
+  .lead-card{grid-template-columns:1fr}
+  .lead-card .lead-media img{min-height:0;aspect-ratio:16/9}
+  .lead-card .lead-body{padding:26px 24px}
+  .news-grid{grid-template-columns:1fr;gap:20px}
+  .news-section{padding:38px 0 10px}
+  .post-cta,.post-related{padding:0 20px;margin-left:0;margin-right:0}
+  .post-related{margin-top:48px;margin-bottom:60px}
+}
 </style>
 </head><body>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <header>
   <div class="wrap nav">
     <a class="brand" href="/"><img src="/assets/logo-v2.png" alt="XYNTRIQ logo">XYNTRIQ</a>
@@ -535,22 +587,7 @@ select option, select optgroup { background: var(--surface); color: var(--text);
     <a href="/contact">Contact</a>
     <a class="mm-cta" href="/contact">Get Started</a>
   </div>
-</header>
-<div class="page-hero">
-  <div class="wrap">
-    <div class="eyebrow">XYNTRIQ News</div>
-    <h1>How to write annotation guidelines for regional speech datasets</h1>
-    <p>A stable speech-to-text dataset starts with decisions about noise, accents and code-switching that annotators can apply the same way across batches.</p>
-    <div class="post-meta">By XYNTRIQ Editorial<span class="dot">·</span>October 12, 2026<span class="dot">·</span> 4 min read</div>
-  </div>
-</div>
-<div class="wrap">
-  <div class="post-hero"><img src="/assets/news/how-to-write-annotation-guidelines-for-regional-speech-datasets/img-1.jpg" alt="How to write annotation guidelines for regional speech datasets" loading="eager"></div>
-  <div class="keypoints"><div class="label">What matters here</div><ol><li>A transcription guide should define how to label speech, noise, overlap and unintelligible spans before annotation starts.</li><li>Code-switching rules should preserve the spoken words and mark language changes consistently, not normalize them away.</li><li>A small reviewed sample can expose guideline gaps before a team annotates the full regional speech dataset.</li></ol></div>
-  <div class="post-body"><div class="body"><p>Regional speech datasets often become inconsistent in the places a broad transcription brief leaves open. One annotator writes a borrowed word in the dominant language’s script. Another switches scripts. A third marks background speech as unintelligible. The recordings may be usable, but the labels no longer describe the same task.</p><p>The remedy is not a longer list of rules for its own sake. It is a short, testable annotation guide that settles recurring choices before the full dataset is labeled. That matters for speech-to-text annotation, phonetic labeling and any training set where regional pronunciation or language mixing is part of the target behavior.</p><h2>Start by defining what the transcript represents</h2><p>Choose whether the output is a verbatim transcript, a cleaned transcript, or a phonetic representation. Do not combine these without labeling the distinction. A verbatim transcript generally preserves repetitions, false starts and fillers. A cleaned transcript may remove some of them, but the guide must specify which. Phonetic labeling requires a separate convention, including the transcription system and the level of detail expected.</p><p>Then settle the writing rules. Specify the script for each language, how to handle numerals, punctuation and abbreviations, and whether borrowed words follow their spoken pronunciation or a standardized spelling. Include examples from the actual language mix. Annotators should not have to infer a policy from examples in unrelated languages.</p><p>Keep the scope narrow enough to be applied consistently. If the modeling goal depends on exact word forms, avoid silently normalizing regional vocabulary. If the project needs normalized text, preserve a distinction between what was said and the normalized form where the schema allows it.</p><h2>Make ambient noise a labeling decision</h2><p>Noise rules should separate speech from non-speech events. Decide whether annotators label traffic, music, machinery, animal sounds or other prominent events, and define what counts as prominent. If the task is only transcription, say whether those events are omitted or represented with a standard tag.</p><p>For speech masked by noise, define when to transcribe the audible words, when to mark only an unclear span, and when a whole utterance is unintelligible. Do not ask annotators to guess from context. A useful rule is to preserve recoverable words and mark only the portion that cannot be heard, using one agreed token. The guide should also state how to handle overlapping speakers and whether each speaker receives a stable identifier.</p><p>Test these rules on difficult clips, not only clean recordings. Ask annotators to label the same examples independently, then compare where decisions differ. If they disagree about whether a word is masked, the answer may be a missing instruction rather than an individual error.</p><h2>Describe accent variation without treating it as noise</h2><p>Write down the project’s policy for regional pronunciations, reduced forms and pronunciation variants. For ordinary orthographic transcription, the rule may be to write the recognized word in the standard script rather than spell out its accent. For phonetic labeling, the guide needs a defined representation for the sound itself. These are different jobs and should not be left to annotator preference.</p><p>Use examples that cover the regions and speaker groups represented in the recordings. Explain how to treat a form that is unfamiliar but audible: preserve the spoken form, select an agreed variant, or flag it for review. Avoid labeling an accent as a defect. The annotation target is the speech behavior the project intends to model, not an imagined accent-free speaker.</p><h2>Set a consistent policy for code-switching</h2><p>Code-switching guidelines should answer three questions: how to identify a language change, which script to use for each language, and what to do with a word whose language or spelling is uncertain. Preserve the sequence the speaker produced. Do not translate, paraphrase or move words into a single language unless the task explicitly calls for translation.</p><p>For borrowed words and names, decide whether spelling follows the source language, the surrounding language’s script, or a project-specific convention. Add paired examples showing the same kind of switch handled correctly. If the dataset includes several regional varieties, state whether language labels are required at utterance, phrase or word level. Choose the least granular level that serves the intended analysis; finer labels create more opportunities for disagreement.</p><h2>Use a sample to find ambiguity before scale</h2><p>Run a small sample through the complete labeling process. Include quiet and noisy audio, multiple accents, code-switching, overlap and unclear speech. Have reviewers compare the outputs against the guide and record disagreements by rule. Revise the instructions, then check whether a fresh sample produces more consistent decisions.</p><p>Keep examples, decisions and guideline versions together. When a rule changes, note which batches were labeled under the earlier version and decide whether they need review. Batch-level review can make acceptance decisions easier to trace; the tradeoffs between periodic batch checks and ongoing sampling are covered in <a href="/news/batch-reports-or-continuous-sampling-how-to-audit-annotation-quality">this guide to annotation quality audits</a>.</p><p>XYNTRIQ works on audio and text annotation, as well as data collection across India and Latin America. Its process starts with a small sample labeled to a client’s guidelines, followed by shared output and a fixed-scope quote within 48 hours. For a speech project, that sample is a practical place to test the guide: ask whether the transcript captures the intended treatment of noise, regional pronunciation and language switches before expanding the work.</p><p>A good guideline is not the one with the most rules. It is the one that lets two trained annotators make the same call on the hard cases, and gives reviewers a clear way to resolve the cases where they do not.</p></div></div>
-  <div class="post-related"><h3>More from the news desk</h3><a href="/news/embodied-ai-data-specs-need-time-space-and-trajectory">Embodied AI data specs need time, space and trajectory<span class="d">November 12, 2026</span></a><a href="/news/write-dicom-annotation-guidelines-for-3d-mri-segmentation">Write DICOM annotation guidelines for 3D MRI segmentation<span class="d">November 11, 2026</span></a><a href="/news/turn-pov-task-video-into-usable-action-segments">Turn POV task video into usable action segments<span class="d">November 9, 2026</span></a></div>
-</div>
-<footer>
+</header><div class="post-head"><div class="kicker"><span>Speech &amp; audio</span><span class="sep">/</span><span>4 min read</span></div><h1>How to write annotation guidelines for regional speech datasets</h1><p class="dek">A stable speech-to-text dataset starts with decisions about noise, accents and code-switching that annotators can apply the same way across batches.</p><div class="byline"><img src="/assets/logo-v2.png" alt="XYNTRIQ" width="38" height="38"><div><div class="who">XYNTRIQ Editorial</div><div class="when">October 12, 2026 &nbsp;·&nbsp; 4 min read</div></div></div></div><div class="post-hero"><img src="/assets/news/how-to-write-annotation-guidelines-for-regional-speech-datasets/img-1.jpg" width="1400" height="788" alt="How to write annotation guidelines for regional speech datasets" fetchpriority="high" decoding="async"></div><div class="tldr"><div class="label">The short version</div><ol><li>A transcription guide should define how to label speech, noise, overlap and unintelligible spans before annotation starts.</li><li>Code-switching rules should preserve the spoken words and mark language changes consistently, not normalize them away.</li><li>A small reviewed sample can expose guideline gaps before a team annotates the full regional speech dataset.</li></ol></div><div class="post-grid"><aside class="toc"><div class="label">In this article</div><a href="#s1">Start by defining what the transcript represents</a><a href="#s2">Make ambient noise a labeling decision</a><a href="#s3">Describe accent variation without treating it as noise</a><a href="#s4">Set a consistent policy for code-switching</a><a href="#s5">Use a sample to find ambiguity before scale</a></aside><div class="post-body"><div class="body"><p>Regional speech datasets often become inconsistent in the places a broad transcription brief leaves open. One annotator writes a borrowed word in the dominant language’s script. Another switches scripts. A third marks background speech as unintelligible. The recordings may be usable, but the labels no longer describe the same task.</p><p>The remedy is not a longer list of rules for its own sake. It is a short, testable annotation guide that settles recurring choices before the full dataset is labeled. That matters for speech-to-text annotation, phonetic labeling and any training set where regional pronunciation or language mixing is part of the target behavior.</p><h2 id="s1">Start by defining what the transcript represents</h2><p>Choose whether the output is a verbatim transcript, a cleaned transcript, or a phonetic representation. Do not combine these without labeling the distinction. A verbatim transcript generally preserves repetitions, false starts and fillers. A cleaned transcript may remove some of them, but the guide must specify which. Phonetic labeling requires a separate convention, including the transcription system and the level of detail expected.</p><p>Then settle the writing rules. Specify the script for each language, how to handle numerals, punctuation and abbreviations, and whether borrowed words follow their spoken pronunciation or a standardized spelling. Include examples from the actual language mix. Annotators should not have to infer a policy from examples in unrelated languages.</p><p>Keep the scope narrow enough to be applied consistently. If the modeling goal depends on exact word forms, avoid silently normalizing regional vocabulary. If the project needs normalized text, preserve a distinction between what was said and the normalized form where the schema allows it.</p><h2 id="s2">Make ambient noise a labeling decision</h2><p>Noise rules should separate speech from non-speech events. Decide whether annotators label traffic, music, machinery, animal sounds or other prominent events, and define what counts as prominent. If the task is only transcription, say whether those events are omitted or represented with a standard tag.</p><p>For speech masked by noise, define when to transcribe the audible words, when to mark only an unclear span, and when a whole utterance is unintelligible. Do not ask annotators to guess from context. A useful rule is to preserve recoverable words and mark only the portion that cannot be heard, using one agreed token. The guide should also state how to handle overlapping speakers and whether each speaker receives a stable identifier.</p><p>Test these rules on difficult clips, not only clean recordings. Ask annotators to label the same examples independently, then compare where decisions differ. If they disagree about whether a word is masked, the answer may be a missing instruction rather than an individual error.</p><h2 id="s3">Describe accent variation without treating it as noise</h2><p>Write down the project’s policy for regional pronunciations, reduced forms and pronunciation variants. For ordinary orthographic transcription, the rule may be to write the recognized word in the standard script rather than spell out its accent. For phonetic labeling, the guide needs a defined representation for the sound itself. These are different jobs and should not be left to annotator preference.</p><p>Use examples that cover the regions and speaker groups represented in the recordings. Explain how to treat a form that is unfamiliar but audible: preserve the spoken form, select an agreed variant, or flag it for review. Avoid labeling an accent as a defect. The annotation target is the speech behavior the project intends to model, not an imagined accent-free speaker.</p><h2 id="s4">Set a consistent policy for code-switching</h2><p>Code-switching guidelines should answer three questions: how to identify a language change, which script to use for each language, and what to do with a word whose language or spelling is uncertain. Preserve the sequence the speaker produced. Do not translate, paraphrase or move words into a single language unless the task explicitly calls for translation.</p><p>For borrowed words and names, decide whether spelling follows the source language, the surrounding language’s script, or a project-specific convention. Add paired examples showing the same kind of switch handled correctly. If the dataset includes several regional varieties, state whether language labels are required at utterance, phrase or word level. Choose the least granular level that serves the intended analysis; finer labels create more opportunities for disagreement.</p><h2 id="s5">Use a sample to find ambiguity before scale</h2><p>Run a small sample through the complete labeling process. Include quiet and noisy audio, multiple accents, code-switching, overlap and unclear speech. Have reviewers compare the outputs against the guide and record disagreements by rule. Revise the instructions, then check whether a fresh sample produces more consistent decisions.</p><p>Keep examples, decisions and guideline versions together. When a rule changes, note which batches were labeled under the earlier version and decide whether they need review. Batch-level review can make acceptance decisions easier to trace; the tradeoffs between periodic batch checks and ongoing sampling are covered in <a href="/news/batch-reports-or-continuous-sampling-how-to-audit-annotation-quality">this guide to annotation quality audits</a>.</p><p>XYNTRIQ works on audio and text annotation, as well as data collection across India and Latin America. Its process starts with a small sample labeled to a client’s guidelines, followed by shared output and a fixed-scope quote within 48 hours. For a speech project, that sample is a practical place to test the guide: ask whether the transcript captures the intended treatment of noise, regional pronunciation and language switches before expanding the work.</p><p>A good guideline is not the one with the most rules. It is the one that lets two trained annotators make the same call on the hard cases, and gives reviewers a clear way to resolve the cases where they do not.</p></div></div></div><div class="post-cta"><div class="cta-band"><h2>Need this built to spec?</h2><p>XYNTRIQ collects and annotates consented video, image, audio and point-cloud data for production AI. Tell us the data types, volumes and timelines, and we will scope it.</p><div class="cta-row"><a class="cta" href="/request-sample">Request a sample</a><a class="cta ghost" href="/contact">Talk to us</a></div></div></div><div class="post-related"><div class="label">More from the news desk</div><div class="news-grid"><a class="news-card" href="/news/embodied-ai-data-specs-need-time-space-and-trajectory"><div class="thumb"><img src="/assets/news/embodied-ai-data-specs-need-time-space-and-trajectory/thumb-1.jpg" width="560" height="315" alt="" loading="lazy" decoding="async"></div><div class="body"><h3>Embodied AI data specs need time, space and trajectory</h3><div class="news-meta"><span>November 12, 2026</span></div></div></a><a class="news-card" href="/news/write-dicom-annotation-guidelines-for-3d-mri-segmentation"><div class="thumb"><img src="/assets/news/write-dicom-annotation-guidelines-for-3d-mri-segmentation/thumb-1.jpg" width="560" height="315" alt="" loading="lazy" decoding="async"></div><div class="body"><h3>Write DICOM annotation guidelines for 3D MRI segmentation</h3><div class="news-meta"><span>November 11, 2026</span></div></div></a><a class="news-card" href="/news/turn-pov-task-video-into-usable-action-segments"><div class="thumb"><img src="/assets/news/turn-pov-task-video-into-usable-action-segments/thumb-1.jpg" width="560" height="315" alt="" loading="lazy" decoding="async"></div><div class="body"><h3>Turn POV task video into usable action segments</h3><div class="news-meta"><span>November 9, 2026</span></div></div></a></div></div><footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
